@@ -880,18 +880,16 @@
             document.getElementById('sim-screen').style.display = 'none';
             document.getElementById('draft-screen').style.display = 'flex';
             sortearTrio();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // BOTOES DO CARD FINAL
         function jogarNovamente() {
             iniciarJogo();
         }
 
         function irParaTelaInicial() {
-            resetarDados();
-            document.getElementById('card-screen').style.display = 'none';
-            document.getElementById('draft-screen').style.display = 'none';
-            document.getElementById('sim-screen').style.display = 'none';
-            document.getElementById('home-screen-view').style.display = 'flex';
+            window.location.reload();
         }
 
         function sortearTrio() {
@@ -982,6 +980,7 @@
         function irParaSimulacao() {
             document.getElementById('draft-screen').style.display = 'none';
             document.getElementById('sim-screen').style.display = 'flex';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function shuffle(array) {
