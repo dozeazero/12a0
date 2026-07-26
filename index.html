@@ -140,8 +140,8 @@
             border-color: #72a28a;
         }
 
-        /* TELA DE DRAFT */
-        #home-screen {
+        /* GERENCIAMENTO DE TELAS */
+        #home-screen-view {
             display: flex;
             flex-direction: column;
         }
@@ -589,11 +589,13 @@
 
     <main class="app-container">
         
+        <!-- LOGO DA BDA NO TOPO DA PÁGINA -->
         <header class="top-logo-header">
             <img src="https://images.sympla.com.br/61dee191e86b8-xs.png" alt="BDA Logo" class="top-logo-img">
         </header>
 
-        <section id="home-screen">
+        <!-- 1. TELA INICIAL -->
+        <section id="home-screen-view">
             <header class="subtitle">
                 BDA DA DÉCADA &nbsp;•&nbsp; 2017 — 2026
             </header>
@@ -612,6 +614,7 @@
             </button>
         </section>
 
+        <!-- 2. TELA DO GAME/DRAFT -->
         <section id="draft-screen">
             
             <div class="top-status">
@@ -619,6 +622,7 @@
                 <div class="counter-box" id="slot-counter">0/3</div>
             </div>
 
+            <!-- CARD DO SORTEIO -->
             <div class="card-drawn" id="box-sorteio">
                 <div class="card-label">SAIU</div>
                 <div class="card-title" id="trio-title">...</div>
@@ -626,11 +630,13 @@
                 <button class="btn-resort" id="btn-resort" onclick="resortear()">↻ OUTRO TRIO (<span id="resort-count">3</span> RESTANTES)</button>
             </div>
 
+            <!-- LISTA DE SELEÇÃO -->
             <div class="mc-list-container" id="box-lista">
                 <div class="mc-list-title">ESCOLHA UM MC</div>
                 <div id="mc-list"></div>
             </div>
 
+            <!-- RINGUE / OCTÓGONO -->
             <div class="ring-wrapper">
                 <div class="ring-container">
                     <svg class="ring-svg" viewBox="0 0 200 200">
@@ -663,6 +669,7 @@
 
         </section>
 
+        <!-- 3. TELA DE SIMULAÇÃO -->
         <section id="sim-screen">
             <div class="top-status">
                 <div class="subtitle" style="margin:0;">PLACAR ACUMULADO</div>
@@ -683,6 +690,7 @@
             </div>
         </section>
 
+        <!-- 4. TELA DO CARD DE ESTATÍSTICAS -->
         <section id="card-screen">
             <div class="summary-card-container">
                 <div class="card-header-status">
@@ -851,12 +859,14 @@
             const finalBox = document.getElementById('final-box');
             finalBox.style.display = 'none';
 
-            // Reposiciona o botão de revelar de volta na tela de simulação de forma segura
+            // Reposiciona o botão revelar para a tela de simulação
             const btn = document.getElementById('btn-revelar');
             btn.innerText = "REVELAR PRIMEIRA BATALHA →";
             btn.style.display = 'flex';
+            
             const simScreen = document.getElementById('sim-screen');
-            simScreen.insertBefore(btn, finalBox);
+            simScreen.appendChild(btn);
+            simScreen.appendChild(finalBox);
 
             document.getElementById('box-sorteio').style.display = 'block';
             document.getElementById('box-lista').style.display = 'block';
@@ -871,11 +881,11 @@
         }
 
         function iniciarJogo() {
-            resetarEstadoGeral();
-            document.getElementById('home-screen').style.display = 'none';
+            document.getElementById('home-screen-view').style.display = 'none';
             document.getElementById('card-screen').style.display = 'none';
             document.getElementById('sim-screen').style.display = 'none';
             document.getElementById('draft-screen').style.display = 'flex';
+            resetarEstadoGeral();
             sortearTrio();
         }
 
@@ -884,11 +894,11 @@
         }
 
         function irParaTelaInicial() {
-            resetarEstadoGeral();
             document.getElementById('card-screen').style.display = 'none';
             document.getElementById('draft-screen').style.display = 'none';
             document.getElementById('sim-screen').style.display = 'none';
-            document.getElementById('home-screen').style.display = 'flex';
+            document.getElementById('home-screen-view').style.display = 'flex';
+            resetarEstadoGeral();
         }
 
         function sortearTrio() {
