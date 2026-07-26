@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://github.com/heitorcorreacury/12a0/blob/main/WhatsApp%20Image%202026-07-25%20at%2019.17.00.jpeg?raw=true" type="image/x-icon">
+    <link rel="icon" href="C:\Users\AMD\Desktop\12-0\WhatsApp Image 2026-07-25 at 19.17.00.jpeg" type="image/x-icon">
     <title>12-0 | BDA da Década</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -589,12 +589,10 @@
 
     <main class="app-container">
         
-        <!-- LOGO DA BDA NO TOPO DA PÁGINA -->
         <header class="top-logo-header">
             <img src="https://images.sympla.com.br/61dee191e86b8-xs.png" alt="BDA Logo" class="top-logo-img">
         </header>
 
-        <!-- 1. TELA INICIAL -->
         <section id="home-screen">
             <header class="subtitle">
                 BDA DA DÉCADA &nbsp;•&nbsp; 2017 — 2026
@@ -614,7 +612,6 @@
             </button>
         </section>
 
-        <!-- 2. TELA DO GAME/DRAFT -->
         <section id="draft-screen">
             
             <div class="top-status">
@@ -622,7 +619,6 @@
                 <div class="counter-box" id="slot-counter">0/3</div>
             </div>
 
-            <!-- CARD DO SORTEIO -->
             <div class="card-drawn" id="box-sorteio">
                 <div class="card-label">SAIU</div>
                 <div class="card-title" id="trio-title">...</div>
@@ -630,13 +626,11 @@
                 <button class="btn-resort" id="btn-resort" onclick="resortear()">↻ OUTRO TRIO (<span id="resort-count">3</span> RESTANTES)</button>
             </div>
 
-            <!-- LISTA DE SELEÇÃO -->
             <div class="mc-list-container" id="box-lista">
                 <div class="mc-list-title">ESCOLHA UM MC</div>
                 <div id="mc-list"></div>
             </div>
 
-            <!-- RINGUE / OCTÓGONO -->
             <div class="ring-wrapper">
                 <div class="ring-container">
                     <svg class="ring-svg" viewBox="0 0 200 200">
@@ -669,7 +663,6 @@
 
         </section>
 
-        <!-- 3. TELA DE SIMULAÇÃO -->
         <section id="sim-screen">
             <div class="top-status">
                 <div class="subtitle" style="margin:0;">PLACAR ACUMULADO</div>
@@ -690,7 +683,6 @@
             </div>
         </section>
 
-        <!-- 4. TELA DO CARD DE ESTATÍSTICAS -->
         <section id="card-screen">
             <div class="summary-card-container">
                 <div class="card-header-status">
@@ -855,19 +847,25 @@
 
             document.getElementById('battles-container').innerHTML = '';
             document.getElementById('global-score').innerText = '0 - 0';
-            document.getElementById('final-box').style.display = 'none';
             
+            const finalBox = document.getElementById('final-box');
+            finalBox.style.display = 'none';
+
+            // Reposiciona o botão de revelar de volta na tela de simulação de forma segura
             const btn = document.getElementById('btn-revelar');
             btn.innerText = "REVELAR PRIMEIRA BATALHA →";
             btn.style.display = 'flex';
-            document.getElementById('sim-screen').insertBefore(btn, document.getElementById('battles-container').nextSibling);
+            const simScreen = document.getElementById('sim-screen');
+            simScreen.insertBefore(btn, finalBox);
 
             document.getElementById('box-sorteio').style.display = 'block';
             document.getElementById('box-lista').style.display = 'block';
             document.getElementById('btn-continuar').style.display = 'none';
             document.getElementById('resort-count').innerText = '3';
-            document.getElementById('btn-resort').style.opacity = '1';
-            document.getElementById('btn-resort').style.cursor = 'pointer';
+            
+            const btnResort = document.getElementById('btn-resort');
+            btnResort.style.opacity = '1';
+            btnResort.style.cursor = 'pointer';
             
             atualizarRingue();
         }
@@ -876,6 +874,7 @@
             resetarEstadoGeral();
             document.getElementById('home-screen').style.display = 'none';
             document.getElementById('card-screen').style.display = 'none';
+            document.getElementById('sim-screen').style.display = 'none';
             document.getElementById('draft-screen').style.display = 'flex';
             sortearTrio();
         }
@@ -1209,7 +1208,7 @@
                     mvp = candidatos[0];
                 }
             }
-            document.getElementById('c-mvp-val').innerText = mvp.name.toUpperCase();
+            document.getElementById('c-mvp-val').innerText = mvp ? mvp.name.toUpperCase() : "N/A";
 
             const trioContainer = document.getElementById('c-trio-cards');
             trioContainer.innerHTML = '';
@@ -1235,8 +1234,5 @@
             });
         }
     </script>
-</body>
-</html>
-</html>
 </body>
 </html>
