@@ -839,7 +839,7 @@
         let triosEnfrentadosIds = [];
         let foiCampeao = false;
 
-        function resetarEstadoGeral() {
+        function resetarDados() {
             trioAtual = null;
             reSorteiosRestantes = 3;
             meuTrio = [];
@@ -855,18 +855,11 @@
 
             document.getElementById('battles-container').innerHTML = '';
             document.getElementById('global-score').innerText = '0 - 0';
-            
-            const finalBox = document.getElementById('final-box');
-            finalBox.style.display = 'none';
+            document.getElementById('final-box').style.display = 'none';
 
-            // Reposiciona o botão revelar para a tela de simulação
             const btn = document.getElementById('btn-revelar');
             btn.innerText = "REVELAR PRIMEIRA BATALHA →";
             btn.style.display = 'flex';
-            
-            const simScreen = document.getElementById('sim-screen');
-            simScreen.appendChild(btn);
-            simScreen.appendChild(finalBox);
 
             document.getElementById('box-sorteio').style.display = 'block';
             document.getElementById('box-lista').style.display = 'block';
@@ -881,11 +874,11 @@
         }
 
         function iniciarJogo() {
+            resetarDados();
             document.getElementById('home-screen-view').style.display = 'none';
             document.getElementById('card-screen').style.display = 'none';
             document.getElementById('sim-screen').style.display = 'none';
             document.getElementById('draft-screen').style.display = 'flex';
-            resetarEstadoGeral();
             sortearTrio();
         }
 
@@ -894,11 +887,11 @@
         }
 
         function irParaTelaInicial() {
+            resetarDados();
             document.getElementById('card-screen').style.display = 'none';
             document.getElementById('draft-screen').style.display = 'none';
             document.getElementById('sim-screen').style.display = 'none';
             document.getElementById('home-screen-view').style.display = 'flex';
-            resetarEstadoGeral();
         }
 
         function sortearTrio() {
@@ -1130,6 +1123,9 @@
                     `;
                     roundsList.appendChild(item);
                     step++;
+
+                    // Scrolla suavemente para a última rima
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
                 } else {
                     clearInterval(interval);
                     
@@ -1138,8 +1134,8 @@
                         faseAtual++;
                         if (faseAtual < fases.length) {
                             btn.innerText = "PRÓXIMA BATALHA →";
-                            card.after(btn);
                             btn.style.display = 'flex';
+                            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
                         } else {
                             finalizarSimulacao(true);
                         }
@@ -1158,9 +1154,6 @@
             const statusSubtitle = document.getElementById('final-status-subtitle');
             const msg = document.getElementById('final-msg');
 
-            const container = document.getElementById('battles-container');
-            container.after(finalBox);
-
             finalBox.style.display = 'block';
             scoreVal.innerText = `${roundsGanhos} - ${roundsPerdidos}`;
 
@@ -1176,6 +1169,8 @@
                 statusSubtitle.innerText = "❌ ELIMINADO ❌";
                 msg.innerText = `Seu trio caiu na ${fases[faseAtual]} e a campanha terminou em ${roundsGanhos}-${roundsPerdidos}.`;
             }
+
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
 
         /* MOSTRAR CARD DE ESTATÍSTICAS DA CAMPANHA */
@@ -1242,6 +1237,8 @@
 
                 trioContainer.appendChild(cardMc);
             });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
