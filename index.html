@@ -589,10 +589,12 @@
 
     <main class="app-container">
         
+        <!-- LOGO DA BDA NO TOPO DA PÁGINA -->
         <header class="top-logo-header">
             <img src="https://images.sympla.com.br/61dee191e86b8-xs.png" alt="BDA Logo" class="top-logo-img">
         </header>
 
+        <!-- 1. TELA INICIAL -->
         <section id="home-screen-view">
             <header class="subtitle">
                 BDA DA DÉCADA &nbsp;•&nbsp; 2017 — 2026
@@ -612,6 +614,7 @@
             </button>
         </section>
 
+        <!-- 2. TELA DO GAME/DRAFT -->
         <section id="draft-screen">
             
             <div class="top-status">
@@ -619,6 +622,7 @@
                 <div class="counter-box" id="slot-counter">0/3</div>
             </div>
 
+            <!-- CARD DO SORTEIO -->
             <div class="card-drawn" id="box-sorteio">
                 <div class="card-label">SAIU</div>
                 <div class="card-title" id="trio-title">...</div>
@@ -626,11 +630,13 @@
                 <button class="btn-resort" id="btn-resort" onclick="resortear()">↻ OUTRO TRIO (<span id="resort-count">3</span> RESTANTES)</button>
             </div>
 
+            <!-- LISTA DE SELEÇÃO -->
             <div class="mc-list-container" id="box-lista">
                 <div class="mc-list-title">ESCOLHA UM MC</div>
                 <div id="mc-list"></div>
             </div>
 
+            <!-- RINGUE / OCTÓGONO -->
             <div class="ring-wrapper">
                 <div class="ring-container">
                     <svg class="ring-svg" viewBox="0 0 200 200">
@@ -647,12 +653,12 @@
 
                     <div class="slot slot-2">
                         <div class="badge-state badge-empty" id="badge-1">?</div>
-                        <div class="mc-slot-name" id="name-1">MC 2</div>
+                        <div class="mc-slot-name" id="name-2">MC 2</div>
                     </div>
 
                     <div class="slot slot-3">
                         <div class="badge-state badge-empty" id="badge-2">?</div>
-                        <div class="mc-slot-name" id="name-2">MC 3</div>
+                        <div class="mc-slot-name" id="name-3">MC 3</div>
                     </div>
                 </div>
             </div>
@@ -663,6 +669,7 @@
 
         </section>
 
+        <!-- 3. TELA DE SIMULAÇÃO -->
         <section id="sim-screen">
             <div class="top-status">
                 <div class="subtitle" style="margin:0;">PLACAR ACUMULADO</div>
@@ -683,6 +690,7 @@
             </div>
         </section>
 
+        <!-- 4. TELA DO CARD DE ESTATÍSTICAS -->
         <section id="card-screen">
             <div class="summary-card-container">
                 <div class="card-header-status">
@@ -842,6 +850,7 @@
             { name: "Big Mike", ovr: 96, bda: "BDA 9 ANOS" }
         ];
 
+        let databaseEmbaralhado = [];
         let trioAtual = null;
         let reSorteiosRestantes = 3;
         let meuTrio = [];
@@ -857,7 +866,14 @@
         let triosEnfrentadosIds = [];
         let foiCampeao = false;
 
+        function shuffle(array) {
+            return array.slice().sort(() => Math.random() - 0.5);
+        }
+
         function resetarDados() {
+            // Embaralha todo o banco de dados no inicio de cada jogo para variacao maxima
+            databaseEmbaralhado = shuffle(database);
+            
             trioAtual = null;
             reSorteiosRestantes = 3;
             meuTrio = [];
@@ -910,8 +926,8 @@
         }
 
         function sortearTrio() {
-            const index = Math.floor(Math.random() * database.length);
-            trioAtual = database[index];
+            const index = Math.floor(Math.random() * databaseEmbaralhado.length);
+            trioAtual = databaseEmbaralhado[index];
 
             const nomes = trioAtual.mcs.map(mc => mc.name).join(', ');
             document.getElementById('trio-title').innerText = nomes;
@@ -1000,15 +1016,12 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function shuffle(array) {
-            return array.slice().sort(() => Math.random() - 0.5);
-        }
-
         function sortearAdversarioPorFase() {
             const disponiveis = database.filter(t => !triosEnfrentadosIds.includes(t.id));
             
-            const fracos = disponiveis.filter(t => (t.mcs.reduce((s, m) => s + m.ovr, 0) / 3) < 89.0);
-            const fortes = disponiveis.filter(t => (t.mcs.reduce((s, m) => s + m.ovr, 0) / 3) >= 89.0);
+            // Media 86.5 ajustada para abranger melhor a ampla variedade de trios
+            const fracos = disponiveis.filter(t => (t.mcs.reduce((s, m) => s + m.ovr, 0) / 3) < 86.5);
+            const fortes = disponiveis.filter(t => (t.mcs.reduce((s, m) => s + m.ovr, 0) / 3) >= 86.5);
 
             let chanceForte = 0.30;
             if (faseAtual === 1) chanceForte = 0.50;
