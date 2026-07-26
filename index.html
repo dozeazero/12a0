@@ -653,12 +653,12 @@
 
                     <div class="slot slot-2">
                         <div class="badge-state badge-empty" id="badge-1">?</div>
-                        <div class="mc-slot-name" id="name-2">MC 2</div>
+                        <div class="mc-slot-name" id="name-1">MC 2</div>
                     </div>
 
                     <div class="slot slot-3">
                         <div class="badge-state badge-empty" id="badge-2">?</div>
-                        <div class="mc-slot-name" id="name-3">MC 3</div>
+                        <div class="mc-slot-name" id="name-2">MC 3</div>
                     </div>
                 </div>
             </div>
@@ -866,12 +866,20 @@
         let triosEnfrentadosIds = [];
         let foiCampeao = false;
 
+        // EMBARALHAMENTO REAL FISHER-YATES
         function shuffle(array) {
-            return array.slice().sort(() => Math.random() - 0.5);
+            let m = array.length, t, i;
+            let a = array.slice();
+            while (m) {
+                i = Math.floor(Math.random() * m--);
+                t = a[m];
+                a[m] = a[i];
+                a[i] = t;
+            }
+            return a;
         }
 
         function resetarDados() {
-            // Embaralha todo o banco de dados no inicio de cada jogo para variacao maxima
             databaseEmbaralhado = shuffle(database);
             
             trioAtual = null;
@@ -926,8 +934,11 @@
         }
 
         function sortearTrio() {
-            const index = Math.floor(Math.random() * databaseEmbaralhado.length);
-            trioAtual = databaseEmbaralhado[index];
+            if (databaseEmbaralhado.length === 0) {
+                databaseEmbaralhado = shuffle(database);
+            }
+            // Retira sempre do topo do deck embaralhado para distribuição 100% perfeita
+            trioAtual = databaseEmbaralhado.pop();
 
             const nomes = trioAtual.mcs.map(mc => mc.name).join(', ');
             document.getElementById('trio-title').innerText = nomes;
@@ -1017,11 +1028,20 @@
         }
 
         function sortearAdversarioPorFase() {
+            // Filtra trios que ainda não foram enfrentados
             const disponiveis = database.filter(t => !triosEnfrentadosIds.includes(t.id));
             
-            // Media 86.5 ajustada para abranger melhor a ampla variedade de trios
-            const fracos = disponiveis.filter(t => (t.mcs.reduce((s, m) => s + m.ovr, 0) / 3) < 86.5);
-            const fortes = disponiveis.filter(t => (t.mcs.reduce((s, m) => s + m.ovr, 0) / 3) >= 86.5);
+            // Ordena os trios disponíveis pelo Overall Médio
+            const ordenados = disponiveis.slice().sort((a, b) => {
+                const avgA = a.mcs.reduce((s, m) => s + m.ovr, 0) / 3;
+                const avgB = b.mcs.reduce((s, m) => s + m.ovr, 0) / 3;
+                return avgA - avgB;
+            });
+
+            // Divisão Percentilar Relativa (50% mais fracos, 50% mais fortes)
+            const metade = Math.ceil(ordenados.length / 2);
+            const fracos = ordenados.slice(0, metade);
+            const fortes = ordenados.slice(metade);
 
             let chanceForte = 0.30;
             if (faseAtual === 1) chanceForte = 0.50;
