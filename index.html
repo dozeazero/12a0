@@ -589,12 +589,10 @@
 
     <main class="app-container">
         
-        <!-- LOGO DA BDA NO TOPO DA PÁGINA -->
         <header class="top-logo-header">
             <img src="https://images.sympla.com.br/61dee191e86b8-xs.png" alt="BDA Logo" class="top-logo-img">
         </header>
 
-        <!-- 1. TELA INICIAL -->
         <section id="home-screen-view">
             <header class="subtitle">
                 BDA DA DÉCADA &nbsp;•&nbsp; 2017 — 2026
@@ -614,7 +612,6 @@
             </button>
         </section>
 
-        <!-- 2. TELA DO GAME/DRAFT -->
         <section id="draft-screen">
             
             <div class="top-status">
@@ -622,7 +619,6 @@
                 <div class="counter-box" id="slot-counter">0/3</div>
             </div>
 
-            <!-- CARD DO SORTEIO -->
             <div class="card-drawn" id="box-sorteio">
                 <div class="card-label">SAIU</div>
                 <div class="card-title" id="trio-title">...</div>
@@ -630,13 +626,11 @@
                 <button class="btn-resort" id="btn-resort" onclick="resortear()">↻ OUTRO TRIO (<span id="resort-count">3</span> RESTANTES)</button>
             </div>
 
-            <!-- LISTA DE SELEÇÃO -->
             <div class="mc-list-container" id="box-lista">
                 <div class="mc-list-title">ESCOLHA UM MC</div>
                 <div id="mc-list"></div>
             </div>
 
-            <!-- RINGUE / OCTÓGONO -->
             <div class="ring-wrapper">
                 <div class="ring-container">
                     <svg class="ring-svg" viewBox="0 0 200 200">
@@ -669,7 +663,6 @@
 
         </section>
 
-        <!-- 3. TELA DE SIMULAÇÃO -->
         <section id="sim-screen">
             <div class="top-status">
                 <div class="subtitle" style="margin:0;">PLACAR ACUMULADO</div>
@@ -690,7 +683,6 @@
             </div>
         </section>
 
-        <!-- 4. TELA DO CARD DE ESTATÍSTICAS -->
         <section id="card-screen">
             <div class="summary-card-container">
                 <div class="card-header-status">
@@ -742,16 +734,21 @@
             { id: 1, bda: "BDA 1 ANOS", mcs: [{ name: "César", state: "#ES", ovr: 95, blocked: false }, { name: "Dudu", state: "#ES", ovr: 90, blocked: false }, { name: "Araps", state: "#SP", ovr: 87, blocked: false }] },
             { id: 2, bda: "BDA 1 ANOS", mcs: [{ name: "Thiago", state: "#SP", ovr: 89, blocked: false }, { name: "Chris", state: "#MG", ovr: 85, blocked: false }, { name: "Leozin", state: "#SP", ovr: 84, blocked: false }] },
             { id: 3, bda: "BDA 1 ANOS", mcs: [{ name: "Kant", state: "#SP", ovr: 85, blocked: false }, { name: "Krawk", state: "#SP", ovr: 87, blocked: true }, { name: "Nicolas Walter", state: "#RS", ovr: 84, blocked: true }] },
+            { id: 40, bda: "BDA 1 ANOS", mcs: [{ name: "Koell", state: "#SP", ovr: 85, blocked: false }, { name: "Kauan", state: "#SP", ovr: 82, blocked: false }, { name: "Vinicin", state: "#MG", ovr: 83, blocked: false }] },
 
             // BDA 2
             { id: 4, bda: "BDA 2 ANOS", mcs: [{ name: "César", state: "#ES", ovr: 92, blocked: false }, { name: "Dudu", state: "#ES", ovr: 90, blocked: false }, { name: "Noventa", state: "#ES", ovr: 89, blocked: false }] },
             { id: 5, bda: "BDA 2 ANOS", mcs: [{ name: "Choice", state: "#RJ", ovr: 92, blocked: false }, { name: "Olhinho", state: "#SP", ovr: 88, blocked: false }, { name: "Thiago", state: "#SP", ovr: 87, blocked: false }] },
             { id: 6, bda: "BDA 2 ANOS", mcs: [{ name: "Fabio Brazza", state: "#SP", ovr: 85, blocked: false }, { name: "BMO", state: "#DF", ovr: 85, blocked: false }, { name: "Naui", state: "#DF", ovr: 83, blocked: false }] },
+            { id: 41, bda: "BDA 2 ANOS", mcs: [{ name: "Orochi", state: "#RJ", ovr: 85, blocked: false }, { name: "Buddy Poke", state: "#RJ", ovr: 81, blocked: false }, { name: "Krawk", state: "#SP", ovr: 82, blocked: true }] },
+            { id: 42, bda: "BDA 2 ANOS", mcs: [{ name: "Alva", state: "#SP", ovr: 80, blocked: false }, { name: "Bob 13", state: "#SP", ovr: 81, blocked: false }, { name: "Yuri Beatkong", state: "#SP", ovr: 79, blocked: false }] },
 
             // BDA 3
             { id: 7, bda: "BDA 3 ANOS", mcs: [{ name: "Noventa", state: "#ES", ovr: 95, blocked: false }, { name: "Kant", state: "#SP", ovr: 88, blocked: false }, { name: "Salvador", state: "#SP", ovr: 88, blocked: false }] },
             { id: 8, bda: "BDA 3 ANOS", mcs: [{ name: "BMO", state: "#DF", ovr: 88, blocked: false }, { name: "Tavin", state: "#SP", ovr: 87, blocked: false }, { name: "Thiago", state: "#SP", ovr: 87, blocked: false }] },
             { id: 9, bda: "BDA 3 ANOS", mcs: [{ name: "Apollo", state: "#SP", ovr: 87, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 86, blocked: false }, { name: "Bl4ck", state: "#BA", ovr: 85, blocked: false }] },
+            { id: 43, bda: "BDA 3 ANOS", mcs: [{ name: "Douglas Din", state: "#MG", ovr: 86, blocked: false }, { name: "Chris", state: "#MG", ovr: 83, blocked: false }, { name: "Drizzy", state: "#MG", ovr: 84, blocked: false }] },
+            { id: 44, bda: "BDA 3 ANOS", mcs: [{ name: "Jhony", state: "#RJ", ovr: 83, blocked: false }, { name: "Nicolas Walter", state: "#RS", ovr: 85, blocked: true }, { name: "Alves", state: "#DF", ovr: 84, blocked: false }] },
 
             // BDA 4
             { id: 10, bda: "BDA 4 ANOS", mcs: [{ name: "Guerra", state: "#ES", ovr: 91, blocked: false }, { name: "Naui", state: "#DF", ovr: 87, blocked: false }, { name: "Refel", state: "#SP", ovr: 85, blocked: false }] },
@@ -759,6 +756,8 @@
             { id: 12, bda: "BDA 4 ANOS", mcs: [{ name: "Mikezin", state: "#SP", ovr: 85, blocked: false }, { name: "Jhony", state: "#RJ", ovr: 84, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 83, blocked: false }] },
             { id: 13, bda: "BDA 4 ANOS", mcs: [{ name: "Mcharles", state: "#CE", ovr: 86, blocked: false }, { name: "JayA Luuck", state: "#BA", ovr: 85, blocked: false }, { name: "Drizzy", state: "#MG", ovr: 83, blocked: false }] },
             { id: 14, bda: "BDA 4 ANOS", mcs: [{ name: "Sid", state: "#DF", ovr: 87, blocked: false }, { name: "Apollo", state: "#SP", ovr: 85, blocked: false }, { name: "Tavin", state: "#SP", ovr: 82, blocked: false }] },
+            { id: 45, bda: "BDA 4 ANOS", mcs: [{ name: "Zuluzão 🍺", state: "#SP", ovr: 81, blocked: false }, { name: "Douglas Din", state: "#MG", ovr: 80, blocked: false }, { name: "Nicolas Walter", state: "#RS", ovr: 81, blocked: true }] },
+            { id: 46, bda: "BDA 4 ANOS", mcs: [{ name: "Neo", state: "#RJ", ovr: 83, blocked: false }, { name: "Bl4ck", state: "#BA", ovr: 80, blocked: false }, { name: "Winnit", state: "#SP", ovr: 83, blocked: false }] },
 
             // BDA 5
             { id: 15, bda: "BDA 5 ANOS", mcs: [{ name: "Jotapê", state: "#SP", ovr: 92, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 91, blocked: false }, { name: "Apollo", state: "#SP", ovr: 89, blocked: false }] },
@@ -773,6 +772,8 @@
             { id: 22, bda: "BDA 6 ANOS", mcs: [{ name: "Magrão", state: "#SP", ovr: 85, blocked: false }, { name: "Guri", state: "#SP", ovr: 86, blocked: true }, { name: "Barreto", state: "#SP", ovr: 87, blocked: false }] },
             { id: 23, bda: "BDA 6 ANOS", mcs: [{ name: "Levinsk", state: "#SP", ovr: 87, blocked: false }, { name: "Xamuel", state: "#RS", ovr: 84, blocked: false }, { name: "Mikezin", state: "#SP", ovr: 81, blocked: false }] },
             { id: 24, bda: "BDA 6 ANOS", mcs: [{ name: "Durap", state: "#SP", ovr: 83, blocked: true }, { name: "WM", state: "#SP", ovr: 83, blocked: false }, { name: "Alice Gorete", state: "#AL", ovr: 82, blocked: false }] },
+            { id: 47, bda: "BDA 6 ANOS", mcs: [{ name: "Apollo", state: "#SP", ovr: 85, blocked: false }, { name: "Bask", state: "#SP", ovr: 82, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 84, blocked: false }] },
+            { id: 48, bda: "BDA 6 ANOS", mcs: [{ name: "Jhony", state: "#RJ", ovr: 87, blocked: false }, { name: "BMO", state: "#DF", ovr: 80, blocked: false }, { name: "Thiago", state: "#SP", ovr: 82, blocked: false }] },
 
             // BDA 7
             { id: 25, bda: "BDA 7 ANOS", mcs: [{ name: "Jotapê", state: "#SP", ovr: 97, blocked: false }, { name: "Neo", state: "#RJ", ovr: 93, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 93, blocked: false }] },
@@ -780,6 +781,10 @@
             { id: 27, bda: "BDA 7 ANOS", mcs: [{ name: "Kroy", state: "#SP", ovr: 86, blocked: true }, { name: "Bask", state: "#SP", ovr: 86, blocked: false }, { name: "Youngui", state: "#SP", ovr: 86, blocked: false }] },
             { id: 28, bda: "BDA 7 ANOS", mcs: [{ name: "Apollo", state: "#SP", ovr: 89, blocked: false }, { name: "Black Panter", state: "#SP", ovr: 85, blocked: false }, { name: "Thiago", state: "#SP", ovr: 84, blocked: false }] },
             { id: 29, bda: "BDA 7 ANOS", mcs: [{ name: "Xamuel", state: "#RS", ovr: 89, blocked: false }, { name: "Schuler", state: "#RJ", ovr: 83, blocked: false }, { name: "Zuluzão", state: "#SP", ovr: 85, blocked: false }] },
+            { id: 49, bda: "BDA 7 ANOS", mcs: [{ name: "Prado", state: "#SP", ovr: 85, blocked: false }, { name: "Magrão", state: "#SP", ovr: 84, blocked: false }, { name: "Jhony", state: "#RJ", ovr: 84, blocked: false }] },
+            { id: 50, bda: "BDA 7 ANOS", mcs: [{ name: "Kant", state: "#SP", ovr: 82, blocked: false }, { name: "Levinsk", state: "#SP", ovr: 82, blocked: false }, { name: "Tubarão", state: "#SP", ovr: 84, blocked: false }] },
+            { id: 51, bda: "BDA 7 ANOS", mcs: [{ name: "Gomes", state: "#DF", ovr: 82, blocked: false }, { name: "Vinicius ZN", state: "#PE", ovr: 81, blocked: false }, { name: "Japa", state: "#BA", ovr: 83, blocked: false }] },
+            { id: 52, bda: "BDA 7 ANOS", mcs: [{ name: "Devilzinha", state: "#RJ", ovr: 84, blocked: false }, { name: "Winnit", state: "#SP", ovr: 81, blocked: false }, { name: "Chris", state: "#MG", ovr: 80, blocked: false }] },
 
             // BDA 8
             { id: 30, bda: "BDA 8 ANOS", mcs: [{ name: "Apollo", state: "#SP", ovr: 98, blocked: false }, { name: "Neo", state: "#RJ", ovr: 92, blocked: false }, { name: "Tavin", state: "#SP", ovr: 93, blocked: false }] },
@@ -787,13 +792,26 @@
             { id: 32, bda: "BDA 8 ANOS", mcs: [{ name: "Brennuz", state: "#SP", ovr: 86, blocked: false }, { name: "João Negro", state: "#SP", ovr: 87, blocked: true }, { name: "Grafiteh", state: "#SP", ovr: 86, blocked: false }] },
             { id: 33, bda: "BDA 8 ANOS", mcs: [{ name: "Big Mike", state: "#SP", ovr: 88, blocked: false }, { name: "Kroy", state: "#SP", ovr: 86, blocked: true }, { name: "Bask", state: "#SP", ovr: 85, blocked: false }] },
             { id: 34, bda: "BDA 8 ANOS", mcs: [{ name: "Devilzinha", state: "#RJ", ovr: 87, blocked: false }, { name: "WM", state: "#SP", ovr: 89, blocked: false }, { name: "Ajota", state: "#SP", ovr: 85, blocked: false }] },
+            { id: 53, bda: "BDA 8 ANOS", mcs: [{ name: "Kaemy", state: "#GO", ovr: 84, blocked: false }, { name: "Vitu", state: "#PE", ovr: 84, blocked: false }, { name: "Martzin", state: "#MG", ovr: 87, blocked: false }] },
+            { id: 54, bda: "BDA 8 ANOS", mcs: [{ name: "Jhony", state: "#RJ", ovr: 79, blocked: false }, { name: "Prado", state: "#SP", ovr: 82, blocked: false }, { name: "Magrão", state: "#SP", ovr: 80, blocked: false }] },
+            { id: 55, bda: "BDA 8 ANOS", mcs: [{ name: "Noventa", state: "#ES", ovr: 81, blocked: false }, { name: "Gomes", state: "#DF", ovr: 82, blocked: false }, { name: "Tubarão", state: "#SP", ovr: 84, blocked: false }] },
+            { id: 56, bda: "BDA 8 ANOS", mcs: [{ name: "Zuluzão", state: "#SP", ovr: 82, blocked: false }, { name: "Levinsk", state: "#SP", ovr: 80, blocked: false }, { name: "Xamuel", state: "#RS", ovr: 81, blocked: false }] },
+            { id: 57, bda: "BDA 8 ANOS", mcs: [{ name: "Choice", state: "#RJ", ovr: 80, blocked: false }, { name: "Alves", state: "#DF", ovr: 80, blocked: false }, { name: "Youngui", state: "#SP", ovr: 83, blocked: false }] },
 
             // BDA 9
             { id: 35, bda: "BDA 9 ANOS", mcs: [{ name: "Kroy", state: "#SP", ovr: 96, blocked: true }, { name: "Japa", state: "#BA", ovr: 97, blocked: false }, { name: "Bask", state: "#SP", ovr: 95, blocked: false }] },
             { id: 36, bda: "BDA 9 ANOS", mcs: [{ name: "Big Mike", state: "#SP", ovr: 96, blocked: false }, { name: "Guri", state: "#SP", ovr: 90, blocked: true }, { name: "Devilzinha", state: "#RJ", ovr: 88, blocked: false }] },
             { id: 37, bda: "BDA 9 ANOS", mcs: [{ name: "Apollo", state: "#SP", ovr: 86, blocked: false }, { name: "Tavin", state: "#SP", ovr: 87, blocked: false }, { name: "Prado", state: "#SP", ovr: 87, blocked: false }] },
             { id: 38, bda: "BDA 9 ANOS", mcs: [{ name: "Noventa", state: "#ES", ovr: 84, blocked: false }, { name: "Tubarão", state: "#SP", ovr: 87, blocked: false }, { name: "Martzin", state: "#MG", ovr: 86, blocked: false }] },
-            { id: 39, bda: "BDA 9 ANOS", mcs: [{ name: "Neo", state: "#RJ", ovr: 85, blocked: false }, { name: "MT", state: "#RJ", ovr: 85, blocked: false }, { name: "WL BXD", state: "#RJ", ovr: 87, blocked: false }] }
+            { id: 39, bda: "BDA 9 ANOS", mcs: [{ name: "Neo", state: "#RJ", ovr: 85, blocked: false }, { name: "MT", state: "#RJ", ovr: 85, blocked: false }, { name: "WL BXD", state: "#RJ", ovr: 87, blocked: false }] },
+            { id: 58, bda: "BDA 9 ANOS", mcs: [{ name: "Magrão", state: "#SP", ovr: 84, blocked: false }, { name: "Vitu", state: "#PE", ovr: 87, blocked: false }, { name: "Menor", state: "#AM", ovr: 87, blocked: false }] },
+            { id: 59, bda: "BDA 9 ANOS", mcs: [{ name: "Valle", state: "#PR", ovr: 85, blocked: false }, { name: "WM", state: "#SP", ovr: 85, blocked: false }, { name: "Xamuel", state: "#RS", ovr: 84, blocked: false }] },
+            { id: 60, bda: "BDA 9 ANOS", mcs: [{ name: "Levinsk", state: "#SP", ovr: 84, blocked: false }, { name: "Ajota", state: "#SP", ovr: 85, blocked: false }, { name: "Tonhão", state: "#CE", ovr: 81, blocked: true }] },
+            { id: 61, bda: "BDA 9 ANOS", mcs: [{ name: "Jhony", state: "#RJ", ovr: 81, blocked: false }, { name: "Brennuz", state: "#SP", ovr: 84, blocked: false }, { name: "Grafiteh", state: "#SP", ovr: 83, blocked: false }] },
+            { id: 62, bda: "BDA 9 ANOS", mcs: [{ name: "Dherik", state: "#SP", ovr: 81, blocked: false }, { name: "Lecroy", state: "#SP", ovr: 81, blocked: false }, { name: "Blackoutt", state: "#SP", ovr: 80, blocked: false }] },
+
+            // BDA 10
+            { id: 63, bda: "BDA 10 ANOS", mcs: [{ name: "Sid", state: "#DF", ovr: 87, blocked: false }, { name: "Gomes", state: "#DF", ovr: 88, blocked: false }, { name: "Tito", state: "#DF", ovr: 88, blocked: false }] }
         ];
 
         const idolosGold = [
@@ -883,7 +901,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // BOTOES DO CARD FINAL
         function jogarNovamente() {
             iniciarJogo();
         }
