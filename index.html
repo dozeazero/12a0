@@ -1,1304 +1,9 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="C:\Users\AMD\Desktop\12-0\WhatsApp Image 2026-07-25 at 19.17.00.jpeg" type="image/x-icon">
-    <title>12-0 | BDA da Década</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
-    
-    <style>
-        /* RESET E ESTILOS GERAIS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        body {
-            background-color: #050b09;
-            background-image: 
-                radial-gradient(circle at 50% 30%, rgba(20, 45, 35, 0.6) 0%, rgba(5, 11, 9, 0.95) 80%),
-                linear-gradient(to bottom, rgba(5, 11, 9, 0.8), #050b09);
-            color: #e0e0e0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 20px 10px 60px 10px;
-            position: relative;
-        }
-
-        .app-container {
-            width: 100%;
-            max-width: 440px;
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            padding: 10px;
-        }
-
-        /* LOGO BDA NO TOPO */
-        .top-logo-header {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-bottom: 20px;
-        }
-
-        .top-logo-img {
-            max-width: 180px;
-            height: auto;
-            filter: drop-shadow(0px 4px 10px rgba(241, 105, 36, 0.4));
-        }
-
-        /* TELA INITIAL */
-        .subtitle {
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #72a28a;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .logo-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 7.5rem;
-            line-height: 0.85;
-            letter-spacing: -2px;
-            background: linear-gradient(180deg, #93f1be 0%, #ffffff 40%, #f16924 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0px 4px 15px rgba(241, 105, 36, 0.25));
-        }
-
-        .tagline {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.2rem;
-            line-height: 0.95;
-            color: #ffffff;
-            margin-top: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .description {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: #a0b3a8;
-            margin-bottom: 35px;
-        }
-
-        .btn-primary {
-            width: 100%;
-            background: linear-gradient(135deg, #f16924 0%, #d44d0d 100%);
-            color: #ffffff;
-            border: none;
-            padding: 18px 24px;
-            border-radius: 8px;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
-            letter-spacing: 1.5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(241, 105, 36, 0.35);
-            transition: all 0.2s;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(241, 105, 36, 0.5);
-        }
-
-        .btn-secondary {
-            width: 100%;
-            background: transparent;
-            border: 2px solid #1d3b2f;
-            color: #a0b3a8;
-            padding: 14px 20px;
-            border-radius: 8px;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.5rem;
-            letter-spacing: 1px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-secondary:hover {
-            background: #142a22;
-            color: #ffffff;
-            border-color: #72a28a;
-        }
-
-        /* GERENCIAMENTO DE TELAS */
-        #home-screen-view {
-            display: flex;
-            flex-direction: column;
-        }
-
-        #draft-screen, #sim-screen, #card-screen {
-            display: none;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .top-status {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(15, 30, 24, 0.8);
-            border: 1px solid #1c3d30;
-            padding: 10px 15px;
-            border-radius: 8px;
-        }
-
-        .counter-box {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            color: #93f1be;
-        }
-
-        .card-drawn {
-            background: #0d1a15;
-            border: 1px solid #1d3b2f;
-            border-radius: 8px;
-            padding: 15px;
-        }
-
-        .card-label {
-            font-size: 0.75rem;
-            color: #72a28a;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .card-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.2rem;
-            color: #ffffff;
-            line-height: 1;
-            margin: 5px 0;
-        }
-
-        .card-bda {
-            color: #f16924;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        .btn-resort {
-            background: transparent;
-            border: 1px solid #1d3b2f;
-            color: #a0b3a8;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 10px;
-            width: 100%;
-            transition: 0.2s;
-        }
-
-        .btn-resort:hover {
-            background: #142a22;
-            color: #fff;
-        }
-
-        /* LISTA DE MCS PARA SELEÇÃO */
-        .mc-list-container {
-            background: #0d1a15;
-            border: 1px solid #1d3b2f;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .mc-list-title {
-            padding: 10px 15px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #72a28a;
-            border-bottom: 1px solid #1d3b2f;
-            text-transform: uppercase;
-        }
-
-        .mc-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            border-bottom: 1px solid rgba(29, 59, 47, 0.5);
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .mc-item:last-child {
-            border-bottom: none;
-        }
-
-        .mc-item:hover:not(.blocked) {
-            background: rgba(147, 241, 190, 0.08);
-        }
-
-        .mc-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .mc-state {
-            color: #72a28a;
-            font-weight: 700;
-            font-size: 0.85rem;
-            width: 30px;
-        }
-
-        .mc-name {
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .mc-overall {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.6rem;
-            color: #ffffff;
-        }
-
-        .mc-item.blocked {
-            opacity: 0.35;
-            cursor: not-allowed;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .mc-item.blocked .mc-name::after {
-            content: attr(data-reason);
-            font-size: 0.7rem;
-            color: #f16924;
-            margin-left: 5px;
-        }
-
-        /* OCTÓGONO / RINGUE DE LUTA */
-        .ring-wrapper {
-            position: relative;
-            width: 100%;
-            padding-top: 100%;
-            margin-top: 10px;
-        }
-
-        .ring-container {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: #020504;
-            border-radius: 12px;
-            border: 1px solid #1d3b2f;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .ring-svg {
-            position: absolute;
-            width: 90%;
-            height: 90%;
-        }
-
-        .slot {
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-        }
-
-        .slot-1 { top: 18%; left: 50%; transform: translateX(-50%); }
-        .slot-2 { bottom: 20%; left: 22%; }
-        .slot-3 { bottom: 20%; right: 22%; }
-
-        .badge-state {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: #ffffff;
-            color: #000000;
-            border: 3px solid #f16924;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: 900;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-        }
-
-        .badge-empty {
-            background: #12221b;
-            color: #3b5c4f;
-            border: 2px dashed #244738;
-        }
-
-        .mc-slot-name {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.1rem;
-            color: #ffffff;
-            background: rgba(5, 11, 9, 0.9);
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-top: 4px;
-            white-space: nowrap;
-            border: 1px solid #1d3b2f;
-        }
-
-        /* SIMULAÇÃO DA BATALHA */
-        .battle-card {
-            background: #0d1a15;
-            border: 1px solid #1d3b2f;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 12px;
-        }
-
-        .battle-header {
-            display: flex;
-            flex-direction: column;
-            border-bottom: 1px solid #1d3b2f;
-            padding-bottom: 8px;
-            margin-bottom: 10px;
-        }
-
-        .phase-title {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #72a28a;
-            text-transform: uppercase;
-        }
-
-        .opp-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.25rem;
-            color: #f16924;
-            margin-top: 2px;
-        }
-
-        .rounds-list {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .round-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(5, 11, 9, 0.6);
-            padding: 8px 12px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            border-left: 3px solid #3b5c4f;
-        }
-
-        .round-item.win { border-left-color: #93f1be; }
-        .round-item.loss { border-left-color: #f16924; }
-
-        .round-desc {
-            color: #e0e0e0;
-            font-weight: 600;
-        }
-
-        .round-score {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.2rem;
-            color: #ffffff;
-        }
-
-        .final-result-box {
-            text-align: center;
-            background: #0d1a15;
-            border: 2px solid #f16924;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-
-        .final-score-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 4rem;
-            color: #93f1be;
-            line-height: 1;
-        }
-
-        /* CARD FINAL DE ESTATÍSTICAS */
-        .summary-card-container {
-            background: linear-gradient(180deg, #0f241a 0%, #050b09 100%);
-            border: 2px solid #1d3b2f;
-            border-radius: 12px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        }
-
-        .card-header-status {
-            text-align: center;
-            border-bottom: 1px solid #1d3b2f;
-            padding-bottom: 10px;
-        }
-
-        .card-status-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.8rem;
-            letter-spacing: 1px;
-            line-height: 1;
-        }
-
-        .card-status-title.campeao { color: #93f1be; text-shadow: 0 0 10px rgba(147, 241, 190, 0.4); }
-        .card-status-title.eliminado { color: #f16924; text-shadow: 0 0 10px rgba(241, 105, 36, 0.4); }
-
-        .card-score-big {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.2rem;
-            color: #ffffff;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .stat-box {
-            background: rgba(5, 11, 9, 0.7);
-            border: 1px solid #1c3d30;
-            padding: 10px;
-            border-radius: 6px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .stat-label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: #72a28a;
-            text-transform: uppercase;
-        }
-
-        .stat-value {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
-            color: #ffffff;
-            margin-top: 2px;
-        }
-
-        .mvp-box {
-            grid-column: span 2;
-            background: linear-gradient(135deg, rgba(241, 105, 36, 0.15) 0%, rgba(5, 11, 9, 0.8) 100%);
-            border: 1px solid #f16924;
-        }
-
-        .mvp-box .stat-value {
-            color: #f16924;
-            font-size: 2.2rem;
-        }
-
-        .trio-cards-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .mc-fut-card {
-            flex: 1;
-            background: #0a1410;
-            border: 1px solid #1c3d30;
-            border-radius: 8px;
-            padding: 10px 5px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-
-        .mc-fut-card.gold-icon {
-            background: linear-gradient(135deg, #2c2206 0%, #0d0a02 100%);
-            border: 2px solid #ffd700;
-            box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
-        }
-
-        .mc-fut-card.gold-icon .mc-fut-ovr { color: #ffd700; }
-        .mc-fut-card.gold-icon .mc-fut-name { color: #fff8d6; }
-
-        .mc-fut-ovr {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
-            line-height: 1;
-            color: #93f1be;
-        }
-
-        .mc-fut-state {
-            font-size: 0.65rem;
-            font-weight: 800;
-            color: #72a28a;
-            margin-bottom: 4px;
-        }
-
-        .mc-fut-name {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.1rem;
-            color: #ffffff;
-            text-align: center;
-            line-height: 1;
-            margin-top: 4px;
-        }
-
-        .mc-fut-bda {
-            font-size: 0.6rem;
-            font-weight: 700;
-            color: #f16924;
-            margin-top: 2px;
-        }
-
-        .credits-watermark {
-            position: fixed;
-            bottom: 12px;
-            right: 15px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: rgba(147, 241, 190, 0.6);
-            letter-spacing: 1px;
-            pointer-events: none;
-            z-index: 999;
-        }
-    </style>
-</head>
-<body>
-
-    <main class="app-container">
-        
-        <!-- LOGO DA BDA NO TOPO DA PÁGINA -->
-        <header class="top-logo-header">
-            <img src="https://images.sympla.com.br/61dee191e86b8-xs.png" alt="BDA Logo" class="top-logo-img">
-        </header>
-
-        <!-- 1. TELA INICIAL -->
-        <section id="home-screen-view">
-            <header class="subtitle">
-                BDA DA DÉCADA &nbsp;•&nbsp; 2017 — 2026
-            </header>
-
-            <div class="logo-container">
-                <h1 class="logo-title">12<span style="margin: 0 -5px;">-</span>0</h1>
-                <h2 class="tagline">PONHA O NOME NO SORTEIO.<br>MONTE SEU TRIO DOS SONHOS</h2>
-            </div>
-
-            <p class="description">
-                Ponha o nome no sorteio: sai um trio de uma BDA de Trio. Escale um MC que esteve lá, complete os 3 do seu trio e simule – seu trio faz 12 a 0?
-            </p>
-
-            <button class="btn-primary" onclick="iniciarJogo()">
-                JOGAR AGORA <span>→</span>
-            </button>
-        </section>
-
-        <!-- 2. TELA DO GAME/DRAFT -->
-        <section id="draft-screen">
-            
-            <div class="top-status">
-                <div class="subtitle" style="margin:0;">TRIO MONTADO</div>
-                <div class="counter-box" id="slot-counter">0/3</div>
-            </div>
-
-            <!-- CARD DO SORTEIO -->
-            <div class="card-drawn" id="box-sorteio">
-                <div class="card-label">SAIU</div>
-                <div class="card-title" id="trio-title">...</div>
-                <div class="card-bda" id="trio-bda">...</div>
-                <button class="btn-resort" id="btn-resort" onclick="resortear()">↻ OUTRO TRIO (<span id="resort-count">3</span> RESTANTES)</button>
-            </div>
-
-            <!-- LISTA DE SELEÇÃO -->
-            <div class="mc-list-container" id="box-lista">
-                <div class="mc-list-title">ESCOLHA UM MC</div>
-                <div id="mc-list"></div>
-            </div>
-
-            <!-- RINGUE / OCTÓGONO -->
-            <div class="ring-wrapper">
-                <div class="ring-container">
-                    <svg class="ring-svg" viewBox="0 0 200 200">
-                        <polygon points="60,5 140,5 195,60 195,140 140,195 60,195 5,140 5,60" fill="#080f0c" stroke="#ffffff" stroke-width="3"/>
-                        <polygon points="65,15 135,15 185,65 185,135 135,185 65,185 15,135 15,65" fill="none" stroke="#444444" stroke-width="1.5" stroke-dasharray="4"/>
-                        <circle cx="100" cy="100" r="22" fill="#000000" stroke="#ffffff" stroke-width="1.5"/>
-                        <text x="100" y="104" font-family="'Bebas Neue', sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">12 - 0</text>
-                    </svg>
-
-                    <div class="slot slot-1">
-                        <div class="badge-state badge-empty" id="badge-0">?</div>
-                        <div class="mc-slot-name" id="name-0">MC 1</div>
-                    </div>
-
-                    <div class="slot slot-2">
-                        <div class="badge-state badge-empty" id="badge-1">?</div>
-                        <div class="mc-slot-name" id="name-1">MC 2</div>
-                    </div>
-
-                    <div class="slot slot-3">
-                        <div class="badge-state badge-empty" id="badge-2">?</div>
-                        <div class="mc-slot-name" id="name-2">MC 3</div>
-                    </div>
-                </div>
-            </div>
-
-            <button class="btn-primary" id="btn-continuar" style="display: none; margin-top: 10px;" onclick="irParaSimulacao()">
-                CONTINUAR PARA A SIMULAÇÃO <span>→</span>
-            </button>
-
-        </section>
-
-        <!-- 3. TELA DE SIMULAÇÃO -->
-        <section id="sim-screen">
-            <div class="top-status">
-                <div class="subtitle" style="margin:0;">PLACAR ACUMULADO</div>
-                <div class="counter-box" id="global-score">0 - 0</div>
-            </div>
-
-            <div id="battles-container"></div>
-
-            <button class="btn-primary" id="btn-revelar" style="margin-top: 10px;" onclick="avancarSimulacao()">
-                REVELAR PRIMEIRA BATALHA <span>→</span>
-            </button>
-
-            <div id="final-box" class="final-result-box" style="display: none;">
-                <div class="subtitle" id="final-status-subtitle">RESULTADO FINAL</div>
-                <div class="final-score-title" id="final-score-val">12 - 0</div>
-                <p id="final-msg" class="description" style="margin-top: 10px; margin-bottom: 20px;"></p>
-                <button class="btn-primary" onclick="mostrarCardFinal()">VER CARD 🎴</button>
-            </div>
-        </section>
-
-        <!-- 4. TELA DO CARD DE ESTATÍSTICAS -->
-        <section id="card-screen">
-            <div class="summary-card-container">
-                <div class="card-header-status">
-                    <div class="card-status-title" id="c-status-title">CAMPEÃO</div>
-                    <div class="card-score-big" id="c-score-val">12 - 0</div>
-                </div>
-
-                <div class="stats-grid">
-                    <div class="stat-box">
-                        <div class="stat-label">OVERALL TRIO</div>
-                        <div class="stat-value" id="c-ovr-val">97</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-label">VITÓRIAS</div>
-                        <div class="stat-value" id="c-vitorias-val">4</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-label">ROUNDS GANHOS</div>
-                        <div class="stat-value" id="c-rg-val">12</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-label">ROUNDS PERDIDOS</div>
-                        <div class="stat-value" id="c-rp-val">0</div>
-                    </div>
-                    <div class="stat-box mvp-box">
-                        <div class="stat-label">MVP DA CAMPANHA</div>
-                        <div class="stat-value" id="c-mvp-val">APOLLO</div>
-                    </div>
-                </div>
-
-                <div class="subtitle" style="margin: 10px 0 0 0; text-align: center;">INTEGRANTES DO TRIO</div>
-
-                <div class="trio-cards-container" id="c-trio-cards"></div>
-            </div>
-
-            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
-                <button class="btn-primary" onclick="jogarNovamente()">JOGAR NOVAMENTE <span>↻</span></button>
-                <button class="btn-secondary" onclick="irParaTelaInicial()">TELA INICIAL <span>🏠</span></button>
-            </div>
-        </section>
-
-    </main>
-
-    <div class="credits-watermark">by: @heitorccury</div>
-
-    <script>
-        const database = [
-            // BDA 1
-            { id: 1, bda: "BDA 1 ANOS", mcs: [{ name: "César", state: "#ES", ovr: 95, blocked: false }, { name: "Dudu", state: "#ES", ovr: 90, blocked: false }, { name: "Araps", state: "#SP", ovr: 87, blocked: false }] },
-            { id: 2, bda: "BDA 1 ANOS", mcs: [{ name: "Thiago", state: "#SP", ovr: 89, blocked: false }, { name: "Chris", state: "#MG", ovr: 85, blocked: false }, { name: "Leozin", state: "#SP", ovr: 84, blocked: false }] },
-            { id: 3, bda: "BDA 1 ANOS", mcs: [{ name: "Kant", state: "#SP", ovr: 85, blocked: false }, { name: "Krawk", state: "#SP", ovr: 87, blocked: true }, { name: "Nicolas Walter", state: "#RS", ovr: 84, blocked: true }] },
-            { id: 40, bda: "BDA 1 ANOS", mcs: [{ name: "Koell", state: "#SP", ovr: 85, blocked: false }, { name: "Kauan", state: "#SP", ovr: 82, blocked: false }, { name: "Vinicin", state: "#MG", ovr: 83, blocked: false }] },
-
-            // BDA 2
-            { id: 4, bda: "BDA 2 ANOS", mcs: [{ name: "César", state: "#ES", ovr: 92, blocked: false }, { name: "Dudu", state: "#ES", ovr: 90, blocked: false }, { name: "Noventa", state: "#ES", ovr: 89, blocked: false }] },
-            { id: 5, bda: "BDA 2 ANOS", mcs: [{ name: "Choice", state: "#RJ", ovr: 92, blocked: false }, { name: "Olhinho", state: "#SP", ovr: 88, blocked: false }, { name: "Thiago", state: "#SP", ovr: 87, blocked: false }] },
-            { id: 6, bda: "BDA 2 ANOS", mcs: [{ name: "Fabio Brazza", state: "#SP", ovr: 85, blocked: false }, { name: "BMO", state: "#DF", ovr: 85, blocked: false }, { name: "Naui", state: "#DF", ovr: 83, blocked: false }] },
-            { id: 41, bda: "BDA 2 ANOS", mcs: [{ name: "Orochi", state: "#RJ", ovr: 85, blocked: false }, { name: "Buddy Poke", state: "#RJ", ovr: 81, blocked: false }, { name: "Krawk", state: "#SP", ovr: 82, blocked: true }] },
-            { id: 42, bda: "BDA 2 ANOS", mcs: [{ name: "Alva", state: "#SP", ovr: 80, blocked: false }, { name: "Bob 13", state: "#SP", ovr: 81, blocked: false }, { name: "Yuri Beatkong", state: "#SP", ovr: 79, blocked: false }] },
-
-            // BDA 3
-            { id: 7, bda: "BDA 3 ANOS", mcs: [{ name: "Noventa", state: "#ES", ovr: 95, blocked: false }, { name: "Kant", state: "#SP", ovr: 88, blocked: false }, { name: "Salvador", state: "#SP", ovr: 88, blocked: false }] },
-            { id: 8, bda: "BDA 3 ANOS", mcs: [{ name: "BMO", state: "#DF", ovr: 88, blocked: false }, { name: "Tavin", state: "#SP", ovr: 87, blocked: false }, { name: "Thiago", state: "#SP", ovr: 87, blocked: false }] },
-            { id: 9, bda: "BDA 3 ANOS", mcs: [{ name: "Apollo", state: "#SP", ovr: 87, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 86, blocked: false }, { name: "Bl4ck", state: "#BA", ovr: 85, blocked: false }] },
-            { id: 43, bda: "BDA 3 ANOS", mcs: [{ name: "Douglas Din", state: "#MG", ovr: 86, blocked: false }, { name: "Chris", state: "#MG", ovr: 83, blocked: false }, { name: "Drizzy", state: "#MG", ovr: 84, blocked: false }] },
-            { id: 44, bda: "BDA 3 ANOS", mcs: [{ name: "Jhony", state: "#RJ", ovr: 83, blocked: false }, { name: "Nicolas Walter", state: "#RS", ovr: 85, blocked: true }, { name: "Alves", state: "#DF", ovr: 84, blocked: false }] },
-
-            // BDA 4
-            { id: 10, bda: "BDA 4 ANOS", mcs: [{ name: "Guerra", state: "#ES", ovr: 91, blocked: false }, { name: "Naui", state: "#DF", ovr: 87, blocked: false }, { name: "Refel", state: "#SP", ovr: 85, blocked: false }] },
-            { id: 11, bda: "BDA 4 ANOS", mcs: [{ name: "Thiago", state: "#SP", ovr: 88, blocked: false }, { name: "Kant", state: "#SP", ovr: 86, blocked: false }, { name: "Krawk", state: "#SP", ovr: 85, blocked: true }] },
-            { id: 12, bda: "BDA 4 ANOS", mcs: [{ name: "Mikezin", state: "#SP", ovr: 85, blocked: false }, { name: "Jhony", state: "#RJ", ovr: 84, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 83, blocked: false }] },
-            { id: 13, bda: "BDA 4 ANOS", mcs: [{ name: "Mcharles", state: "#CE", ovr: 86, blocked: false }, { name: "JayA Luuck", state: "#BA", ovr: 85, blocked: false }, { name: "Drizzy", state: "#MG", ovr: 83, blocked: false }] },
-            { id: 14, bda: "BDA 4 ANOS", mcs: [{ name: "Sid", state: "#DF", ovr: 87, blocked: false }, { name: "Apollo", state: "#SP", ovr: 85, blocked: false }, { name: "Tavin", state: "#SP", ovr: 82, blocked: false }] },
-            { id: 45, bda: "BDA 4 ANOS", mcs: [{ name: "Zuluzão 🍺", state: "#SP", ovr: 81, blocked: false }, { name: "Douglas Din", state: "#MG", ovr: 80, blocked: false }, { name: "Nicolas Walter", state: "#RS", ovr: 81, blocked: true }] },
-            { id: 46, bda: "BDA 4 ANOS", mcs: [{ name: "Neo", state: "#RJ", ovr: 83, blocked: false }, { name: "Bl4ck", state: "#BA", ovr: 80, blocked: false }, { name: "Winnit", state: "#SP", ovr: 83, blocked: false }] },
-
-            // BDA 5
-            { id: 15, bda: "BDA 5 ANOS", mcs: [{ name: "Jotapê", state: "#SP", ovr: 92, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 91, blocked: false }, { name: "Apollo", state: "#SP", ovr: 89, blocked: false }] },
-            { id: 16, bda: "BDA 5 ANOS", mcs: [{ name: "Bask", state: "#SP", ovr: 88, blocked: false }, { name: "Kant", state: "#SP", ovr: 87, blocked: false }, { name: "Krawk", state: "#SP", ovr: 86, blocked: true }] },
-            { id: 17, bda: "BDA 5 ANOS", mcs: [{ name: "Thiago", state: "#SP", ovr: 87, blocked: false }, { name: "Dudu", state: "#ES", ovr: 86, blocked: false }, { name: "Noventa", state: "#ES", ovr: 86, blocked: false }] },
-            { id: 18, bda: "BDA 5 ANOS", mcs: [{ name: "Sid", state: "#DF", ovr: 85, blocked: false }, { name: "Jhony", state: "#RJ", ovr: 83, blocked: false }, { name: "Mcharles", state: "#CE", ovr: 84, blocked: false }] },
-            { id: 19, bda: "BDA 5 ANOS", mcs: [{ name: "WM", state: "#SP", ovr: 85, blocked: false }, { name: "Winnit", state: "#SP", ovr: 82, blocked: false }, { name: "Papi", state: "#SP", ovr: 80, blocked: false }] },
-
-            // BDA 6
-            { id: 20, bda: "BDA 6 ANOS", mcs: [{ name: "Neo", state: "#RJ", ovr: 96, blocked: false }, { name: "Prado", state: "#SP", ovr: 91, blocked: false }, { name: "Kant", state: "#SP", ovr: 88, blocked: false }] },
-            { id: 21, bda: "BDA 6 ANOS", mcs: [{ name: "Jotapê", state: "#SP", ovr: 95, blocked: false }, { name: "Dudu", state: "#ES", ovr: 88, blocked: false }, { name: "JayA", state: "#BA", ovr: 87, blocked: false }] },
-            { id: 22, bda: "BDA 6 ANOS", mcs: [{ name: "Magrão", state: "#SP", ovr: 85, blocked: false }, { name: "Guri", state: "#SP", ovr: 86, blocked: true }, { name: "Barreto", state: "#SP", ovr: 87, blocked: false }] },
-            { id: 23, bda: "BDA 6 ANOS", mcs: [{ name: "Levinsk", state: "#SP", ovr: 87, blocked: false }, { name: "Xamuel", state: "#RS", ovr: 84, blocked: false }, { name: "Mikezin", state: "#SP", ovr: 81, blocked: false }] },
-            { id: 24, bda: "BDA 6 ANOS", mcs: [{ name: "Durap", state: "#SP", ovr: 83, blocked: true }, { name: "WM", state: "#SP", ovr: 83, blocked: false }, { name: "Alice Gorete", state: "#AL", ovr: 82, blocked: false }] },
-            { id: 47, bda: "BDA 6 ANOS", mcs: [{ name: "Apollo", state: "#SP", ovr: 85, blocked: false }, { name: "Bask", state: "#SP", ovr: 82, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 84, blocked: false }] },
-            { id: 48, bda: "BDA 6 ANOS", mcs: [{ name: "Jhony", state: "#RJ", ovr: 87, blocked: false }, { name: "BMO", state: "#DF", ovr: 80, blocked: false }, { name: "Thiago", state: "#SP", ovr: 82, blocked: false }] },
-
-            // BDA 7
-            { id: 25, bda: "BDA 7 ANOS", mcs: [{ name: "Jotapê", state: "#SP", ovr: 97, blocked: false }, { name: "Neo", state: "#RJ", ovr: 93, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 93, blocked: false }] },
-            { id: 26, bda: "BDA 7 ANOS", mcs: [{ name: "Barreto", state: "#SP", ovr: 88, blocked: false }, { name: "Guri", state: "#SP", ovr: 92, blocked: true }, { name: "Noventa", state: "#ES", ovr: 89, blocked: false }] },
-            { id: 27, bda: "BDA 7 ANOS", mcs: [{ name: "Kroy", state: "#SP", ovr: 86, blocked: true }, { name: "Bask", state: "#SP", ovr: 86, blocked: false }, { name: "Youngui", state: "#SP", ovr: 86, blocked: false }] },
-            { id: 28, bda: "BDA 7 ANOS", mcs: [{ name: "Apollo", state: "#SP", ovr: 89, blocked: false }, { name: "Black Panter", state: "#SP", ovr: 85, blocked: false }, { name: "Thiago", state: "#SP", ovr: 84, blocked: false }] },
-            { id: 29, bda: "BDA 7 ANOS", mcs: [{ name: "Xamuel", state: "#RS", ovr: 89, blocked: false }, { name: "Schuler", state: "#RJ", ovr: 83, blocked: false }, { name: "Zuluzão", state: "#SP", ovr: 85, blocked: false }] },
-            { id: 49, bda: "BDA 7 ANOS", mcs: [{ name: "Prado", state: "#SP", ovr: 85, blocked: false }, { name: "Magrão", state: "#SP", ovr: 84, blocked: false }, { name: "Jhony", state: "#RJ", ovr: 84, blocked: false }] },
-            { id: 50, bda: "BDA 7 ANOS", mcs: [{ name: "Kant", state: "#SP", ovr: 82, blocked: false }, { name: "Levinsk", state: "#SP", ovr: 82, blocked: false }, { name: "Tubarão", state: "#SP", ovr: 84, blocked: false }] },
-            { id: 51, bda: "BDA 7 ANOS", mcs: [{ name: "Gomes", state: "#DF", ovr: 82, blocked: false }, { name: "Vinicius ZN", state: "#PE", ovr: 81, blocked: false }, { name: "Japa", state: "#BA", ovr: 83, blocked: false }] },
-            { id: 52, bda: "BDA 7 ANOS", mcs: [{ name: "Devilzinha", state: "#RJ", ovr: 84, blocked: false }, { name: "Winnit", state: "#SP", ovr: 81, blocked: false }, { name: "Chris", state: "#MG", ovr: 80, blocked: false }] },
-
-            // BDA 8
-            { id: 30, bda: "BDA 8 ANOS", mcs: [{ name: "Apollo", state: "#SP", ovr: 98, blocked: false }, { name: "Neo", state: "#RJ", ovr: 92, blocked: false }, { name: "Tavin", state: "#SP", ovr: 93, blocked: false }] },
-            { id: 31, bda: "BDA 8 ANOS", mcs: [{ name: "Jotapê", state: "#SP", ovr: 95, blocked: false }, { name: "Barreto", state: "#SP", ovr: 88, blocked: false }, { name: "Guri", state: "#SP", ovr: 89, blocked: true }] },
-            { id: 32, bda: "BDA 8 ANOS", mcs: [{ name: "Brennuz", state: "#SP", ovr: 86, blocked: false }, { name: "João Negro", state: "#SP", ovr: 87, blocked: true }, { name: "Grafiteh", state: "#SP", ovr: 86, blocked: false }] },
-            { id: 33, bda: "BDA 8 ANOS", mcs: [{ name: "Big Mike", state: "#SP", ovr: 88, blocked: false }, { name: "Kroy", state: "#SP", ovr: 86, blocked: true }, { name: "Bask", state: "#SP", ovr: 85, blocked: false }] },
-            { id: 34, bda: "BDA 8 ANOS", mcs: [{ name: "Devilzinha", state: "#RJ", ovr: 87, blocked: false }, { name: "WM", state: "#SP", ovr: 89, blocked: false }, { name: "Ajota", state: "#SP", ovr: 85, blocked: false }] },
-            { id: 53, bda: "BDA 8 ANOS", mcs: [{ name: "Kaemy", state: "#GO", ovr: 84, blocked: false }, { name: "Vitu", state: "#PE", ovr: 84, blocked: false }, { name: "Martzin", state: "#MG", ovr: 87, blocked: false }] },
-            { id: 54, bda: "BDA 8 ANOS", mcs: [{ name: "Jhony", state: "#RJ", ovr: 79, blocked: false }, { name: "Prado", state: "#SP", ovr: 82, blocked: false }, { name: "Magrão", state: "#SP", ovr: 80, blocked: false }] },
-            { id: 55, bda: "BDA 8 ANOS", mcs: [{ name: "Noventa", state: "#ES", ovr: 81, blocked: false }, { name: "Gomes", state: "#DF", ovr: 82, blocked: false }, { name: "Tubarão", state: "#SP", ovr: 84, blocked: false }] },
-            { id: 56, bda: "BDA 8 ANOS", mcs: [{ name: "Zuluzão", state: "#SP", ovr: 82, blocked: false }, { name: "Levinsk", state: "#SP", ovr: 80, blocked: false }, { name: "Xamuel", state: "#RS", ovr: 81, blocked: false }] },
-            { id: 57, bda: "BDA 8 ANOS", mcs: [{ name: "Choice", state: "#RJ", ovr: 80, blocked: false }, { name: "Alves", state: "#DF", ovr: 80, blocked: false }, { name: "Youngui", state: "#SP", ovr: 83, blocked: false }] },
-
-            // BDA 9
-            { id: 35, bda: "BDA 9 ANOS", mcs: [{ name: "Kroy", state: "#SP", ovr: 96, blocked: true }, { name: "Japa", state: "#BA", ovr: 97, blocked: false }, { name: "Bask", state: "#SP", ovr: 95, blocked: false }] },
-            { id: 36, bda: "BDA 9 ANOS", mcs: [{ name: "Big Mike", state: "#SP", ovr: 96, blocked: false }, { name: "Guri", state: "#SP", ovr: 90, blocked: true }, { name: "Devilzinha", state: "#RJ", ovr: 88, blocked: false }] },
-            { id: 37, bda: "BDA 9 ANOS", mcs: [{ name: "Apollo", state: "#SP", ovr: 86, blocked: false }, { name: "Tavin", state: "#SP", ovr: 87, blocked: false }, { name: "Prado", state: "#SP", ovr: 87, blocked: false }] },
-            { id: 38, bda: "BDA 9 ANOS", mcs: [{ name: "Noventa", state: "#ES", ovr: 84, blocked: false }, { name: "Tubarão", state: "#SP", ovr: 87, blocked: false }, { name: "Martzin", state: "#MG", ovr: 86, blocked: false }] },
-            { id: 39, bda: "BDA 9 ANOS", mcs: [{ name: "Neo", state: "#RJ", ovr: 85, blocked: false }, { name: "MT", state: "#RJ", ovr: 85, blocked: false }, { name: "WL BXD", state: "#RJ", ovr: 87, blocked: false }] },
-            { id: 58, bda: "BDA 9 ANOS", mcs: [{ name: "Magrão", state: "#SP", ovr: 84, blocked: false }, { name: "Vitu", state: "#PE", ovr: 87, blocked: false }, { name: "Menor", state: "#AM", ovr: 87, blocked: false }] },
-            { id: 59, bda: "BDA 9 ANOS", mcs: [{ name: "Valle", state: "#PR", ovr: 85, blocked: false }, { name: "WM", state: "#SP", ovr: 85, blocked: false }, { name: "Xamuel", state: "#RS", ovr: 84, blocked: false }] },
-            { id: 60, bda: "BDA 9 ANOS", mcs: [{ name: "Levinsk", state: "#SP", ovr: 84, blocked: false }, { name: "Ajota", state: "#SP", ovr: 85, blocked: false }, { name: "Tonhão", state: "#CE", ovr: 81, blocked: true }] },
-            { id: 61, bda: "BDA 9 ANOS", mcs: [{ name: "Jhony", state: "#RJ", ovr: 81, blocked: false }, { name: "Brennuz", state: "#SP", ovr: 84, blocked: false }, { name: "Grafiteh", state: "#SP", ovr: 83, blocked: false }] },
-            { id: 62, bda: "BDA 9 ANOS", mcs: [{ name: "Dherik", state: "#SP", ovr: 81, blocked: false }, { name: "Lecroy", state: "#SP", ovr: 81, blocked: false }, { name: "Blackoutt", state: "#SP", ovr: 80, blocked: false }] },
-
-            // BDA 10
-            { id: 63, bda: "BDA 10 ANOS", mcs: [{ name: "Sid", state: "#DF", ovr: 87, blocked: false }, { name: "Gomes", state: "#DF", ovr: 88, blocked: false }, { name: "Tito", state: "#DF", ovr: 88, blocked: false }] }
-        ];
-
-        const idolosGold = [
-            { name: "César", ovr: 95, bda: "BDA 1 ANOS" },
-            { name: "Dudu", ovr: 90, bda: "BDA 1 ANOS" },
-            { name: "Thiago", ovr: 89, bda: "BDA 1 ANOS" },
-            { name: "César", ovr: 92, bda: "BDA 2 ANOS" },
-            { name: "Dudu", ovr: 90, bda: "BDA 2 ANOS" },
-            { name: "Choice", ovr: 92, bda: "BDA 2 ANOS" },
-            { name: "Noventa", ovr: 95, bda: "BDA 3 ANOS" },
-            { name: "Guerra", ovr: 91, bda: "BDA 4 ANOS" },
-            { name: "Jotapê", ovr: 92, bda: "BDA 5 ANOS" },
-            { name: "Big Mike", ovr: 91, bda: "BDA 5 ANOS" },
-            { name: "Neo", ovr: 96, bda: "BDA 6 ANOS" },
-            { name: "Prado", ovr: 91, bda: "BDA 6 ANOS" },
-            { name: "Jotapê", ovr: 95, bda: "BDA 6 ANOS" },
-            { name: "Jotapê", ovr: 97, bda: "BDA 7 ANOS" },
-            { name: "Neo", ovr: 93, bda: "BDA 7 ANOS" },
-            { name: "Big Mike", ovr: 93, bda: "BDA 7 ANOS" },
-            { name: "Xamuel", ovr: 89, bda: "BDA 7 ANOS" },
-            { name: "Apollo", ovr: 98, bda: "BDA 8 ANOS" },
-            { name: "Neo", ovr: 92, bda: "BDA 8 ANOS" },
-            { name: "Tavin", ovr: 93, bda: "BDA 8 ANOS" },
-            { name: "Jotapê", ovr: 95, bda: "BDA 8 ANOS" },
-            { name: "WM", ovr: 89, bda: "BDA 8 ANOS" },
-            { name: "Japa", ovr: 97, bda: "BDA 9 ANOS" },
-            { name: "Bask", ovr: 95, bda: "BDA 9 ANOS" },
-            { name: "Big Mike", ovr: 96, bda: "BDA 9 ANOS" }
-        ];
-
-        let databaseEmbaralhado = [];
-        let trioAtual = null;
-        let reSorteiosRestantes = 3;
-        let meuTrio = [];
-        let mcsEscaladosNomes = [];
-
-        const fases = ["Primeira Fase", "Segunda Fase", "Semifinal", "Final"];
-        let faseAtual = 0;
-        let roundsGanhos = 0;
-        let roundsPerdidos = 0;
-        let batalhasGanhas = 0;
-        let x1Wins = [0, 0, 0];
-        let simulacaoEncerrada = false;
-        let triosEnfrentadosIds = [];
-        let foiCampeao = false;
-
-        // EMBARALHAMENTO REAL FISHER-YATES
-        function shuffle(array) {
-            let m = array.length, t, i;
-            let a = array.slice();
-            while (m) {
-                i = Math.floor(Math.random() * m--);
-                t = a[m];
-                a[m] = a[i];
-                a[i] = t;
-            }
-            return a;
-        }
-
-        function resetarDados() {
-            databaseEmbaralhado = shuffle(database);
-            
-            trioAtual = null;
-            reSorteiosRestantes = 3;
-            meuTrio = [];
-            mcsEscaladosNomes = [];
-            faseAtual = 0;
-            roundsGanhos = 0;
-            roundsPerdidos = 0;
-            batalhasGanhas = 0;
-            x1Wins = [0, 0, 0];
-            simulacaoEncerrada = false;
-            triosEnfrentadosIds = [];
-            foiCampeao = false;
-
-            document.getElementById('battles-container').innerHTML = '';
-            document.getElementById('global-score').innerText = '0 - 0';
-            document.getElementById('final-box').style.display = 'none';
-
-            const btn = document.getElementById('btn-revelar');
-            btn.innerText = "REVELAR PRIMEIRA BATALHA →";
-            btn.style.display = 'flex';
-
-            document.getElementById('box-sorteio').style.display = 'block';
-            document.getElementById('box-lista').style.display = 'block';
-            document.getElementById('btn-continuar').style.display = 'none';
-            document.getElementById('resort-count').innerText = '3';
-            
-            const btnResort = document.getElementById('btn-resort');
-            btnResort.style.opacity = '1';
-            btnResort.style.cursor = 'pointer';
-            
-            atualizarRingue();
-        }
-
-        function iniciarJogo() {
-            resetarDados();
-            document.getElementById('home-screen-view').style.display = 'none';
-            document.getElementById('card-screen').style.display = 'none';
-            document.getElementById('sim-screen').style.display = 'none';
-            document.getElementById('draft-screen').style.display = 'flex';
-            sortearTrio();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function jogarNovamente() {
-            iniciarJogo();
-        }
-
-        function irParaTelaInicial() {
-            window.location.reload();
-        }
-
-        function sortearTrio() {
-            if (databaseEmbaralhado.length === 0) {
-                databaseEmbaralhado = shuffle(database);
-            }
-            // Retira sempre do topo do deck embaralhado para distribuição 100% perfeita
-            trioAtual = databaseEmbaralhado.pop();
-
-            const nomes = trioAtual.mcs.map(mc => mc.name).join(', ');
-            document.getElementById('trio-title').innerText = nomes;
-            document.getElementById('trio-bda').innerText = trioAtual.bda;
-
-            const listEl = document.getElementById('mc-list');
-            listEl.innerHTML = '';
-
-            trioAtual.mcs.forEach(mc => {
-                const item = document.createElement('div');
-                const jaEscalado = mcsEscaladosNomes.includes(mc.name.trim().toLowerCase());
-                const isBlocked = mc.blocked || jaEscalado;
-                
-                item.className = `mc-item ${isBlocked ? 'blocked' : ''}`;
-                const reasonText = jaEscalado ? " (JÁ ESCALADO)" : " (BLOQUEADO)";
-                item.setAttribute('data-reason', reasonText);
-                
-                item.innerHTML = `
-                    <div class="mc-info">
-                        <span class="mc-state">${mc.state}</span>
-                        <span class="mc-name">${mc.name}</span>
-                    </div>
-                    <div class="mc-overall">${mc.ovr}</div>
-                `;
-
-                if (!isBlocked) {
-                    item.onclick = () => selecionarMC(mc, trioAtual.bda);
-                }
-
-                listEl.appendChild(item);
-            });
-        }
-
-        function resortear() {
-            if (reSorteiosRestantes > 0) {
-                reSorteiosRestantes--;
-                document.getElementById('resort-count').innerText = reSorteiosRestantes;
-                sortearTrio();
-                if (reSorteiosRestantes === 0) {
-                    document.getElementById('btn-resort').style.opacity = '0.5';
-                    document.getElementById('btn-resort').style.cursor = 'not-allowed';
-                }
-            }
-        }
-
-        function selecionarMC(mc, bdaOrigem) {
-            if (meuTrio.length < 3) {
-                let mcObjeto = { ...mc, bda: bdaOrigem };
-                meuTrio.push(mcObjeto);
-                mcsEscaladosNomes.push(mc.name.trim().toLowerCase());
-                atualizarRingue();
-                
-                if (meuTrio.length < 3) {
-                    sortearTrio();
-                } else {
-                    document.getElementById('box-sorteio').style.display = 'none';
-                    document.getElementById('box-lista').style.display = 'none';
-                    document.getElementById('btn-continuar').style.display = 'flex';
-                }
-            }
-        }
-
-        function atualizarRingue() {
-            document.getElementById('slot-counter').innerText = `${meuTrio.length}/3`;
-
-            for (let i = 0; i < 3; i++) {
-                const badge = document.getElementById(`badge-${i}`);
-                const name = document.getElementById(`name-${i}`);
-
-                if (meuTrio[i]) {
-                    badge.innerText = meuTrio[i].state.replace('#', '');
-                    badge.classList.remove('badge-empty');
-                    name.innerText = meuTrio[i].name;
-                } else {
-                    badge.innerText = '?';
-                    badge.classList.add('badge-empty');
-                    name.innerText = `MC ${i + 1}`;
-                }
-            }
-        }
-
-        /* LÓGICA DE SIMULAÇÃO */
-        function irParaSimulacao() {
-            document.getElementById('draft-screen').style.display = 'none';
-            document.getElementById('sim-screen').style.display = 'flex';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function sortearAdversarioPorFase() {
-            // Filtra trios que ainda não foram enfrentados
-            const disponiveis = database.filter(t => !triosEnfrentadosIds.includes(t.id));
-            
-            // Ordena os trios disponíveis pelo Overall Médio
-            const ordenados = disponiveis.slice().sort((a, b) => {
-                const avgA = a.mcs.reduce((s, m) => s + m.ovr, 0) / 3;
-                const avgB = b.mcs.reduce((s, m) => s + m.ovr, 0) / 3;
-                return avgA - avgB;
-            });
-
-            // Divisão Percentilar Relativa (50% mais fracos, 50% mais fortes)
-            const metade = Math.ceil(ordenados.length / 2);
-            const fracos = ordenados.slice(0, metade);
-            const fortes = ordenados.slice(metade);
-
-            let chanceForte = 0.30;
-            if (faseAtual === 1) chanceForte = 0.50;
-            if (faseAtual === 2) chanceForte = 0.80;
-            if (faseAtual === 3) chanceForte = 0.95;
-
-            let querForte = Math.random() < chanceForte;
-            let grupoEscolha = (querForte && fortes.length > 0) ? fortes : (fracos.length > 0 ? fracos : disponiveis);
-
-            grupoEscolha = shuffle(grupoEscolha);
-            const selecionado = grupoEscolha[0];
-
-            triosEnfrentadosIds.push(selecionado.id);
-            return selecionado;
-        }
-
-        function decidirVencedorTrio(myAvg, oppAvg) {
-            const diff = myAvg - oppAvg;
-            if (diff >= 4.0) return Math.random() < 0.70;
-            if (diff <= -4.0) return Math.random() < 0.30;
-            if (diff >= 2.0) return Math.random() < 0.60;
-            if (diff <= -2.0) return Math.random() < 0.40;
-            if (diff >= 0.5) return Math.random() < 0.54;
-            if (diff <= -0.5) return Math.random() < 0.46;
-            return Math.random() < 0.50;
-        }
-
-        function decidirVencedorX1(myOvr, oppOvr) {
-            const diff = myOvr - oppOvr;
-            if (diff >= 5) return Math.random() < 0.68;
-            if (diff <= -5) return Math.random() < 0.32;
-            if (diff >= 3) return Math.random() < 0.58;
-            if (diff <= -3) return Math.random() < 0.42;
-            if (diff >= 1) return Math.random() < 0.53;
-            if (diff <= -1) return Math.random() < 0.47;
-            return Math.random() < 0.50;
-        }
-
-        function avancarSimulacao() {
-            if (simulacaoEncerrada) return;
-
-            const btn = document.getElementById('btn-revelar');
-            btn.style.display = 'none';
-
-            const oppGroup = sortearAdversarioPorFase();
-            const oppMcs = oppGroup.mcs;
-            const oppNomes = oppMcs.map(m => m.name).join(', ');
-
-            const container = document.getElementById('battles-container');
-            const card = document.createElement('div');
-            card.className = 'battle-card';
-
-            const header = document.createElement('div');
-            header.className = 'battle-header';
-            header.innerHTML = `
-                <div class="phase-title">${fases[faseAtual]}</div>
-                <div class="opp-title">VS ${oppNomes} | ${oppGroup.bda}</div>
-            `;
-            card.appendChild(header);
-
-            const roundsList = document.createElement('div');
-            roundsList.className = 'rounds-list';
-            card.appendChild(roundsList);
-
-            container.appendChild(card);
-
-            const myAvg = meuTrio.reduce((sum, m) => sum + m.ovr, 0) / 3;
-            const oppAvg = oppMcs.reduce((sum, m) => sum + m.ovr, 0) / 3;
-
-            let pMeu = 0;
-            let pOpp = 0;
-            let roundsEvents = [];
-
-            // 1º e 2º Rounds (3x3)
-            for (let r = 1; r <= 2; r++) {
-                let win = decidirVencedorTrio(myAvg, oppAvg);
-                if (win) pMeu++; else pOpp++;
-                roundsEvents.push({
-                    desc: `${r}º Round (3x3)`,
-                    win: win,
-                    score: `${pMeu} - ${pOpp}`
-                });
-            }
-
-            // X1s (se necessário)
-            if (pMeu < 3 && pOpp < 3) {
-                let myIndices = [0, 1, 2].sort(() => Math.random() - 0.5);
-                let oppMcsShuffled = shuffle(oppMcs);
-
-                for (let r = 3; r <= 5; r++) {
-                    if (pMeu === 3 || pOpp === 3) break;
-
-                    let mcIndex = myIndices[r - 3];
-                    let myMc = meuTrio[mcIndex];
-                    let oppMc = oppMcsShuffled[r - 3];
-
-                    let win = decidirVencedorX1(myMc.ovr, oppMc.ovr);
-                    if (win) {
-                        pMeu++;
-                        x1Wins[mcIndex]++;
-                    } else {
-                        pOpp++;
-                    }
-
-                    roundsEvents.push({
-                        desc: `${r}º Round (X1: ${myMc.name} vs ${oppMc.name})`,
-                        win: win,
-                        score: `${pMeu} - ${pOpp}`
-                    });
-                }
-            }
-
-            let step = 0;
-            let interval = setInterval(() => {
-                if (step < roundsEvents.length) {
-                    let ev = roundsEvents[step];
-                    
-                    if (ev.win) roundsGanhos++;
-                    else roundsPerdidos++;
-
-                    document.getElementById('global-score').innerText = `${roundsGanhos} - ${roundsPerdidos}`;
-
-                    let item = document.createElement('div');
-                    item.className = `round-item ${ev.win ? 'win' : 'loss'}`;
-                    item.innerHTML = `
-                        <span class="round-desc">${ev.desc}</span>
-                        <span class="round-score">${ev.score}</span>
-                    `;
-                    roundsList.appendChild(item);
-                    step++;
-
-                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-                } else {
-                    clearInterval(interval);
-                    
-                    if (pMeu >= 3) {
-                        batalhasGanhas++;
-                        faseAtual++;
-                        if (faseAtual < fases.length) {
-                            btn.innerText = "PRÓXIMA BATALHA →";
-                            btn.style.display = 'flex';
-                            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-                        } else {
-                            finalizarSimulacao(true);
-                        }
-                    } else {
-                        finalizarSimulacao(false);
-                    }
-                }
-            }, 700);
-        }
-
-        function finalizarSimulacao(isCampeao) {
-            simulacaoEncerrada = true;
-            foiCampeao = isCampeao;
-            const finalBox = document.getElementById('final-box');
-            const scoreVal = document.getElementById('final-score-val');
-            const statusSubtitle = document.getElementById('final-status-subtitle');
-            const msg = document.getElementById('final-msg');
-
-            finalBox.style.display = 'block';
-            scoreVal.innerText = `${roundsGanhos} - ${roundsPerdidos}`;
-
-            if (isCampeao) {
-                if (roundsPerdidos === 0) {
-                    statusSubtitle.innerText = "🏆 PERFEITO! VOCÊ FEZ O 12 - 0! 🏆";
-                    msg.innerText = "Seu trio dominou a BDA sem perder nenhum round! Campanha impecável!";
-                } else {
-                    statusSubtitle.innerText = "🏆 CAMPEÃO DA BDA DA DÉCADA! 🏆";
-                    msg.innerText = `Seu trio levantou o troféu com um placar de ${roundsGanhos}-${roundsPerdidos}!`;
-                }
-            } else {
-                statusSubtitle.innerText = "❌ ELIMINADO ❌";
-                msg.innerText = `Seu trio caiu na ${fases[faseAtual]} e a campanha terminou em ${roundsGanhos}-${roundsPerdidos}.`;
-            }
-
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        }
-
-        /* MOSTRAR CARD DE ESTATÍSTICAS DA CAMPANHA */
-        function mostrarCardFinal() {
-            document.getElementById('sim-screen').style.display = 'none';
-            document.getElementById('card-screen').style.display = 'flex';
-
-            const titleEl = document.getElementById('c-status-title');
-            if (foiCampeao) {
-                titleEl.innerText = "CAMPEÃO";
-                titleEl.className = "card-status-title campeao";
-            } else {
-                titleEl.innerText = "ELIMINADO";
-                titleEl.className = "card-status-title eliminado";
-            }
-            document.getElementById('c-score-val').innerText = `${roundsGanhos} - ${roundsPerdidos}`;
-
-            const avgOvr = Math.round(meuTrio.reduce((s, m) => s + m.ovr, 0) / 3);
-            document.getElementById('c-ovr-val').innerText = avgOvr;
-
-            document.getElementById('c-vitorias-val').innerText = batalhasGanhas;
-            document.getElementById('c-rg-val').innerText = roundsGanhos;
-            document.getElementById('c-rp-val').innerText = roundsPerdidos;
-
-            let maxWins = Math.max(...x1Wins);
-            let candidatos = [];
-
-            [0, 1, 2].forEach(idx => {
-                if (x1Wins[idx] === maxWins) {
-                    candidatos.push(meuTrio[idx]);
-                }
-            });
-
-            let mvp = candidatos[0];
-            if (candidatos.length > 1) {
-                candidatos.sort((a, b) => b.ovr - a.ovr);
-                if (candidatos[0].ovr === candidatos[1].ovr) {
-                    mvp = candidatos[Math.floor(Math.random() * candidatos.length)];
-                } else {
-                    mvp = candidatos[0];
-                }
-            }
-            document.getElementById('c-mvp-val').innerText = mvp ? mvp.name.toUpperCase() : "N/A";
-
-            const trioContainer = document.getElementById('c-trio-cards');
-            trioContainer.innerHTML = '';
-
-            meuTrio.forEach(mc => {
-                const isGold = idolosGold.some(idolo => 
-                    idolo.name.trim().toLowerCase() === mc.name.trim().toLowerCase() && 
-                    idolo.ovr === mc.ovr && 
-                    idolo.bda.trim().toLowerCase() === mc.bda.trim().toLowerCase()
-                );
-
-                const cardMc = document.createElement('div');
-                cardMc.className = `mc-fut-card ${isGold ? 'gold-icon' : ''}`;
-
-                cardMc.innerHTML = `
-                    <div class="mc-fut-ovr">${mc.ovr}</div>
-                    <div class="mc-fut-state">${mc.state}</div>
-                    <div class="mc-fut-name">${mc.name}</div>
-                    <div class="mc-fut-bda">${mc.bda.replace(" ANOS", "")}</div>
-                `;
-
-                trioContainer.appendChild(cardMc);
-            });
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
-</body>
-</html>
-=======
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="whatsapp image 2026-07-25 at 19.17.00.jpeg" type="image/x-icon">
+    <link rel="icon" href="https://scontent.cdninstagram.com/v/t51.82787-19/758239231_18077587598333695_2714928462733741997_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=105&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=kHnKPTBZX_cQ7kNvwE19wV8&_nc_oc=AdqoyiUX5OXijJzqtdQbBqROwx8mlQRizcqBdvpNuZXR5lYjPi-8No7LaH8KBgvSeEk&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=dBP1-Us-wPstZyz1lFsaIQ&_nc_ss=70689&oh=00_AQGppGNhMCZ4e3DgTK5Ada6zJz3Z9vsmya2WitnsViscqg&oe=6A7AF7BC" type="image/jpeg">
     <title>12-0 | BDA da Década</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1507,6 +212,132 @@
             background: #142a22;
             color: #ffffff;
             border-color: #72a28a;
+        }
+
+        /* POP-UP / MODAL DE NOVIDADES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 15px;
+        }
+
+        .modal-card {
+            background: #0d1a15;
+            border: 2px solid #f16924;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 420px;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 0 25px rgba(241, 105, 36, 0.3);
+            overflow: hidden;
+        }
+
+        .modal-close-x {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            background: transparent;
+            border: none;
+            color: #a0b3a8;
+            font-size: 1.5rem;
+            font-weight: 900;
+            cursor: pointer;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+
+        .modal-close-x:hover {
+            color: #f16924;
+        }
+
+        .modal-header-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            color: #f16924;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .modal-date {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #72a28a;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #1d3b2f;
+            padding-bottom: 10px;
+        }
+
+        .modal-body-scroll {
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding-right: 5px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .modal-body-scroll::-webkit-scrollbar-thumb {
+            background: #f16924;
+            border-radius: 4px;
+        }
+
+        .update-item {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #e0e0e0;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .update-item-arrow {
+            color: #f16924;
+            font-weight: 900;
+            font-size: 1rem;
+            line-height: 1.2;
+        }
+
+        .update-item-text strong {
+            color: #93f1be;
+        }
+
+        .btn-modal-close {
+            width: 100%;
+            background: linear-gradient(135deg, #f16924 0%, #d44d0d 100%);
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(241, 105, 36, 0.3);
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .btn-modal-close:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(241, 105, 36, 0.5);
         }
 
         /* GERENCIAMENTO DE TELAS */
@@ -1804,6 +635,64 @@
             color: #ffffff;
         }
 
+        /* CAIXA DE ESCOLHA DE X1 */
+        .x1-choice-box {
+            background: #0a1410;
+            border: 2px solid #f16924;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .x1-choice-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #f16924;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        /* CARD DE INTERVALO DE EVENTO */
+        .interval-card {
+            background: linear-gradient(135deg, #1c1308 0%, #0d1a15 100%);
+            border: 2px solid #f16924;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+            box-shadow: 0 0 15px rgba(241, 105, 36, 0.2);
+        }
+
+        .interval-header {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: #f16924;
+            border-bottom: 1px dashed #1d3b2f;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .interval-lines-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .interval-line-item {
+            font-size: 0.85rem;
+            color: #93f1be;
+            font-weight: 600;
+            background: rgba(5, 11, 9, 0.7);
+            padding: 8px 10px;
+            border-radius: 4px;
+            border-left: 3px solid #f16924;
+            line-height: 1.4;
+        }
+
         .final-result-box {
             text-align: center;
             background: #0d1a15;
@@ -1969,6 +858,47 @@
 </head>
 <body>
 
+    <!-- POP-UP DE NOVIDADES / PATCH NOTES -->
+    <div class="modal-overlay" id="update-modal">
+        <div class="modal-card">
+            <button class="modal-close-x" onclick="fecharModal()">✕</button>
+            <div class="modal-header-title">NOVIDADES DA ATUALIZAÇÃO</div>
+            <div class="modal-date">6 de agosto de 2026</div>
+
+            <div class="modal-body-scroll">
+                <div class="update-item">
+                    <span class="update-item-arrow">></span>
+                    <div class="update-item-text">
+                        <strong>Modo MVP:</strong> o mais novo modo do 12a0, onde você não poderá ver o overall de nenhum dos MC's, igual na vida real, onde você nunca sabe realmente como um MC vai rimar no dia, prove que você é um verdadeiro MVP e conquiste a vitória nesse modo.
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-item-arrow">></span>
+                    <div class="update-item-text">
+                        <strong>X1:</strong> Agora, você pode escolher o MC que seu trio vai mandar para os rounds individuais, a escolha sendo no seu critério, e que vença o melhor.
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-item-arrow">></span>
+                    <div class="update-item-text">
+                        <strong>Trios:</strong> Adicionamos mais trios para o jogo, sejam antigos, ou novos anunciados da BDA 10. Além disso, alteramos o overall de vários MC's.
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-item-arrow">></span>
+                    <div class="update-item-text">
+                        <strong>Intervalo:</strong> Agora, tem chance de, após a segunda-fase, ter um intervalo entre as batalhas, podem ser shows, comentários, apenas você poderá saber.
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-modal-close" onclick="fecharModal()">FECHAR</button>
+        </div>
+    </div>
+
     <main class="app-container">
         
         <!-- LOGO DA BDA NO TOPO DA PÁGINA -->
@@ -1995,11 +925,14 @@
                 Apoia o trampo dos cara: <a href="https://www.instagram.com/batalhadaaldeia?igsh=N255MW9xOW5rNnZo" target="_blank" rel="noopener noreferrer">Batalha da Aldeia</a>
             </div>
 
-            <button class="btn-primary" onclick="iniciarJogo(false)">
+            <button class="btn-primary" onclick="iniciarJogo('normal')">
                 JOGAR AGORA <span>→</span>
             </button>
-            <button class="btn-secondary" style="margin-top: 10px;" onclick="iniciarJogo(true)">
+            <button class="btn-secondary" style="margin-top: 10px;" onclick="iniciarJogo('livre')">
                 MODO LIVRE <span>🔓</span>
+            </button>
+            <button class="btn-secondary" style="margin-top: 10px; border-color: #f16924; color: #f16924;" onclick="iniciarJogo('mvp')">
+                MODO MVP <span>🏆</span>
             </button>
 
             <!-- REDES SOCIAIS -->
@@ -2026,7 +959,7 @@
                 <div class="counter-box" id="slot-counter">0/3</div>
             </div>
 
-            <!-- CARD DO SORTEIO (MODO NORMAL) -->
+            <!-- CARD DO SORTEIO (MODO NORMAL/MVP) -->
             <div class="card-drawn" id="box-sorteio">
                 <div class="card-label">SAIU</div>
                 <div class="card-title" id="trio-title">...</div>
@@ -2138,55 +1071,65 @@
 
     </main>
 
-    <div class="credits-watermark">by: @heitorccury</div>
+    <div class="credits-watermark">by: @heitorccury | @rxdrigues__ | @artwoo77</div>
 
     <script>
         const database = [
             // BDA 1
-            { id: 1, bda: "BDA 1 ANOS", mcs: [{ name: "César", state: "#ES", ovr: 95, blocked: false }, { name: "Dudu", state: "#ES", ovr: 92, blocked: false }, { name: "Araps", state: "#SP", ovr: 87, blocked: false }] },
-            { id: 2, bda: "BDA 1 ANOS", mcs: [{ name: "Thiago", state: "#SP", ovr: 89, blocked: false }, { name: "Chris", state: "#MG", ovr: 85, blocked: false }, { name: "Leozin", state: "#SP", ovr: 84, blocked: false }] },
+            { id: 1, bda: "BDA 1 ANOS", mcs: [{ name: "César", state: "#ES", ovr: 95, blocked: false }, { name: "Dudu", state: "#ES", ovr: 92, blocked: false }, { name: "Araps", state: "#SP", ovr: 89, blocked: false }] },
+            { id: 2, bda: "BDA 1 ANOS", mcs: [{ name: "Thiago", state: "#SP", ovr: 89, blocked: false }, { name: "Chris", state: "#MG", ovr: 87, blocked: false }, { name: "Leozin", state: "#SP", ovr: 85, blocked: false }] },
             { id: 3, bda: "BDA 1 ANOS", mcs: [{ name: "Kant", state: "#SP", ovr: 85, blocked: false }, { name: "Krawk", state: "#SP", ovr: 87, blocked: true }, { name: "Nicolas Walter", state: "#RS", ovr: 84, blocked: true }] },
             { id: 40, bda: "BDA 1 ANOS", mcs: [{ name: "Koell", state: "#SP", ovr: 85, blocked: false }, { name: "Kauan", state: "#SP", ovr: 82, blocked: false }, { name: "Vinicin", state: "#MG", ovr: 83, blocked: false }] },
+            { id: 66, bda: "BDA 1 ANOS", mcs: [{ name: "TH", state: "#SP", ovr: 84, blocked: false }, { name: "Jafari", state: "#SP", ovr: 82, blocked: false }, { name: "Lisboa", state: "#SP", ovr: 82, blocked: false }] },
 
             // BDA 2
-            { id: 4, bda: "BDA 2 ANOS", mcs: [{ name: "César", state: "#ES", ovr: 92, blocked: false }, { name: "Dudu", state: "#ES", ovr: 90, blocked: false }, { name: "Noventa", state: "#ES", ovr: 89, blocked: false }] },
+            { id: 4, bda: "BDA 2 ANOS", mcs: [{ name: "César", state: "#ES", ovr: 93, blocked: false }, { name: "Dudu", state: "#ES", ovr: 92, blocked: false }, { name: "Noventa", state: "#ES", ovr: 91, blocked: false }] },
             { id: 5, bda: "BDA 2 ANOS", mcs: [{ name: "Choice", state: "#RJ", ovr: 92, blocked: false }, { name: "Olhinho", state: "#SP", ovr: 88, blocked: false }, { name: "Thiago", state: "#SP", ovr: 87, blocked: false }] },
             { id: 6, bda: "BDA 2 ANOS", mcs: [{ name: "Fabio Brazza", state: "#SP", ovr: 85, blocked: false }, { name: "BMO", state: "#DF", ovr: 85, blocked: false }, { name: "Naui", state: "#DF", ovr: 83, blocked: false }] },
-            { id: 41, bda: "BDA 2 ANOS", mcs: [{ name: "Orochi", state: "#RJ", ovr: 85, blocked: false }, { name: "Buddy Poke", state: "#RJ", ovr: 81, blocked: false }, { name: "Krawk", state: "#SP", ovr: 82, blocked: true }] },
-            { id: 42, bda: "BDA 2 ANOS", mcs: [{ name: "Alva", state: "#SP", ovr: 80, blocked: false }, { name: "Bob 13", state: "#SP", ovr: 81, blocked: false }, { name: "Yuri Beatkong", state: "#SP", ovr: 79, blocked: false }] },
-            { id: 64, bda: "BDA 2 ANOS", mcs: [{ name: "Menor", state: "#AM", ovr: 81, blocked: false }, { name: "Geek", state: "#SP", ovr: 79, blocked: false }, { name: "Ghost", state: "#SP", ovr: 78, blocked: false }] },
+            { id: 41, bda: "BDA 2 ANOS", mcs: [{ name: "Orochi", state: "#RJ", ovr: 86, blocked: false }, { name: "Buddy Poke", state: "#RJ", ovr: 82, blocked: false }, { name: "Krawk", state: "#SP", ovr: 83, blocked: true }] },
+            { id: 42, bda: "BDA 2 ANOS", mcs: [{ name: "Alva", state: "#SP", ovr: 80, blocked: false }, { name: "Bob 13", state: "#SP", ovr: 81, blocked: false }, { name: "Yuri Beatkong", state: "#SP", ovr: 78, blocked: false }] },
+            { id: 64, bda: "BDA 2 ANOS", mcs: [{ name: "Menor", state: "#AM", ovr: 81, blocked: false }, { name: "Geek", state: "#SP", ovr: 77, blocked: false }, { name: "Ghost", state: "#SP", ovr: 76, blocked: false }] },
+            { id: 67, bda: "BDA 2 ANOS", mcs: [{ name: "Marinho", state: "#DF", ovr: 82, blocked: false }, { name: "PTK", state: "#SP", ovr: 82, blocked: false }, { name: "Drizzy", state: "#MG", ovr: 81, blocked: false }] },
+            { id: 68, bda: "BDA 2 ANOS", mcs: [{ name: "Negra Rê", state: "#RJ", ovr: 80, blocked: false }, { name: "Winnit", state: "#SP", ovr: 82, blocked: false }, { name: "Levinsk", state: "#SP", ovr: 79, blocked: false }] },
+            { id: 69, bda: "BDA 2 ANOS", mcs: [{ name: "Major RD", state: "#RJ", ovr: 82, blocked: false }, { name: "Kant", state: "#SP", ovr: 82, blocked: false }, { name: "Cristian", state: "#SP", ovr: 79, blocked: false }] },
 
             // BDA 3
-            { id: 7, bda: "BDA 3 ANOS", mcs: [{ name: "Noventa", state: "#ES", ovr: 95, blocked: false }, { name: "Kant", state: "#SP", ovr: 90, blocked: false }, { name: "Salvador", state: "#SP", ovr: 88, blocked: false }] },
+            { id: 7, bda: "BDA 3 ANOS", mcs: [{ name: "Noventa", state: "#ES", ovr: 95, blocked: false }, { name: "Kant", state: "#SP", ovr: 93, blocked: false }, { name: "Salvador", state: "#SP", ovr: 90, blocked: false }] },
             { id: 8, bda: "BDA 3 ANOS", mcs: [{ name: "BMO", state: "#DF", ovr: 89, blocked: false }, { name: "Tavin", state: "#SP", ovr: 88, blocked: false }, { name: "Thiago", state: "#SP", ovr: 87, blocked: false }] },
             { id: 9, bda: "BDA 3 ANOS", mcs: [{ name: "Apollo", state: "#SP", ovr: 87, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 86, blocked: false }, { name: "Bl4ck", state: "#BA", ovr: 85, blocked: false }] },
-            { id: 43, bda: "BDA 3 ANOS", mcs: [{ name: "Douglas Din", state: "#MG", ovr: 86, blocked: false }, { name: "Chris", state: "#MG", ovr: 83, blocked: false }, { name: "Drizzy", state: "#MG", ovr: 84, blocked: false }] },
-            { id: 44, bda: "BDA 3 ANOS", mcs: [{ name: "Jhony", state: "#RJ", ovr: 83, blocked: false }, { name: "Nicolas Walter", state: "#RS", ovr: 85, blocked: true }, { name: "Alves", state: "#DF", ovr: 84, blocked: false }] },
+            { id: 43, bda: "BDA 3 ANOS", mcs: [{ name: "Douglas Din", state: "#MG", ovr: 85, blocked: false }, { name: "Chris", state: "#MG", ovr: 82, blocked: false }, { name: "Drizzy", state: "#MG", ovr: 83, blocked: false }] },
+            { id: 44, bda: "BDA 3 ANOS", mcs: [{ name: "Jhony", state: "#RJ", ovr: 84, blocked: false }, { name: "Nicolas Walter", state: "#RS", ovr: 85, blocked: true }, { name: "Alves", state: "#DF", ovr: 84, blocked: false }] },
+            { id: 70, bda: "BDA 3 ANOS", mcs: [{ name: "JayA Luuck", state: "#BA", ovr: 90, blocked: false }, { name: "Mcharles", state: "#CE", ovr: 85, blocked: false }, { name: "Mikezin", state: "#SP", ovr: 84, blocked: false }] },
+            { id: 71, bda: "BDA 3 ANOS", mcs: [{ name: "Azzy", state: "#RJ", ovr: 76, blocked: false }, { name: "Ravena", state: "#SP", ovr: 80, blocked: false }, { name: "Winnit", state: "#SP", ovr: 84, blocked: false }] },
+            { id: 72, bda: "BDA 3 ANOS", mcs: [{ name: "Naui", state: "#DF", ovr: 86, blocked: false }, { name: "Refel", state: "#SP", ovr: 84, blocked: false }, { name: "Kauan", state: "#SP", ovr: 85, blocked: false }] },
 
             // BDA 4
-            { id: 10, bda: "BDA 4 ANOS", mcs: [{ name: "Guerra", state: "#ES", ovr: 91, blocked: false }, { name: "Naui", state: "#DF", ovr: 87, blocked: false }, { name: "Refel", state: "#SP", ovr: 85, blocked: false }] },
-            { id: 11, bda: "BDA 4 ANOS", mcs: [{ name: "Thiago", state: "#SP", ovr: 88, blocked: false }, { name: "Kant", state: "#SP", ovr: 86, blocked: false }, { name: "Krawk", state: "#SP", ovr: 85, blocked: true }] },
+            { id: 10, bda: "BDA 4 ANOS", mcs: [{ name: "Guerra", state: "#ES", ovr: 91, blocked: false }, { name: "Naui", state: "#DF", ovr: 88, blocked: false }, { name: "Refel", state: "#SP", ovr: 86, blocked: false }] },
+            { id: 11, bda: "BDA 4 ANOS", mcs: [{ name: "Thiago", state: "#SP", ovr: 89, blocked: false }, { name: "Kant", state: "#SP", ovr: 86, blocked: false }, { name: "Krawk", state: "#SP", ovr: 85, blocked: true }] },
             { id: 12, bda: "BDA 4 ANOS", mcs: [{ name: "Mikezin", state: "#SP", ovr: 85, blocked: false }, { name: "Jhony", state: "#RJ", ovr: 84, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 83, blocked: false }] },
-            { id: 13, bda: "BDA 4 ANOS", mcs: [{ name: "Mcharles", state: "#CE", ovr: 86, blocked: false }, { name: "JayA Luuck", state: "#BA", ovr: 85, blocked: false }, { name: "Drizzy", state: "#MG", ovr: 83, blocked: false }] },
+            { id: 13, bda: "BDA 4 ANOS", mcs: [{ name: "Mcharles", state: "#CE", ovr: 86, blocked: false }, { name: "JayA Luuck", state: "#BA", ovr: 85, blocked: false }, { name: "Drizzy", state: "#MG", ovr: 82, blocked: false }] },
             { id: 14, bda: "BDA 4 ANOS", mcs: [{ name: "Sid", state: "#DF", ovr: 87, blocked: false }, { name: "Apollo", state: "#SP", ovr: 85, blocked: false }, { name: "Tavin", state: "#SP", ovr: 82, blocked: false }] },
-            { id: 45, bda: "BDA 4 ANOS", mcs: [{ name: "Zuluzão 🍺", state: "#SP", ovr: 81, blocked: false }, { name: "Douglas Din", state: "#MG", ovr: 80, blocked: false }, { name: "Nicolas Walter", state: "#RS", ovr: 81, blocked: true }] },
-            { id: 46, bda: "BDA 4 ANOS", mcs: [{ name: "Neo", state: "#RJ", ovr: 83, blocked: false }, { name: "Bl4ck", state: "#BA", ovr: 80, blocked: false }, { name: "Winnit", state: "#SP", ovr: 83, blocked: false }] },
+            { id: 45, bda: "BDA 4 ANOS", mcs: [{ name: "Zuluzão 🍺", state: "#SP", ovr: 81, blocked: false }, { name: "Douglas Din", state: "#MG", ovr: 79, blocked: false }, { name: "Nicolas Walter", state: "#RS", ovr: 81, blocked: true }] },
+            { id: 46, bda: "BDA 4 ANOS", mcs: [{ name: "Neo", state: "#RJ", ovr: 83, blocked: false }, { name: "Bl4ck", state: "#BA", ovr: 78, blocked: false }, { name: "Winnit", state: "#SP", ovr: 83, blocked: false }] },
+            { id: 73, bda: "BDA 4 ANOS", mcs: [{ name: "Lauro", state: "#PR", ovr: 81, blocked: false }, { name: "Kauan", state: "#SP", ovr: 79, blocked: false }, { name: "Raillow", state: "#SP", ovr: 80, blocked: false }] },
 
             // BDA 5
-            { id: 15, bda: "BDA 5 ANOS", mcs: [{ name: "Jotapê", state: "#SP", ovr: 92, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 92, blocked: false }, { name: "Apollo", state: "#SP", ovr: 89, blocked: false }] },
+            { id: 15, bda: "BDA 5 ANOS", mcs: [{ name: "Jotapê", state: "#SP", ovr: 92, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 93, blocked: false }, { name: "Apollo", state: "#SP", ovr: 89, blocked: false }] },
             { id: 16, bda: "BDA 5 ANOS", mcs: [{ name: "Bask", state: "#SP", ovr: 88, blocked: false }, { name: "Kant", state: "#SP", ovr: 87, blocked: false }, { name: "Krawk", state: "#SP", ovr: 86, blocked: true }] },
             { id: 17, bda: "BDA 5 ANOS", mcs: [{ name: "Thiago", state: "#SP", ovr: 87, blocked: false }, { name: "Dudu", state: "#ES", ovr: 86, blocked: false }, { name: "Noventa", state: "#ES", ovr: 86, blocked: false }] },
             { id: 18, bda: "BDA 5 ANOS", mcs: [{ name: "Sid", state: "#DF", ovr: 85, blocked: false }, { name: "Jhony", state: "#RJ", ovr: 83, blocked: false }, { name: "Mcharles", state: "#CE", ovr: 84, blocked: false }] },
-            { id: 19, bda: "BDA 5 ANOS", mcs: [{ name: "WM", state: "#SP", ovr: 85, blocked: false }, { name: "Winnit", state: "#SP", ovr: 82, blocked: false }, { name: "Papi", state: "#SP", ovr: 80, blocked: false }] },
+            { id: 19, bda: "BDA 5 ANOS", mcs: [{ name: "WM", state: "#SP", ovr: 85, blocked: false }, { name: "Winnit", state: "#SP", ovr: 82, blocked: false }, { name: "Papi", state: "#SP", ovr: 79, blocked: false }] },
+            { id: 74, bda: "BDA 5 ANOS", mcs: [{ name: "Durap", state: "#SP", ovr: 85, blocked: true }, { name: "Levinsk", state: "#SP", ovr: 79, blocked: false }, { name: "Refel", state: "#SP", ovr: 80, blocked: false }] },
 
             // BDA 6
-            { id: 20, bda: "BDA 6 ANOS", mcs: [{ name: "Neo", state: "#RJ", ovr: 96, blocked: false }, { name: "Prado", state: "#SP", ovr: 92, blocked: false }, { name: "Kant", state: "#SP", ovr: 89, blocked: false }] },
-            { id: 21, bda: "BDA 6 ANOS", mcs: [{ name: "Jotapê", state: "#SP", ovr: 95, blocked: false }, { name: "Dudu", state: "#ES", ovr: 88, blocked: false }, { name: "JayA", state: "#BA", ovr: 87, blocked: false }] },
+            { id: 20, bda: "BDA 6 ANOS", mcs: [{ name: "Neo", state: "#RJ", ovr: 96, blocked: false }, { name: "Prado", state: "#SP", ovr: 92, blocked: false }, { name: "Kant", state: "#SP", ovr: 90, blocked: false }] },
+            { id: 21, bda: "BDA 6 ANOS", mcs: [{ name: "Jotapê", state: "#SP", ovr: 95, blocked: false }, { name: "Dudu", state: "#ES", ovr: 88, blocked: false }, { name: "JayA Luuck", state: "#BA", ovr: 87, blocked: false }] },
             { id: 22, bda: "BDA 6 ANOS", mcs: [{ name: "Magrão", state: "#SP", ovr: 85, blocked: false }, { name: "Guri", state: "#SP", ovr: 86, blocked: true }, { name: "Barreto", state: "#SP", ovr: 87, blocked: false }] },
             { id: 23, bda: "BDA 6 ANOS", mcs: [{ name: "Levinsk", state: "#SP", ovr: 87, blocked: false }, { name: "Xamuel", state: "#RS", ovr: 84, blocked: false }, { name: "Mikezin", state: "#SP", ovr: 81, blocked: false }] },
             { id: 24, bda: "BDA 6 ANOS", mcs: [{ name: "Durap", state: "#SP", ovr: 83, blocked: true }, { name: "WM", state: "#SP", ovr: 83, blocked: false }, { name: "Alice Gorete", state: "#AL", ovr: 82, blocked: false }] },
             { id: 47, bda: "BDA 6 ANOS", mcs: [{ name: "Apollo", state: "#SP", ovr: 85, blocked: false }, { name: "Bask", state: "#SP", ovr: 82, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 84, blocked: false }] },
             { id: 48, bda: "BDA 6 ANOS", mcs: [{ name: "Jhony", state: "#RJ", ovr: 87, blocked: false }, { name: "BMO", state: "#DF", ovr: 80, blocked: false }, { name: "Thiago", state: "#SP", ovr: 82, blocked: false }] },
+            { id: 75, bda: "BDA 6 ANOS", mcs: [{ name: "Nicolas Walter", state: "#RS", ovr: 83, blocked: true }, { name: "Gomes", state: "#DF", ovr: 82, blocked: false }, { name: "Mcharles", state: "#CE", ovr: 81, blocked: false }] },
 
             // BDA 7
             { id: 25, bda: "BDA 7 ANOS", mcs: [{ name: "Jotapê", state: "#SP", ovr: 97, blocked: false }, { name: "Neo", state: "#RJ", ovr: 94, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 94, blocked: false }] },
@@ -2198,18 +1141,23 @@
             { id: 50, bda: "BDA 7 ANOS", mcs: [{ name: "Kant", state: "#SP", ovr: 82, blocked: false }, { name: "Levinsk", state: "#SP", ovr: 82, blocked: false }, { name: "Tubarão", state: "#SP", ovr: 84, blocked: false }] },
             { id: 51, bda: "BDA 7 ANOS", mcs: [{ name: "Gomes", state: "#DF", ovr: 82, blocked: false }, { name: "Vinicius ZN", state: "#PE", ovr: 81, blocked: false }, { name: "Japa", state: "#BA", ovr: 83, blocked: false }] },
             { id: 52, bda: "BDA 7 ANOS", mcs: [{ name: "Devilzinha", state: "#RJ", ovr: 84, blocked: false }, { name: "Winnit", state: "#SP", ovr: 81, blocked: false }, { name: "Chris", state: "#MG", ovr: 80, blocked: false }] },
+            { id: 76, bda: "BDA 7 ANOS", mcs: [{ name: "Maria", state: "#SP", ovr: 81, blocked: false }, { name: "Krawk", state: "#SP", ovr: 81, blocked: true }, { name: "Ajota", state: "#SP", ovr: 80, blocked: false }] },
 
             // BDA 8
             { id: 30, bda: "BDA 8 ANOS", mcs: [{ name: "Apollo", state: "#SP", ovr: 98, blocked: false }, { name: "Neo", state: "#RJ", ovr: 92, blocked: false }, { name: "Tavin", state: "#SP", ovr: 95, blocked: false }] },
             { id: 31, bda: "BDA 8 ANOS", mcs: [{ name: "Jotapê", state: "#SP", ovr: 96, blocked: false }, { name: "Barreto", state: "#SP", ovr: 88, blocked: false }, { name: "Guri", state: "#SP", ovr: 89, blocked: true }] },
             { id: 32, bda: "BDA 8 ANOS", mcs: [{ name: "Brennuz", state: "#SP", ovr: 86, blocked: false }, { name: "João Negro", state: "#SP", ovr: 87, blocked: true }, { name: "Grafiteh", state: "#SP", ovr: 86, blocked: false }] },
             { id: 33, bda: "BDA 8 ANOS", mcs: [{ name: "Big Mike", state: "#SP", ovr: 89, blocked: false }, { name: "Kroy", state: "#SP", ovr: 86, blocked: true }, { name: "Bask", state: "#SP", ovr: 85, blocked: false }] },
-            { id: 34, bda: "BDA 8 ANOS", mcs: [{ name: "Devilzinha", state: "#RJ", ovr: 87, blocked: false }, { name: "WM", state: "#SP", ovr: 89, blocked: false }, { name: "Ajota", state: "#SP", ovr: 85, blocked: false }] },
+            { id: 34, bda: "BDA 8 ANOS", mcs: [{ name: "Devilzinha", state: "#RJ", ovr: 88, blocked: false }, { name: "WM", state: "#SP", ovr: 89, blocked: false }, { name: "Ajota", state: "#SP", ovr: 86, blocked: false }] },
             { id: 53, bda: "BDA 8 ANOS", mcs: [{ name: "Kaemy", state: "#GO", ovr: 84, blocked: false }, { name: "Vitu", state: "#PE", ovr: 84, blocked: false }, { name: "Martzin", state: "#MG", ovr: 87, blocked: false }] },
             { id: 54, bda: "BDA 8 ANOS", mcs: [{ name: "Jhony", state: "#RJ", ovr: 79, blocked: false }, { name: "Prado", state: "#SP", ovr: 82, blocked: false }, { name: "Magrão", state: "#SP", ovr: 80, blocked: false }] },
             { id: 55, bda: "BDA 8 ANOS", mcs: [{ name: "Noventa", state: "#ES", ovr: 81, blocked: false }, { name: "Gomes", state: "#DF", ovr: 82, blocked: false }, { name: "Tubarão", state: "#SP", ovr: 84, blocked: false }] },
             { id: 56, bda: "BDA 8 ANOS", mcs: [{ name: "Zuluzão", state: "#SP", ovr: 82, blocked: false }, { name: "Levinsk", state: "#SP", ovr: 80, blocked: false }, { name: "Xamuel", state: "#RS", ovr: 81, blocked: false }] },
             { id: 57, bda: "BDA 8 ANOS", mcs: [{ name: "Choice", state: "#RJ", ovr: 80, blocked: false }, { name: "Alves", state: "#DF", ovr: 80, blocked: false }, { name: "Youngui", state: "#SP", ovr: 83, blocked: false }] },
+            { id: 77, bda: "BDA 8 ANOS", mcs: [{ name: "Yoga", state: "#BA", ovr: 83, blocked: false }, { name: "Japa", state: "#BA", ovr: 82, blocked: false }, { name: "JayA Luuck", state: "#BA", ovr: 79, blocked: false }] },
+
+            // SELETIVA BDA 9
+            { id: 78, bda: "SELETIVA BDA 9", mcs: [{ name: "Acuca", state: "#PE", ovr: 79, blocked: false }, { name: "Sofia", state: "#SC", ovr: 81, blocked: false }, { name: "Naia", state: "#RN", ovr: 80, blocked: false }] },
 
             // BDA 9
             { id: 35, bda: "BDA 9 ANOS", mcs: [{ name: "Kroy", state: "#SP", ovr: 96, blocked: true }, { name: "Japa", state: "#BA", ovr: 97, blocked: false }, { name: "Bask", state: "#SP", ovr: 95, blocked: false }] },
@@ -2222,27 +1170,38 @@
             { id: 60, bda: "BDA 9 ANOS", mcs: [{ name: "Levinsk", state: "#SP", ovr: 84, blocked: false }, { name: "Ajota", state: "#SP", ovr: 85, blocked: false }, { name: "Tonhão", state: "#CE", ovr: 81, blocked: true }] },
             { id: 61, bda: "BDA 9 ANOS", mcs: [{ name: "Jhony", state: "#RJ", ovr: 81, blocked: false }, { name: "Brennuz", state: "#SP", ovr: 84, blocked: false }, { name: "Grafiteh", state: "#SP", ovr: 83, blocked: false }] },
             { id: 62, bda: "BDA 9 ANOS", mcs: [{ name: "Dherik", state: "#SP", ovr: 81, blocked: false }, { name: "Lecroy", state: "#SP", ovr: 81, blocked: false }, { name: "Blackoutt", state: "#SP", ovr: 80, blocked: false }] },
+            { id: 79, bda: "BDA 9 ANOS", mcs: [{ name: "Gomes", state: "#DF", ovr: 85, blocked: false }, { name: "Lili", state: "#SP", ovr: 84, blocked: false }, { name: "Maria", state: "#SP", ovr: 80, blocked: false }] },
+            { id: 80, bda: "BDA 9 ANOS", mcs: [{ name: "Youngui", state: "#SP", ovr: 85, blocked: false }, { name: "Vinicius ZN", state: "#PE", ovr: 83, blocked: false }, { name: "Yoga", state: "#BA", ovr: 81, blocked: false }] },
 
             // BDA 10
             { id: 63, bda: "BDA 10 ANOS", mcs: [{ name: "Sid", state: "#DF", ovr: 87, blocked: false }, { name: "Gomes", state: "#DF", ovr: 88, blocked: false }, { name: "Tito", state: "#DF", ovr: 88, blocked: false }] },
-            { id: 65, bda: "BDA 10 ANOS", mcs: [{ name: "Zap", state: "#SP", ovr: 90, blocked: false }, { name: "Menor", state: "#AM", ovr: 87, blocked: false }, { name: "Ajota", state: "#SP", ovr: 86, blocked: false }] }
+            { id: 65, bda: "BDA 10 ANOS", mcs: [{ name: "Zap", state: "#SP", ovr: 89, blocked: false }, { name: "Menor", state: "#AM", ovr: 87, blocked: false }, { name: "Ajota", state: "#SP", ovr: 86, blocked: false }] },
+            { id: 81, bda: "BDA 10 ANOS", mcs: [{ name: "Devilzinha", state: "#RJ", ovr: 89, blocked: false }, { name: "Naia", state: "#RN", ovr: 90, blocked: false }, { name: "Sofia", state: "#SC", ovr: 86, blocked: false }] },
+            { id: 82, bda: "BDA 10 ANOS", mcs: [{ name: "Dudu", state: "#ES", ovr: 87, blocked: false }, { name: "Thiago", state: "#SP", ovr: 84, blocked: false }, { name: "JayA Luuck", state: "#BA", ovr: 85, blocked: false }] },
+            { id: 83, bda: "BDA 10 ANOS", mcs: [{ name: "Grafiteh", state: "#SP", ovr: 88, blocked: false }, { name: "Vitu", state: "#PE", ovr: 88, blocked: false }, { name: "MT", state: "#RJ", ovr: 89, blocked: false }] }
         ];
 
         const idolosGold = [
             { name: "César", ovr: 95, bda: "BDA 1 ANOS" },
             { name: "Dudu", ovr: 92, bda: "BDA 1 ANOS" },
+            { name: "Araps", ovr: 89, bda: "BDA 1 ANOS" },
             { name: "Thiago", ovr: 89, bda: "BDA 1 ANOS" },
-            { name: "César", ovr: 92, bda: "BDA 2 ANOS" },
-            { name: "Dudu", ovr: 90, bda: "BDA 2 ANOS" },
+            { name: "César", ovr: 93, bda: "BDA 2 ANOS" },
+            { name: "Dudu", ovr: 92, bda: "BDA 2 ANOS" },
+            { name: "Noventa", ovr: 91, bda: "BDA 2 ANOS" },
             { name: "Choice", ovr: 92, bda: "BDA 2 ANOS" },
             { name: "Noventa", ovr: 95, bda: "BDA 3 ANOS" },
-            { name: "Kant", ovr: 90, bda: "BDA 3 ANOS" },
+            { name: "Kant", ovr: 93, bda: "BDA 3 ANOS" },
+            { name: "Salvador", ovr: 90, bda: "BDA 3 ANOS" },
             { name: "BMO", ovr: 89, bda: "BDA 3 ANOS" },
+            { name: "JayA Luuck", ovr: 90, bda: "BDA 3 ANOS" },
             { name: "Guerra", ovr: 91, bda: "BDA 4 ANOS" },
             { name: "Jotapê", ovr: 92, bda: "BDA 5 ANOS" },
-            { name: "Big Mike", ovr: 92, bda: "BDA 5 ANOS" },
+            { name: "Big Mike", ovr: 93, bda: "BDA 5 ANOS" },
+            { name: "Apollo", ovr: 89, bda: "BDA 5 ANOS" },
             { name: "Neo", ovr: 96, bda: "BDA 6 ANOS" },
             { name: "Prado", ovr: 92, bda: "BDA 6 ANOS" },
+            { name: "Kant", ovr: 90, bda: "BDA 6 ANOS" },
             { name: "Jotapê", ovr: 95, bda: "BDA 6 ANOS" },
             { name: "Jotapê", ovr: 97, bda: "BDA 7 ANOS" },
             { name: "Neo", ovr: 94, bda: "BDA 7 ANOS" },
@@ -2252,14 +1211,89 @@
             { name: "Neo", ovr: 92, bda: "BDA 8 ANOS" },
             { name: "Tavin", ovr: 95, bda: "BDA 8 ANOS" },
             { name: "Jotapê", ovr: 96, bda: "BDA 8 ANOS" },
-            { name: "Big Mike", ovr: 89, bda: "BDA 8 ANOS" },
             { name: "WM", ovr: 89, bda: "BDA 8 ANOS" },
-            { name: "Japa", ovr: 97, bda: "BDA 9 ANOS" },
             { name: "Bask", ovr: 95, bda: "BDA 9 ANOS" },
+            { name: "Japa", ovr: 97, bda: "BDA 9 ANOS" },
             { name: "Big Mike", ovr: 96, bda: "BDA 9 ANOS" }
         ];
 
-        let isModoLivre = false;
+        // Lista de Roteiros dos Intervalos
+        const eventosIntervalo = [
+            {
+                titulo: "INTERVALO - SHOW DO SALVADOR",
+                linhas: [
+                    "• Salvador canta Vida Bandida",
+                    "• Salvador canta Estilo Coyote",
+                    "• Salvador faz um cover de Vida Loka Pt. 1",
+                    "• Salvador canta Vergonha pra Mídia",
+                    "• Salvador faz um cover de Bonde do Tony Country",
+                    "• Salvador chora",
+                    "• Salvador vai embora"
+                ]
+            },
+            {
+                titulo: "INTERVALO - SHOW DO RAFFA MOREIRA",
+                linhas: [
+                    "• Raffa Moreira canta 10K",
+                    "• Raffa Moreira canta sua parte no Poetas no Topo 2",
+                    "• *intervenção*",
+                    '• Raffa Moreira: "ô, parou! parou! no próximo ano, a Batalha da Aldeia contrata outro artista boy pra cantar aqui, porque o meu show acabou."',
+                    "• Raffa Moreira joga o microfone no chão e sai dali"
+                ]
+            },
+            {
+                titulo: "INTERVALO - SHOW DO KANT",
+                linhas: [
+                    "• Kant canta Purgatório",
+                    "• Kant faz um freestyle",
+                    "• Kant canta Click Clack Bum",
+                    "• Kant canta Flow Flaflu",
+                    "• Kant ganha um Disco de Ouro",
+                    "• Kant se emociona, agradece, e logo após vai embora"
+                ]
+            },
+            {
+                titulo: "INTERVALO - SHOW DO OROCHI",
+                linhas: [
+                    "• Orochi canta Amor de Fim de Noite",
+                    "• Orochi canta Mitsubishi",
+                    "• Orochi canta Celebridade",
+                    "• Orochi chama outros artistas da Mainstreet e canta Sereia",
+                    "• Orochi farpa o Jhony",
+                    "• A platéia vai a loucura",
+                    "• Orochi sai do palco"
+                ]
+            },
+            {
+                titulo: "INTERVALO - COMENTARISTAS",
+                tipo: "comentaristas"
+            },
+            {
+                titulo: "INTERVALO - ZULUZÃO HOST",
+                linhas: [
+                    '• Zuluzão: "Vamo entrevistar a rapazeada aqui pra ver como tá o evento pra eles"',
+                    "....",
+                    '• Zuluzão: "E esse parceiro aqui, tomando bomba pra vim pro evento"',
+                    '• Fã: "Que isso pôKKKK tô não Zulu"',
+                    '• Zuluzão: "Tá sheipado hein irmão? Mas e aí, cê vem de onde meu irmão?"',
+                    '• Fã: "Vim do interior de SP, mas sou fi de nordestino"',
+                    '• Zuluzão: "É isso carai, vem de longe. Espero que cê curta bastante o evento aí, e para de tomar anabolizante!!"'
+                ]
+            },
+            {
+                titulo: "INTERVALO - PODPAH",
+                linhas: [
+                    '• Igão e Mitico entram no palco',
+                    '• Igão: "Satisfação, todo mundo que tá acompanhando"',
+                    '• Bob 13: "Ô meus irmão, só tenho agradecer por tudo que vocês fizeram por nós, muito obrigado, ter vocês aqui é uma honra"',
+                    '• Igão: "Ô tio Bob, nós que agradecemos, mó responsa da porra tá nisso com vocês, to ansiosaço pra essas semis!"',
+                    '• Mitico: "É isso ai, mó satisfação ver que isso ta dando certo, ver que MC\'s tão conseguindo ganhar dinheiro com suas rimas, tamo junto Aldeia!!"',
+                    '• Os dois ficam no palco e as semis começam'
+                ]
+            }
+        ];
+
+        let modoJogo = 'normal'; // 'normal', 'livre' ou 'mvp'
         let databaseEmbaralhado = [];
         let trioAtual = null;
         let reSorteiosRestantes = 3;
@@ -2275,6 +1309,24 @@
         let simulacaoEncerrada = false;
         let triosEnfrentadosIds = [];
         let foiCampeao = false;
+        let temEventoIntervaloPendete = false;
+
+        // Controle da Batalha Atual
+        let x1McsDisponiveisMeuTrio = [];
+        let x1McsDisponiveisAdversario = [];
+        let currentOppGroup = null;
+        let pMeuBatalha = 0;
+        let pOppBatalha = 0;
+        let roundNumBatalha = 0;
+        let currentRoundsListEl = null;
+
+        function fecharModal() {
+            document.getElementById('update-modal').style.display = 'none';
+        }
+
+        function normalizarNome(nome) {
+            return nome.replace(/🍺/g, '').trim().toLowerCase();
+        }
 
         function shuffle(array) {
             let m = array.length, t, i;
@@ -2303,6 +1355,7 @@
             simulacaoEncerrada = false;
             triosEnfrentadosIds = [];
             foiCampeao = false;
+            temEventoIntervaloPendete = false;
 
             document.getElementById('battles-container').innerHTML = '';
             document.getElementById('global-score').innerText = '0 - 0';
@@ -2310,6 +1363,7 @@
 
             const btn = document.getElementById('btn-revelar');
             btn.innerText = "REVELAR PRIMEIRA BATALHA →";
+            btn.onclick = avancarSimulacao;
             btn.style.display = 'flex';
 
             document.getElementById('btn-continuar').style.display = 'none';
@@ -2322,8 +1376,8 @@
             atualizarRingue();
         }
 
-        function iniciarJogo(modoLivre = false) {
-            isModoLivre = modoLivre;
+        function iniciarJogo(modo) {
+            modoJogo = modo;
             resetarDados();
 
             document.getElementById('home-screen-view').style.display = 'none';
@@ -2331,11 +1385,17 @@
             document.getElementById('sim-screen').style.display = 'none';
             document.getElementById('draft-screen').style.display = 'flex';
 
-            if (isModoLivre) {
+            if (modoJogo === 'livre') {
                 document.getElementById('draft-mode-title').innerText = "MODO LIVRE - TRIO MONTADO";
                 document.getElementById('box-sorteio').style.display = 'none';
                 document.getElementById('box-lista').style.display = 'block';
                 renderizarListaModoLivre();
+            } else if (modoJogo === 'mvp') {
+                document.getElementById('draft-mode-title').innerText = "MODO MVP - TRIO MONTADO";
+                document.getElementById('box-sorteio').style.display = 'block';
+                document.getElementById('box-lista').style.display = 'block';
+                document.getElementById('mc-list-header-title').innerText = "ESCOLHA UM MC (OVERALL OCULTO)";
+                sortearTrio();
             } else {
                 document.getElementById('draft-mode-title').innerText = "TRIO MONTADO";
                 document.getElementById('box-sorteio').style.display = 'block';
@@ -2348,7 +1408,7 @@
         }
 
         function jogarNovamente() {
-            iniciarJogo(isModoLivre);
+            iniciarJogo(modoJogo);
         }
 
         function irParaTelaInicial() {
@@ -2371,7 +1431,7 @@
 
             todosMcs.forEach(mc => {
                 const item = document.createElement('div');
-                const jaEscalado = mcsEscaladosNomes.includes(mc.name.trim().toLowerCase());
+                const jaEscalado = mcsEscaladosNomes.includes(normalizarNome(mc.name));
                 
                 item.className = `mc-item ${jaEscalado ? 'blocked' : ''}`;
                 if (jaEscalado) {
@@ -2409,19 +1469,21 @@
 
             trioAtual.mcs.forEach(mc => {
                 const item = document.createElement('div');
-                const jaEscalado = mcsEscaladosNomes.includes(mc.name.trim().toLowerCase());
+                const jaEscalado = mcsEscaladosNomes.includes(normalizarNome(mc.name));
                 const isBlocked = mc.blocked || jaEscalado;
                 
                 item.className = `mc-item ${isBlocked ? 'blocked' : ''}`;
                 const reasonText = jaEscalado ? " (JÁ ESCALADO)" : " (BLOQUEADO)";
                 item.setAttribute('data-reason', reasonText);
                 
+                const displayOvr = (modoJogo === 'mvp') ? '??' : mc.ovr;
+
                 item.innerHTML = `
                     <div class="mc-info">
                         <span class="mc-state">${mc.state}</span>
                         <span class="mc-name">${mc.name}</span>
                     </div>
-                    <div class="mc-overall">${mc.ovr}</div>
+                    <div class="mc-overall">${displayOvr}</div>
                 `;
 
                 if (!isBlocked) {
@@ -2448,11 +1510,11 @@
             if (meuTrio.length < 3) {
                 let mcObjeto = { ...mc, bda: bdaOrigem };
                 meuTrio.push(mcObjeto);
-                mcsEscaladosNomes.push(mc.name.trim().toLowerCase());
+                mcsEscaladosNomes.push(normalizarNome(mc.name));
                 atualizarRingue();
                 
                 if (meuTrio.length < 3) {
-                    if (isModoLivre) {
+                    if (modoJogo === 'livre') {
                         renderizarListaModoLivre();
                     } else {
                         sortearTrio();
@@ -2541,14 +1603,73 @@
             return Math.random() < 0.50;
         }
 
+        function executarEventoIntervalo() {
+            temEventoIntervaloPendete = false;
+            const btn = document.getElementById('btn-revelar');
+            btn.style.display = 'none';
+
+            const eventoSorteado = eventosIntervalo[Math.floor(Math.random() * eventosIntervalo.length)];
+            
+            const container = document.getElementById('battles-container');
+            const card = document.createElement('div');
+            card.className = 'interval-card';
+
+            const header = document.createElement('div');
+            header.className = 'interval-header';
+            header.innerText = eventoSorteado.titulo;
+            card.appendChild(header);
+
+            const linesList = document.createElement('div');
+            linesList.className = 'interval-lines-list';
+            card.appendChild(linesList);
+
+            container.appendChild(card);
+
+            let linhasParaExibir = [];
+            if (eventoSorteado.tipo === "comentaristas") {
+                const mcDestaque = meuTrio[Math.floor(Math.random() * meuTrio.length)].name;
+                linhasParaExibir = [
+                    '• Mamuti: "Eai Mike, o que você tá achando das batalhas?"',
+                    '• Mikezin: "Estão emocionantes, vários confrontos épico nessa porra"',
+                    '• Mamuti: "E sobre o trio do jogador? O que você tem a comentar?"',
+                    `• Mikezin: "Tão rimando muito, com destaque pra ${mcDestaque}, que tá rimando o fino"`
+                ];
+            } else {
+                linhasParaExibir = eventoSorteado.linhas;
+            }
+
+            let step = 0;
+            let interval = setInterval(() => {
+                if (step < linhasParaExibir.length) {
+                    let item = document.createElement('div');
+                    item.className = 'interval-line-item';
+                    item.innerText = linhasParaExibir[step];
+                    linesList.appendChild(item);
+                    step++;
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                } else {
+                    clearInterval(interval);
+                    btn.innerText = "PRÓXIMA BATALHA →";
+                    btn.onclick = avancarSimulacao;
+                    btn.style.display = 'flex';
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                }
+            }, 500);
+        }
+
         function avancarSimulacao() {
             if (simulacaoEncerrada) return;
+
+            if (temEventoIntervaloPendete) {
+                executarEventoIntervalo();
+                return;
+            }
 
             const btn = document.getElementById('btn-revelar');
             btn.style.display = 'none';
 
-            const oppGroup = sortearAdversarioPorFase();
-            const oppMcs = oppGroup.mcs;
+            currentOppGroup = sortearAdversarioPorFase();
+            const oppMcs = currentOppGroup.mcs;
             const oppNomes = oppMcs.map(m => m.name).join(', ');
 
             const container = document.getElementById('battles-container');
@@ -2559,100 +1680,163 @@
             header.className = 'battle-header';
             header.innerHTML = `
                 <div class="phase-title">${fases[faseAtual]}</div>
-                <div class="opp-title">VS ${oppNomes} | ${oppGroup.bda}</div>
+                <div class="opp-title">VS ${oppNomes} | ${currentOppGroup.bda}</div>
             `;
             card.appendChild(header);
 
-            const roundsList = document.createElement('div');
-            roundsList.className = 'rounds-list';
-            card.appendChild(roundsList);
+            currentRoundsListEl = document.createElement('div');
+            currentRoundsListEl.className = 'rounds-list';
+            card.appendChild(currentRoundsListEl);
 
             container.appendChild(card);
 
+            pMeuBatalha = 0;
+            pOppBatalha = 0;
+            roundNumBatalha = 1;
+
+            x1McsDisponiveisMeuTrio = meuTrio.map((m, idx) => ({ ...m, indexOriginal: idx }));
+            x1McsDisponiveisAdversario = shuffle(oppMcs);
+
+            executarProximoRound3x3();
+        }
+
+        function executarProximoRound3x3() {
             const myAvg = meuTrio.reduce((sum, m) => sum + m.ovr, 0) / 3;
-            const oppAvg = oppMcs.reduce((sum, m) => sum + m.ovr, 0) / 3;
+            const oppAvg = currentOppGroup.mcs.reduce((sum, m) => sum + m.ovr, 0) / 3;
 
-            let pMeu = 0;
-            let pOpp = 0;
-            let roundsEvents = [];
-
-            // 1º e 2º Rounds (3x3)
-            for (let r = 1; r <= 2; r++) {
-                let win = decidirVencedorTrio(myAvg, oppAvg);
-                if (win) pMeu++; else pOpp++;
-                roundsEvents.push({
-                    desc: `${r}º Round (3x3)`,
-                    win: win,
-                    score: `${pMeu} - ${pOpp}`
-                });
+            let win = decidirVencedorTrio(myAvg, oppAvg);
+            if (win) {
+                pMeuBatalha++;
+                roundsGanhos++;
+            } else {
+                pOppBatalha++;
+                roundsPerdidos++;
             }
 
-            // X1s (se necessário)
-            if (pMeu < 3 && pOpp < 3) {
-                let myIndices = [0, 1, 2].sort(() => Math.random() - 0.5);
-                let oppMcsShuffled = shuffle(oppMcs);
+            document.getElementById('global-score').innerText = `${roundsGanhos} - ${roundsPerdidos}`;
 
-                for (let r = 3; r <= 5; r++) {
-                    if (pMeu === 3 || pOpp === 3) break;
+            let item = document.createElement('div');
+            item.className = `round-item ${win ? 'win' : 'loss'}`;
+            item.innerHTML = `
+                <span class="round-desc">${roundNumBatalha}º Round (3x3)</span>
+                <span class="round-score">${pMeuBatalha} - ${pOppBatalha}</span>
+            `;
+            currentRoundsListEl.appendChild(item);
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 
-                    let mcIndex = myIndices[r - 3];
-                    let myMc = meuTrio[mcIndex];
-                    let oppMc = oppMcsShuffled[r - 3];
+            roundNumBatalha++;
 
-                    let win = decidirVencedorX1(myMc.ovr, oppMc.ovr);
-                    if (win) {
-                        pMeu++;
-                        x1Wins[mcIndex]++;
-                    } else {
-                        pOpp++;
-                    }
+            if (roundNumBatalha <= 2) {
+                setTimeout(executarProximoRound3x3, 700);
+            } else {
+                conferirEvolucaoBatalha();
+            }
+        }
 
-                    roundsEvents.push({
-                        desc: `${r}º Round (X1: ${myMc.name} vs ${oppMc.name})`,
-                        win: win,
-                        score: `${pMeu} - ${pOpp}`
-                    });
-                }
+        function conferirEvolucaoBatalha() {
+            if (pMeuBatalha >= 3 || pOppBatalha >= 3) {
+                concluirBatalha(pMeuBatalha >= 3);
+            } else {
+                prepararSelecaoX1();
+            }
+        }
+
+        function prepararSelecaoX1() {
+            if (x1McsDisponiveisMeuTrio.length === 1) {
+                processarRoundX1(x1McsDisponiveisMeuTrio[0]);
+                return;
             }
 
-            let step = 0;
-            let interval = setInterval(() => {
-                if (step < roundsEvents.length) {
-                    let ev = roundsEvents[step];
-                    
-                    if (ev.win) roundsGanhos++;
-                    else roundsPerdidos++;
+            const choiceBox = document.createElement('div');
+            choiceBox.className = 'x1-choice-box';
+            choiceBox.id = 'active-x1-choice-box';
 
-                    document.getElementById('global-score').innerText = `${roundsGanhos} - ${roundsPerdidos}`;
+            const title = document.createElement('div');
+            title.className = 'x1-choice-title';
+            title.innerText = `ESCOLHA QUEM VAI NO ${roundNumBatalha}º ROUND (X1):`;
+            choiceBox.appendChild(title);
 
-                    let item = document.createElement('div');
-                    item.className = `round-item ${ev.win ? 'win' : 'loss'}`;
-                    item.innerHTML = `
-                        <span class="round-desc">${ev.desc}</span>
-                        <span class="round-score">${ev.score}</span>
-                    `;
-                    roundsList.appendChild(item);
-                    step++;
+            x1McsDisponiveisMeuTrio.forEach(mcObj => {
+                const btnMc = document.createElement('button');
+                btnMc.className = 'btn-secondary';
+                btnMc.style.padding = '10px 15px';
+                btnMc.style.fontSize = '1.2rem';
+                
+                const displayOvrChoice = (modoJogo === 'mvp') ? '??' : mcObj.ovr;
 
+                btnMc.innerHTML = `
+                    <span>${mcObj.state} ${mcObj.name} (${displayOvrChoice})</span>
+                    <span style="font-size:0.8rem; color:#f16924;">${mcObj.bda.replace(" ANOS", "")}</span>
+                `;
+                btnMc.onclick = () => {
+                    choiceBox.remove();
+                    processarRoundX1(mcObj);
+                };
+                choiceBox.appendChild(btnMc);
+            });
+
+            currentRoundsListEl.parentNode.appendChild(choiceBox);
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        function processarRoundX1(myMcObj) {
+            x1McsDisponiveisMeuTrio = x1McsDisponiveisMeuTrio.filter(m => m.indexOriginal !== myMcObj.indexOriginal);
+
+            const oppMcObj = x1McsDisponiveisAdversario.pop();
+
+            let win = decidirVencedorX1(myMcObj.ovr, oppMcObj.ovr);
+            if (win) {
+                pMeuBatalha++;
+                roundsGanhos++;
+                x1Wins[myMcObj.indexOriginal]++;
+            } else {
+                pOppBatalha++;
+                roundsPerdidos++;
+            }
+
+            document.getElementById('global-score').innerText = `${roundsGanhos} - ${roundsPerdidos}`;
+
+            let item = document.createElement('div');
+            item.className = `round-item ${win ? 'win' : 'loss'}`;
+            item.innerHTML = `
+                <span class="round-desc">${roundNumBatalha}º Round (X1: ${myMcObj.name} vs ${oppMcObj.name})</span>
+                <span class="round-score">${pMeuBatalha} - ${pOppBatalha}</span>
+            `;
+            currentRoundsListEl.appendChild(item);
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
+            roundNumBatalha++;
+
+            setTimeout(conferirEvolucaoBatalha, 700);
+        }
+
+        function concluirBatalha(isVitoria) {
+            const btn = document.getElementById('btn-revelar');
+
+            if (isVitoria) {
+                batalhasGanhas++;
+                
+                if (faseAtual === 1 && Math.random() < 0.20) {
+                    faseAtual++;
+                    temEventoIntervaloPendete = true;
+                    btn.innerText = "??? 🎭";
+                    btn.onclick = executarEventoIntervalo;
+                    btn.style.display = 'flex';
                     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
                 } else {
-                    clearInterval(interval);
-                    
-                    if (pMeu >= 3) {
-                        batalhasGanhas++;
-                        faseAtual++;
-                        if (faseAtual < fases.length) {
-                            btn.innerText = "PRÓXIMA BATALHA →";
-                            btn.style.display = 'flex';
-                            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-                        } else {
-                            finalizarSimulacao(true);
-                        }
+                    faseAtual++;
+                    if (faseAtual < fases.length) {
+                        btn.innerText = "PRÓXIMA BATALHA →";
+                        btn.onclick = avancarSimulacao;
+                        btn.style.display = 'flex';
+                        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
                     } else {
-                        finalizarSimulacao(false);
+                        finalizarSimulacao(true);
                     }
                 }
-            }, 700);
+            } else {
+                finalizarSimulacao(false);
+            }
         }
 
         function finalizarSimulacao(isCampeao) {
@@ -2698,7 +1882,8 @@
             document.getElementById('c-score-val').innerText = `${roundsGanhos} - ${roundsPerdidos}`;
 
             const avgOvr = Math.round(meuTrio.reduce((s, m) => s + m.ovr, 0) / 3);
-            document.getElementById('c-ovr-val').innerText = avgOvr;
+            
+            document.getElementById('c-ovr-val').innerText = (modoJogo === 'mvp') ? '??' : avgOvr;
 
             document.getElementById('c-vitorias-val').innerText = batalhasGanhas;
             document.getElementById('c-rg-val').innerText = roundsGanhos;
@@ -2729,7 +1914,7 @@
 
             meuTrio.forEach(mc => {
                 const isGold = idolosGold.some(idolo => 
-                    idolo.name.trim().toLowerCase() === mc.name.trim().toLowerCase() && 
+                    normalizarNome(idolo.name) === normalizarNome(mc.name) && 
                     idolo.ovr === mc.ovr && 
                     idolo.bda.trim().toLowerCase() === mc.bda.trim().toLowerCase()
                 );
@@ -2737,8 +1922,10 @@
                 const cardMc = document.createElement('div');
                 cardMc.className = `mc-fut-card ${isGold ? 'gold-icon' : ''}`;
 
+                const cardOvrDisplay = (modoJogo === 'mvp') ? '??' : mc.ovr;
+
                 cardMc.innerHTML = `
-                    <div class="mc-fut-ovr">${mc.ovr}</div>
+                    <div class="mc-fut-ovr">${cardOvrDisplay}</div>
                     <div class="mc-fut-state">${mc.state}</div>
                     <div class="mc-fut-name">${mc.name}</div>
                     <div class="mc-fut-bda">${mc.bda.replace(" ANOS", "")}</div>
@@ -2752,4 +1939,3 @@
     </script>
 </body>
 </html>
->>>>>>> 075b988 (Primeiro Commit)
