@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="whatsapp image 2026-07-25 at 19.17.00.jpeg" type="image/x-icon">
+    <link rel="icon" href="https://scontent.cdninstagram.com/v/t51.82787-19/758239231_18077587598333695_2714928462733741997_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=105&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=kHnKPTBZX_cQ7kNvwE19wV8&_nc_oc=AdqoyiUX5OXijJzqtdQbBqROwx8mlQRizcqBdvpNuZXR5lYjPi-8No7LaH8KBgvSeEk&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=dBP1-Us-wPstZyz1lFsaIQ&_nc_ss=70689&oh=00_AQGppGNhMCZ4e3DgTK5Ada6zJz3Z9vsmya2WitnsViscqg&oe=6A7AF7BC" type="image/jpeg">
     <title>12-0 | BDA da Década</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -212,6 +212,132 @@
             background: #142a22;
             color: #ffffff;
             border-color: #72a28a;
+        }
+
+        /* POP-UP / MODAL DE NOVIDADES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 15px;
+        }
+
+        .modal-card {
+            background: #0d1a15;
+            border: 2px solid #f16924;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 420px;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 0 25px rgba(241, 105, 36, 0.3);
+            overflow: hidden;
+        }
+
+        .modal-close-x {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            background: transparent;
+            border: none;
+            color: #a0b3a8;
+            font-size: 1.5rem;
+            font-weight: 900;
+            cursor: pointer;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+
+        .modal-close-x:hover {
+            color: #f16924;
+        }
+
+        .modal-header-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            color: #f16924;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .modal-date {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #72a28a;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #1d3b2f;
+            padding-bottom: 10px;
+        }
+
+        .modal-body-scroll {
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding-right: 5px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .modal-body-scroll::-webkit-scrollbar-thumb {
+            background: #f16924;
+            border-radius: 4px;
+        }
+
+        .update-item {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #e0e0e0;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .update-item-arrow {
+            color: #f16924;
+            font-weight: 900;
+            font-size: 1rem;
+            line-height: 1.2;
+        }
+
+        .update-item-text strong {
+            color: #93f1be;
+        }
+
+        .btn-modal-close {
+            width: 100%;
+            background: linear-gradient(135deg, #f16924 0%, #d44d0d 100%);
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(241, 105, 36, 0.3);
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .btn-modal-close:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(241, 105, 36, 0.5);
         }
 
         /* GERENCIAMENTO DE TELAS */
@@ -509,6 +635,64 @@
             color: #ffffff;
         }
 
+        /* CAIXA DE ESCOLHA DE X1 */
+        .x1-choice-box {
+            background: #0a1410;
+            border: 2px solid #f16924;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .x1-choice-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #f16924;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        /* CARD DE INTERVALO DE EVENTO */
+        .interval-card {
+            background: linear-gradient(135deg, #1c1308 0%, #0d1a15 100%);
+            border: 2px solid #f16924;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+            box-shadow: 0 0 15px rgba(241, 105, 36, 0.2);
+        }
+
+        .interval-header {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: #f16924;
+            border-bottom: 1px dashed #1d3b2f;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .interval-lines-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .interval-line-item {
+            font-size: 0.85rem;
+            color: #93f1be;
+            font-weight: 600;
+            background: rgba(5, 11, 9, 0.7);
+            padding: 8px 10px;
+            border-radius: 4px;
+            border-left: 3px solid #f16924;
+            line-height: 1.4;
+        }
+
         .final-result-box {
             text-align: center;
             background: #0d1a15;
@@ -674,6 +858,47 @@
 </head>
 <body>
 
+    <!-- POP-UP DE NOVIDADES / PATCH NOTES -->
+    <div class="modal-overlay" id="update-modal">
+        <div class="modal-card">
+            <button class="modal-close-x" onclick="fecharModal()">✕</button>
+            <div class="modal-header-title">NOVIDADES DA ATUALIZAÇÃO</div>
+            <div class="modal-date">6 de agosto de 2026</div>
+
+            <div class="modal-body-scroll">
+                <div class="update-item">
+                    <span class="update-item-arrow">></span>
+                    <div class="update-item-text">
+                        <strong>Modo MVP:</strong> o mais novo modo do 12a0, onde você não poderá ver o overall de nenhum dos MC's, igual na vida real, onde você nunca sabe realmente como um MC vai rimar no dia, prove que você é um verdadeiro MVP e conquiste a vitória nesse modo.
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-item-arrow">></span>
+                    <div class="update-item-text">
+                        <strong>X1:</strong> Agora, você pode escolher o MC que seu trio vai mandar para os rounds individuais, a escolha sendo no seu critério, e que vença o melhor.
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-item-arrow">></span>
+                    <div class="update-item-text">
+                        <strong>Trios:</strong> Adicionamos mais trios para o jogo, sejam antigos, ou novos anunciados da BDA 10. Além disso, alteramos o overall de vários MC's.
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-item-arrow">></span>
+                    <div class="update-item-text">
+                        <strong>Intervalo:</strong> Agora, tem chance de, após a segunda-fase, ter um intervalo entre as batalhas, podem ser shows, comentários, apenas você poderá saber.
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-modal-close" onclick="fecharModal()">FECHAR</button>
+        </div>
+    </div>
+
     <main class="app-container">
         
         <!-- LOGO DA BDA NO TOPO DA PÁGINA -->
@@ -700,11 +925,14 @@
                 Apoia o trampo dos cara: <a href="https://www.instagram.com/batalhadaaldeia?igsh=N255MW9xOW5rNnZo" target="_blank" rel="noopener noreferrer">Batalha da Aldeia</a>
             </div>
 
-            <button class="btn-primary" onclick="iniciarJogo(false)">
+            <button class="btn-primary" onclick="iniciarJogo('normal')">
                 JOGAR AGORA <span>→</span>
             </button>
-            <button class="btn-secondary" style="margin-top: 10px;" onclick="iniciarJogo(true)">
+            <button class="btn-secondary" style="margin-top: 10px;" onclick="iniciarJogo('livre')">
                 MODO LIVRE <span>🔓</span>
+            </button>
+            <button class="btn-secondary" style="margin-top: 10px; border-color: #f16924; color: #f16924;" onclick="iniciarJogo('mvp')">
+                MODO MVP <span>🏆</span>
             </button>
 
             <!-- REDES SOCIAIS -->
@@ -731,7 +959,7 @@
                 <div class="counter-box" id="slot-counter">0/3</div>
             </div>
 
-            <!-- CARD DO SORTEIO (MODO NORMAL) -->
+            <!-- CARD DO SORTEIO (MODO NORMAL/MVP) -->
             <div class="card-drawn" id="box-sorteio">
                 <div class="card-label">SAIU</div>
                 <div class="card-title" id="trio-title">...</div>
@@ -843,7 +1071,7 @@
 
     </main>
 
-    <div class="credits-watermark">by: @heitorccury</div>
+    <div class="credits-watermark">by: @heitorccury | @rxdrigues__ | @artwoo77</div>
 
     <script>
         const database = [
@@ -989,7 +1217,83 @@
             { name: "Big Mike", ovr: 96, bda: "BDA 9 ANOS" }
         ];
 
-        let isModoLivre = false;
+        // Lista de Roteiros dos Intervalos
+        const eventosIntervalo = [
+            {
+                titulo: "INTERVALO - SHOW DO SALVADOR",
+                linhas: [
+                    "• Salvador canta Vida Bandida",
+                    "• Salvador canta Estilo Coyote",
+                    "• Salvador faz um cover de Vida Loka Pt. 1",
+                    "• Salvador canta Vergonha pra Mídia",
+                    "• Salvador faz um cover de Bonde do Tony Country",
+                    "• Salvador chora",
+                    "• Salvador vai embora"
+                ]
+            },
+            {
+                titulo: "INTERVALO - SHOW DO RAFFA MOREIRA",
+                linhas: [
+                    "• Raffa Moreira canta 10K",
+                    "• Raffa Moreira canta sua parte no Poetas no Topo 2",
+                    "• *intervenção*",
+                    '• Raffa Moreira: "ô, parou! parou! no próximo ano, a Batalha da Aldeia contrata outro artista boy pra cantar aqui, porque o meu show acabou."',
+                    "• Raffa Moreira joga o microfone no chão e sai dali"
+                ]
+            },
+            {
+                titulo: "INTERVALO - SHOW DO KANT",
+                linhas: [
+                    "• Kant canta Purgatório",
+                    "• Kant faz um freestyle",
+                    "• Kant canta Click Clack Bum",
+                    "• Kant canta Flow Flaflu",
+                    "• Kant ganha um Disco de Ouro",
+                    "• Kant se emociona, agradece, e logo após vai embora"
+                ]
+            },
+            {
+                titulo: "INTERVALO - SHOW DO OROCHI",
+                linhas: [
+                    "• Orochi canta Amor de Fim de Noite",
+                    "• Orochi canta Mitsubishi",
+                    "• Orochi canta Celebridade",
+                    "• Orochi chama outros artistas da Mainstreet e canta Sereia",
+                    "• Orochi farpa o Jhony",
+                    "• A platéia vai a loucura",
+                    "• Orochi sai do palco"
+                ]
+            },
+            {
+                titulo: "INTERVALO - COMENTARISTAS",
+                tipo: "comentaristas"
+            },
+            {
+                titulo: "INTERVALO - ZULUZÃO HOST",
+                linhas: [
+                    '• Zuluzão: "Vamo entrevistar a rapazeada aqui pra ver como tá o evento pra eles"',
+                    "....",
+                    '• Zuluzão: "E esse parceiro aqui, tomando bomba pra vim pro evento"',
+                    '• Fã: "Que isso pôKKKK tô não Zulu"',
+                    '• Zuluzão: "Tá sheipado hein irmão? Mas e aí, cê vem de onde meu irmão?"',
+                    '• Fã: "Vim do interior de SP, mas sou fi de nordestino"',
+                    '• Zuluzão: "É isso carai, vem de longe. Espero que cê curta bastante o evento aí, e para de tomar anabolizante!!"'
+                ]
+            },
+            {
+                titulo: "INTERVALO - PODPAH",
+                linhas: [
+                    '• Igão e Mitico entram no palco',
+                    '• Igão: "Satisfação, todo mundo que tá acompanhando"',
+                    '• Bob 13: "Ô meus irmão, só tenho agradecer por tudo que vocês fizeram por nós, muito obrigado, ter vocês aqui é uma honra"',
+                    '• Igão: "Ô tio Bob, nós que agradecemos, mó responsa da porra tá nisso com vocês, to ansiosaço pra essas semis!"',
+                    '• Mitico: "É isso ai, mó satisfação ver que isso ta dando certo, ver que MC\'s tão conseguindo ganhar dinheiro com suas rimas, tamo junto Aldeia!!"',
+                    '• Os dois ficam no palco e as semis começam'
+                ]
+            }
+        ];
+
+        let modoJogo = 'normal'; // 'normal', 'livre' ou 'mvp'
         let databaseEmbaralhado = [];
         let trioAtual = null;
         let reSorteiosRestantes = 3;
@@ -1005,8 +1309,21 @@
         let simulacaoEncerrada = false;
         let triosEnfrentadosIds = [];
         let foiCampeao = false;
+        let temEventoIntervaloPendete = false;
 
-        // Função para higienizar os nomes (trata Zuluzão e Zuluzão 🍺 como idênticos)
+        // Controle da Batalha Atual
+        let x1McsDisponiveisMeuTrio = [];
+        let x1McsDisponiveisAdversario = [];
+        let currentOppGroup = null;
+        let pMeuBatalha = 0;
+        let pOppBatalha = 0;
+        let roundNumBatalha = 0;
+        let currentRoundsListEl = null;
+
+        function fecharModal() {
+            document.getElementById('update-modal').style.display = 'none';
+        }
+
         function normalizarNome(nome) {
             return nome.replace(/🍺/g, '').trim().toLowerCase();
         }
@@ -1038,6 +1355,7 @@
             simulacaoEncerrada = false;
             triosEnfrentadosIds = [];
             foiCampeao = false;
+            temEventoIntervaloPendete = false;
 
             document.getElementById('battles-container').innerHTML = '';
             document.getElementById('global-score').innerText = '0 - 0';
@@ -1045,6 +1363,7 @@
 
             const btn = document.getElementById('btn-revelar');
             btn.innerText = "REVELAR PRIMEIRA BATALHA →";
+            btn.onclick = avancarSimulacao;
             btn.style.display = 'flex';
 
             document.getElementById('btn-continuar').style.display = 'none';
@@ -1057,8 +1376,8 @@
             atualizarRingue();
         }
 
-        function iniciarJogo(modoLivre = false) {
-            isModoLivre = modoLivre;
+        function iniciarJogo(modo) {
+            modoJogo = modo;
             resetarDados();
 
             document.getElementById('home-screen-view').style.display = 'none';
@@ -1066,11 +1385,17 @@
             document.getElementById('sim-screen').style.display = 'none';
             document.getElementById('draft-screen').style.display = 'flex';
 
-            if (isModoLivre) {
+            if (modoJogo === 'livre') {
                 document.getElementById('draft-mode-title').innerText = "MODO LIVRE - TRIO MONTADO";
                 document.getElementById('box-sorteio').style.display = 'none';
                 document.getElementById('box-lista').style.display = 'block';
                 renderizarListaModoLivre();
+            } else if (modoJogo === 'mvp') {
+                document.getElementById('draft-mode-title').innerText = "MODO MVP - TRIO MONTADO";
+                document.getElementById('box-sorteio').style.display = 'block';
+                document.getElementById('box-lista').style.display = 'block';
+                document.getElementById('mc-list-header-title').innerText = "ESCOLHA UM MC (OVERALL OCULTO)";
+                sortearTrio();
             } else {
                 document.getElementById('draft-mode-title').innerText = "TRIO MONTADO";
                 document.getElementById('box-sorteio').style.display = 'block';
@@ -1083,7 +1408,7 @@
         }
 
         function jogarNovamente() {
-            iniciarJogo(isModoLivre);
+            iniciarJogo(modoJogo);
         }
 
         function irParaTelaInicial() {
@@ -1151,12 +1476,14 @@
                 const reasonText = jaEscalado ? " (JÁ ESCALADO)" : " (BLOQUEADO)";
                 item.setAttribute('data-reason', reasonText);
                 
+                const displayOvr = (modoJogo === 'mvp') ? '??' : mc.ovr;
+
                 item.innerHTML = `
                     <div class="mc-info">
                         <span class="mc-state">${mc.state}</span>
                         <span class="mc-name">${mc.name}</span>
                     </div>
-                    <div class="mc-overall">${mc.ovr}</div>
+                    <div class="mc-overall">${displayOvr}</div>
                 `;
 
                 if (!isBlocked) {
@@ -1187,7 +1514,7 @@
                 atualizarRingue();
                 
                 if (meuTrio.length < 3) {
-                    if (isModoLivre) {
+                    if (modoJogo === 'livre') {
                         renderizarListaModoLivre();
                     } else {
                         sortearTrio();
@@ -1276,14 +1603,73 @@
             return Math.random() < 0.50;
         }
 
+        function executarEventoIntervalo() {
+            temEventoIntervaloPendete = false;
+            const btn = document.getElementById('btn-revelar');
+            btn.style.display = 'none';
+
+            const eventoSorteado = eventosIntervalo[Math.floor(Math.random() * eventosIntervalo.length)];
+            
+            const container = document.getElementById('battles-container');
+            const card = document.createElement('div');
+            card.className = 'interval-card';
+
+            const header = document.createElement('div');
+            header.className = 'interval-header';
+            header.innerText = eventoSorteado.titulo;
+            card.appendChild(header);
+
+            const linesList = document.createElement('div');
+            linesList.className = 'interval-lines-list';
+            card.appendChild(linesList);
+
+            container.appendChild(card);
+
+            let linhasParaExibir = [];
+            if (eventoSorteado.tipo === "comentaristas") {
+                const mcDestaque = meuTrio[Math.floor(Math.random() * meuTrio.length)].name;
+                linhasParaExibir = [
+                    '• Mamuti: "Eai Mike, o que você tá achando das batalhas?"',
+                    '• Mikezin: "Estão emocionantes, vários confrontos épico nessa porra"',
+                    '• Mamuti: "E sobre o trio do jogador? O que você tem a comentar?"',
+                    `• Mikezin: "Tão rimando muito, com destaque pra ${mcDestaque}, que tá rimando o fino"`
+                ];
+            } else {
+                linhasParaExibir = eventoSorteado.linhas;
+            }
+
+            let step = 0;
+            let interval = setInterval(() => {
+                if (step < linhasParaExibir.length) {
+                    let item = document.createElement('div');
+                    item.className = 'interval-line-item';
+                    item.innerText = linhasParaExibir[step];
+                    linesList.appendChild(item);
+                    step++;
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                } else {
+                    clearInterval(interval);
+                    btn.innerText = "PRÓXIMA BATALHA →";
+                    btn.onclick = avancarSimulacao;
+                    btn.style.display = 'flex';
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                }
+            }, 500);
+        }
+
         function avancarSimulacao() {
             if (simulacaoEncerrada) return;
+
+            if (temEventoIntervaloPendete) {
+                executarEventoIntervalo();
+                return;
+            }
 
             const btn = document.getElementById('btn-revelar');
             btn.style.display = 'none';
 
-            const oppGroup = sortearAdversarioPorFase();
-            const oppMcs = oppGroup.mcs;
+            currentOppGroup = sortearAdversarioPorFase();
+            const oppMcs = currentOppGroup.mcs;
             const oppNomes = oppMcs.map(m => m.name).join(', ');
 
             const container = document.getElementById('battles-container');
@@ -1294,100 +1680,163 @@
             header.className = 'battle-header';
             header.innerHTML = `
                 <div class="phase-title">${fases[faseAtual]}</div>
-                <div class="opp-title">VS ${oppNomes} | ${oppGroup.bda}</div>
+                <div class="opp-title">VS ${oppNomes} | ${currentOppGroup.bda}</div>
             `;
             card.appendChild(header);
 
-            const roundsList = document.createElement('div');
-            roundsList.className = 'rounds-list';
-            card.appendChild(roundsList);
+            currentRoundsListEl = document.createElement('div');
+            currentRoundsListEl.className = 'rounds-list';
+            card.appendChild(currentRoundsListEl);
 
             container.appendChild(card);
 
+            pMeuBatalha = 0;
+            pOppBatalha = 0;
+            roundNumBatalha = 1;
+
+            x1McsDisponiveisMeuTrio = meuTrio.map((m, idx) => ({ ...m, indexOriginal: idx }));
+            x1McsDisponiveisAdversario = shuffle(oppMcs);
+
+            executarProximoRound3x3();
+        }
+
+        function executarProximoRound3x3() {
             const myAvg = meuTrio.reduce((sum, m) => sum + m.ovr, 0) / 3;
-            const oppAvg = oppMcs.reduce((sum, m) => sum + m.ovr, 0) / 3;
+            const oppAvg = currentOppGroup.mcs.reduce((sum, m) => sum + m.ovr, 0) / 3;
 
-            let pMeu = 0;
-            let pOpp = 0;
-            let roundsEvents = [];
-
-            // 1º e 2º Rounds (3x3)
-            for (let r = 1; r <= 2; r++) {
-                let win = decidirVencedorTrio(myAvg, oppAvg);
-                if (win) pMeu++; else pOpp++;
-                roundsEvents.push({
-                    desc: `${r}º Round (3x3)`,
-                    win: win,
-                    score: `${pMeu} - ${pOpp}`
-                });
+            let win = decidirVencedorTrio(myAvg, oppAvg);
+            if (win) {
+                pMeuBatalha++;
+                roundsGanhos++;
+            } else {
+                pOppBatalha++;
+                roundsPerdidos++;
             }
 
-            // X1s (se necessário)
-            if (pMeu < 3 && pOpp < 3) {
-                let myIndices = [0, 1, 2].sort(() => Math.random() - 0.5);
-                let oppMcsShuffled = shuffle(oppMcs);
+            document.getElementById('global-score').innerText = `${roundsGanhos} - ${roundsPerdidos}`;
 
-                for (let r = 3; r <= 5; r++) {
-                    if (pMeu === 3 || pOpp === 3) break;
+            let item = document.createElement('div');
+            item.className = `round-item ${win ? 'win' : 'loss'}`;
+            item.innerHTML = `
+                <span class="round-desc">${roundNumBatalha}º Round (3x3)</span>
+                <span class="round-score">${pMeuBatalha} - ${pOppBatalha}</span>
+            `;
+            currentRoundsListEl.appendChild(item);
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 
-                    let mcIndex = myIndices[r - 3];
-                    let myMc = meuTrio[mcIndex];
-                    let oppMc = oppMcsShuffled[r - 3];
+            roundNumBatalha++;
 
-                    let win = decidirVencedorX1(myMc.ovr, oppMc.ovr);
-                    if (win) {
-                        pMeu++;
-                        x1Wins[mcIndex]++;
-                    } else {
-                        pOpp++;
-                    }
+            if (roundNumBatalha <= 2) {
+                setTimeout(executarProximoRound3x3, 700);
+            } else {
+                conferirEvolucaoBatalha();
+            }
+        }
 
-                    roundsEvents.push({
-                        desc: `${r}º Round (X1: ${myMc.name} vs ${oppMc.name})`,
-                        win: win,
-                        score: `${pMeu} - ${pOpp}`
-                    });
-                }
+        function conferirEvolucaoBatalha() {
+            if (pMeuBatalha >= 3 || pOppBatalha >= 3) {
+                concluirBatalha(pMeuBatalha >= 3);
+            } else {
+                prepararSelecaoX1();
+            }
+        }
+
+        function prepararSelecaoX1() {
+            if (x1McsDisponiveisMeuTrio.length === 1) {
+                processarRoundX1(x1McsDisponiveisMeuTrio[0]);
+                return;
             }
 
-            let step = 0;
-            let interval = setInterval(() => {
-                if (step < roundsEvents.length) {
-                    let ev = roundsEvents[step];
-                    
-                    if (ev.win) roundsGanhos++;
-                    else roundsPerdidos++;
+            const choiceBox = document.createElement('div');
+            choiceBox.className = 'x1-choice-box';
+            choiceBox.id = 'active-x1-choice-box';
 
-                    document.getElementById('global-score').innerText = `${roundsGanhos} - ${roundsPerdidos}`;
+            const title = document.createElement('div');
+            title.className = 'x1-choice-title';
+            title.innerText = `ESCOLHA QUEM VAI NO ${roundNumBatalha}º ROUND (X1):`;
+            choiceBox.appendChild(title);
 
-                    let item = document.createElement('div');
-                    item.className = `round-item ${ev.win ? 'win' : 'loss'}`;
-                    item.innerHTML = `
-                        <span class="round-desc">${ev.desc}</span>
-                        <span class="round-score">${ev.score}</span>
-                    `;
-                    roundsList.appendChild(item);
-                    step++;
+            x1McsDisponiveisMeuTrio.forEach(mcObj => {
+                const btnMc = document.createElement('button');
+                btnMc.className = 'btn-secondary';
+                btnMc.style.padding = '10px 15px';
+                btnMc.style.fontSize = '1.2rem';
+                
+                const displayOvrChoice = (modoJogo === 'mvp') ? '??' : mcObj.ovr;
 
+                btnMc.innerHTML = `
+                    <span>${mcObj.state} ${mcObj.name} (${displayOvrChoice})</span>
+                    <span style="font-size:0.8rem; color:#f16924;">${mcObj.bda.replace(" ANOS", "")}</span>
+                `;
+                btnMc.onclick = () => {
+                    choiceBox.remove();
+                    processarRoundX1(mcObj);
+                };
+                choiceBox.appendChild(btnMc);
+            });
+
+            currentRoundsListEl.parentNode.appendChild(choiceBox);
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        function processarRoundX1(myMcObj) {
+            x1McsDisponiveisMeuTrio = x1McsDisponiveisMeuTrio.filter(m => m.indexOriginal !== myMcObj.indexOriginal);
+
+            const oppMcObj = x1McsDisponiveisAdversario.pop();
+
+            let win = decidirVencedorX1(myMcObj.ovr, oppMcObj.ovr);
+            if (win) {
+                pMeuBatalha++;
+                roundsGanhos++;
+                x1Wins[myMcObj.indexOriginal]++;
+            } else {
+                pOppBatalha++;
+                roundsPerdidos++;
+            }
+
+            document.getElementById('global-score').innerText = `${roundsGanhos} - ${roundsPerdidos}`;
+
+            let item = document.createElement('div');
+            item.className = `round-item ${win ? 'win' : 'loss'}`;
+            item.innerHTML = `
+                <span class="round-desc">${roundNumBatalha}º Round (X1: ${myMcObj.name} vs ${oppMcObj.name})</span>
+                <span class="round-score">${pMeuBatalha} - ${pOppBatalha}</span>
+            `;
+            currentRoundsListEl.appendChild(item);
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
+            roundNumBatalha++;
+
+            setTimeout(conferirEvolucaoBatalha, 700);
+        }
+
+        function concluirBatalha(isVitoria) {
+            const btn = document.getElementById('btn-revelar');
+
+            if (isVitoria) {
+                batalhasGanhas++;
+                
+                if (faseAtual === 1 && Math.random() < 0.20) {
+                    faseAtual++;
+                    temEventoIntervaloPendete = true;
+                    btn.innerText = "??? 🎭";
+                    btn.onclick = executarEventoIntervalo;
+                    btn.style.display = 'flex';
                     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
                 } else {
-                    clearInterval(interval);
-                    
-                    if (pMeu >= 3) {
-                        batalhasGanhas++;
-                        faseAtual++;
-                        if (faseAtual < fases.length) {
-                            btn.innerText = "PRÓXIMA BATALHA →";
-                            btn.style.display = 'flex';
-                            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-                        } else {
-                            finalizarSimulacao(true);
-                        }
+                    faseAtual++;
+                    if (faseAtual < fases.length) {
+                        btn.innerText = "PRÓXIMA BATALHA →";
+                        btn.onclick = avancarSimulacao;
+                        btn.style.display = 'flex';
+                        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
                     } else {
-                        finalizarSimulacao(false);
+                        finalizarSimulacao(true);
                     }
                 }
-            }, 700);
+            } else {
+                finalizarSimulacao(false);
+            }
         }
 
         function finalizarSimulacao(isCampeao) {
@@ -1433,7 +1882,8 @@
             document.getElementById('c-score-val').innerText = `${roundsGanhos} - ${roundsPerdidos}`;
 
             const avgOvr = Math.round(meuTrio.reduce((s, m) => s + m.ovr, 0) / 3);
-            document.getElementById('c-ovr-val').innerText = avgOvr;
+            
+            document.getElementById('c-ovr-val').innerText = (modoJogo === 'mvp') ? '??' : avgOvr;
 
             document.getElementById('c-vitorias-val').innerText = batalhasGanhas;
             document.getElementById('c-rg-val').innerText = roundsGanhos;
@@ -1472,8 +1922,10 @@
                 const cardMc = document.createElement('div');
                 cardMc.className = `mc-fut-card ${isGold ? 'gold-icon' : ''}`;
 
+                const cardOvrDisplay = (modoJogo === 'mvp') ? '??' : mc.ovr;
+
                 cardMc.innerHTML = `
-                    <div class="mc-fut-ovr">${mc.ovr}</div>
+                    <div class="mc-fut-ovr">${cardOvrDisplay}</div>
                     <div class="mc-fut-state">${mc.state}</div>
                     <div class="mc-fut-name">${mc.name}</div>
                     <div class="mc-fut-bda">${mc.bda.replace(" ANOS", "")}</div>
