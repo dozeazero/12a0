@@ -915,6 +915,18 @@
             margin-bottom: 20px;
             text-shadow: 0px 4px 10px rgba(0,0,0,0.5);
         }
+
+        .credits-watermark {
+            position: fixed;
+            bottom: 12px;
+            right: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(147, 241, 190, 0.6);
+            letter-spacing: 1px;
+            pointer-events: none;
+            z-index: 999;
+        }
     </style>
 </head>
 <body>
@@ -936,7 +948,14 @@
                 <div class="update-item">
                     <span class="update-item-arrow">></span>
                     <div class="update-item-text">
-                        <strong>Trios:</strong> Novos trios foram colocados ao jogo. Todos eles, são do circuito da BDA 10 Anos, sejam os da seletiva, ou os confirmados. (Sim fãs, agora vocês podem simular o trio do Jotapê! 🙌)
+                        <strong>PATCH:</strong> Agora, você pode fazer seu trio campeão da seletiva disputar a BDA 10 Anos.
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-item-arrow">></span>
+                    <div class="update-item-text">
+                        <strong>Trios:</strong> Novos trios foram colocados ao jogo. Todos eles, são do circuito da BDA 10 Anos, sejam os trios da seletiva (cujo overall é baseado no desempenho dos MCs na seletiva), ou os confirmados. (Sim fãs, agora vocês podem simular o trio do Jotapê! 🙌)
                     </div>
                 </div>
 
@@ -1138,12 +1157,15 @@
             </div>
 
             <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
-                <button class="btn-primary" onclick="jogarNovamente()">JOGAR NOVAMENTE <span>↻</span></button>
+                <button class="btn-primary" id="btn-bda10" style="display: none; background: linear-gradient(135deg, #b8860b 0%, #d4af37 100%);" onclick="jogarBda10()">BDA 10 ANOS 🍁</button>
+                <button class="btn-primary" id="btn-jogar-novamente" onclick="jogarNovamente()">JOGAR NOVAMENTE <span>↻</span></button>
                 <button class="btn-secondary" onclick="irParaTelaInicial()">TELA INICIAL <span>🏠</span></button>
             </div>
         </section>
 
     </main>
+
+    <div class="credits-watermark">by: @heitorccury</div>
 
     <script>
         const database = [
@@ -1233,7 +1255,7 @@
             { id: 85, bda: "SELETIVA BDA 10", mcs: [{ name: "Rank", state: "#PB", ovr: 81, blocked: false }, { name: "Frizzy", state: "#RN", ovr: 80, blocked: false }, { name: "Hellbala", state: "#SE", ovr: 78, blocked: false }] },
             { id: 86, bda: "SELETIVA BDA 10", mcs: [{ name: "Maria", state: "#SP", ovr: 80, blocked: false }, { name: "Jeffe", state: "#DF", ovr: 79, blocked: false }, { name: "R.E", state: "#BA", ovr: 81, blocked: false }] },
             { id: 87, bda: "SELETIVA BDA 10", mcs: [{ name: "Fortes", state: "#SP", ovr: 83, blocked: false }, { name: "Combo", state: "#SP", ovr: 81, blocked: false }, { name: "BTC", state: "#RS", ovr: 78, blocked: false }] },
-            { id: 93, bda: "SELETIVA BDA 10", mcs: [{ name: "EZ", state: "#SP", ovr: 80, blocked: false }, { name: "Dehatt", state: "#SP", ovr: 85, blocked: false }, { name: "Bomfim", state: "#SP", ovr: 85, blocked: false }] },
+            { id: 93, bda: "SELETIVA BDA 10", mcs: [{ name: "EZ", state: "#SP", ovr: 82, blocked: false }, { name: "Dehatt", state: "#SP", ovr: 85, blocked: false }, { name: "Bomfim", state: "#SP", ovr: 85, blocked: false }] },
             { id: 94, bda: "SELETIVA BDA 10", mcs: [{ name: "Zed", state: "#RJ", ovr: 82, blocked: false }, { name: "Braga", state: "#RJ", ovr: 82, blocked: false }, { name: "João Vega", state: "#RJ", ovr: 82, blocked: false }] },
             { id: 95, bda: "SELETIVA BDA 10", mcs: [{ name: "Glaubin", state: "#SP", ovr: 83, blocked: false }, { name: "Black Panter", state: "#SP", ovr: 85, blocked: false }, { name: "Okai", state: "#SP", ovr: 85, blocked: false }] },
 
@@ -1259,12 +1281,13 @@
             { id: 65, bda: "BDA 10 ANOS", mcs: [{ name: "Zap", state: "#SP", ovr: 89, blocked: false }, { name: "Menor", state: "#AM", ovr: 87, blocked: false }, { name: "Ajota", state: "#SP", ovr: 86, blocked: false }] },
             { id: 81, bda: "BDA 10 ANOS", mcs: [{ name: "Devilzinha", state: "#RJ", ovr: 89, blocked: false }, { name: "Naia", state: "#RN", ovr: 90, blocked: false }, { name: "Sofia", state: "#SC", ovr: 86, blocked: false }] },
             { id: 82, bda: "BDA 10 ANOS", mcs: [{ name: "Dudu", state: "#ES", ovr: 87, blocked: false }, { name: "Thiago", state: "#SP", ovr: 84, blocked: false }, { name: "JayA Luuck", state: "#BA", ovr: 85, blocked: false }] },
-            { id: 96, bda: "BDA 10 ANOS", mcs: [{ name: "Baueb", state: "#SP", ovr: 86, blocked: false }, { name: "Mano Ayron", state: "#SP", ovr: 87, blocked: false }, { name: "Luh do Click", state: "#SP", ovr: 86, blocked: false }] },
+            { id: 83, bda: "BDA 10 ANOS", mcs: [{ name: "Grafiteh", state: "#SP", ovr: 88, blocked: false }, { name: "Vitu", state: "#PE", ovr: 88, blocked: false }, { name: "MT", state: "#RJ", ovr: 89, blocked: false }] },
             { id: 88, bda: "BDA 10 ANOS", mcs: [{ name: "Torvi", state: "#RJ", ovr: 85, blocked: false }, { name: "Jhony", state: "#RJ", ovr: 84, blocked: false }, { name: "Malagueta", state: "#RJ", ovr: 87, blocked: false }] },
             { id: 89, bda: "BDA 10 ANOS", mcs: [{ name: "Valle", state: "#PR", ovr: 86, blocked: false }, { name: "WM", state: "#SP", ovr: 85, blocked: false }, { name: "Acuca", state: "#PE", ovr: 87, blocked: false }] },
             { id: 90, bda: "BDA 10 ANOS", mcs: [{ name: "Neo", state: "#RJ", ovr: 91, blocked: false }, { name: "Levinsk", state: "#SP", ovr: 93, blocked: false }, { name: "Japa", state: "#BA", ovr: 91, blocked: false }] },
             { id: 91, bda: "BDA 10 ANOS", mcs: [{ name: "Winnit", state: "#SP", ovr: 87, blocked: false }, { name: "Kaemy", state: "#GO", ovr: 85, blocked: false }, { name: "Vinicius ZN", state: "#PE", ovr: 86, blocked: false }] },
-            { id: 92, bda: "BDA 10 ANOS", mcs: [{ name: "Jotapê", state: "#SP", ovr: 92, blocked: false }, { name: "Apollo", state: "#SP", ovr: 90, blocked: false }, { name: "Negrote", state: "#SP", ovr: 91, blocked: false }] }
+            { id: 92, bda: "BDA 10 ANOS", mcs: [{ name: "Jotapê", state: "#SP", ovr: 92, blocked: false }, { name: "Apollo", state: "#SP", ovr: 90, blocked: false }, { name: "Negrote", state: "#SP", ovr: 91, blocked: false }] },
+            { id: 96, bda: "BDA 10 ANOS", mcs: [{ name: "Baueb", state: "#SP", ovr: 86, blocked: false }, { name: "Mano Ayron", state: "#SP", ovr: 87, blocked: false }, { name: "Luh do Click", state: "#SP", ovr: 86, blocked: false }] }
         ];
 
         const idolosGold = [
@@ -1453,11 +1476,12 @@
         // Nova lista de beats
         const listaBeats = ["Trap", "Boombap", "Drill", "Jersey", "Club", "Dance Hall", "Funk", "Hood TRAP", "Goofy", "Reggae", "Rock", "Detroit"];
 
-        // IDs dos trios permitidos no Modo Seletiva
+        // IDs dos trios permitidos no Modo Seletiva e BDA 10
         const seletivaIds = [84, 85, 86, 87, 93, 94, 95, 96];
+        const bda10Ids = [63, 65, 81, 82, 83, 88, 89, 90, 91, 92];
 
         let isSorteando = false;
-        let modoJogo = 'normal'; // 'normal', 'livre', 'mvp' ou 'seletiva'
+        let modoJogo = 'normal'; // 'normal', 'livre', 'mvp', 'seletiva', 'bda10'
         let databaseEmbaralhado = [];
         let trioAtual = null;
         let reSorteiosRestantes = 3;
@@ -1526,6 +1550,10 @@
                 fasesAtuais = ["Primeira Fase", "Semifinal", "Final"];
                 databaseEmbaralhado = shuffle(database.filter(t => seletivaIds.includes(t.id)));
                 document.getElementById('ring-logo-text').innerText = '9 - 0';
+            } else if (modoJogo === 'bda10') {
+                fasesAtuais = ["Primeira Fase", "Segunda Fase", "Semifinal", "Final"];
+                databaseEmbaralhado = shuffle(database.filter(t => bda10Ids.includes(t.id)));
+                document.getElementById('ring-logo-text').innerText = '12 - 0';
             } else {
                 fasesAtuais = ["Primeira Fase", "Segunda Fase", "Semifinal", "Final"];
                 databaseEmbaralhado = shuffle(database);
@@ -1533,10 +1561,15 @@
             }
             
             isSorteando = false;
-            trioAtual = null;
-            reSorteiosRestantes = 3;
-            meuTrio = [];
-            mcsEscaladosNomes = [];
+            
+            // Só reseta o trio se não estiver engatando BDA 10 a partir da Seletiva
+            if (modoJogo !== 'bda10') {
+                trioAtual = null;
+                reSorteiosRestantes = 3;
+                meuTrio = [];
+                mcsEscaladosNomes = [];
+            }
+            
             faseAtual = 0;
             roundsGanhos = 0;
             roundsPerdidos = 0;
@@ -1569,17 +1602,31 @@
             
             document.getElementById('card-label-sorteio').innerText = "SAIU";
 
-            atualizarRingue();
+            if (modoJogo !== 'bda10') {
+                atualizarRingue();
+            }
         }
 
         function iniciarJogo(modo) {
-            modoJogo = modo;
+            // Se tentar jogar novamente após perder a BDA 10, volta pra Seletiva
+            if (modo === 'bda10' && !foiCampeao) {
+                modoJogo = 'seletiva';
+            } else {
+                modoJogo = modo;
+            }
+            
             resetarDados();
 
             document.getElementById('home-screen-view').style.display = 'none';
             document.getElementById('mode-selection-screen').style.display = 'none';
             document.getElementById('card-screen').style.display = 'none';
             document.getElementById('sim-screen').style.display = 'none';
+            
+            if (modoJogo === 'bda10') {
+                irParaSimulacao();
+                return;
+            }
+            
             document.getElementById('draft-screen').style.display = 'flex';
 
             if (modoJogo === 'livre') {
@@ -1613,6 +1660,10 @@
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function jogarBda10() {
+            iniciarJogo('bda10');
         }
 
         function jogarNovamente() {
@@ -1845,8 +1896,14 @@
         }
 
         function sortearAdversarioPorFase() {
-            let baseDb = modoJogo === 'seletiva' ? database.filter(t => seletivaIds.includes(t.id)) : database;
-            const disponiveis = baseDb.filter(t => !triosEnfrentadosIds.includes(t.id));
+            let baseDb = database;
+            if (modoJogo === 'seletiva') {
+                baseDb = database.filter(t => seletivaIds.includes(t.id));
+            } else if (modoJogo === 'bda10') {
+                baseDb = database.filter(t => bda10Ids.includes(t.id));
+            }
+            
+            let disponiveis = baseDb.filter(t => !triosEnfrentadosIds.includes(t.id));
             
             const ordenados = disponiveis.slice().sort((a, b) => {
                 const avgA = a.mcs.reduce((s, m) => s + m.ovr, 0) / 3;
@@ -1866,10 +1923,7 @@
             let querForte = Math.random() < chanceForte;
             let grupoEscolha = (querForte && fortes.length > 0) ? fortes : (fracos.length > 0 ? fracos : disponiveis);
 
-            // Caso fique sem oponente no modo seletiva (poucos trios), pega qualquer um disponivel
             if(grupoEscolha.length === 0) grupoEscolha = disponiveis;
-            
-            // Redundância final se esgotar tudo (reseta os enfrentados)
             if(grupoEscolha.length === 0) {
                 triosEnfrentadosIds = [];
                 grupoEscolha = baseDb;
@@ -2195,6 +2249,8 @@
                     statusSubtitle.innerText = `🏆 PERFEITO! VOCÊ FEZ O ${maxRounds} - 0! 🏆`;
                     if (modoJogo === 'seletiva') {
                         msg.innerText = "Seu trio dominou a Seletiva sem perder nenhum round e se classificou para a BDA 10! Campanha impecável!";
+                    } else if (modoJogo === 'bda10') {
+                        msg.innerText = "Seu trio dominou a BDA 10 Anos sem perder nenhum round! Campanha impecável e histórica!";
                     } else {
                         msg.innerText = "Seu trio dominou a BDA sem perder nenhum round! Campanha impecável!";
                     }
@@ -2202,6 +2258,9 @@
                     if (modoJogo === 'seletiva') {
                         statusSubtitle.innerText = "🏆 CAMPEÃO DA SELETIVA! 🏆";
                         msg.innerText = `Seu trio venceu a Seletiva com um placar de ${roundsGanhos}-${roundsPerdidos} e está classificado para a BDA 10!`;
+                    } else if (modoJogo === 'bda10') {
+                        statusSubtitle.innerText = "🏆 CAMPEÃO DA BDA 10 ANOS! 🏆";
+                        msg.innerText = `Seu trio levantou o troféu máximo com um placar de ${roundsGanhos}-${roundsPerdidos}!`;
                     } else {
                         statusSubtitle.innerText = "🏆 CAMPEÃO DA BDA DA DÉCADA! 🏆";
                         msg.innerText = `Seu trio levantou o troféu com um placar de ${roundsGanhos}-${roundsPerdidos}!`;
@@ -2284,6 +2343,15 @@
 
                 trioContainer.appendChild(cardMc);
             });
+
+            // Controlar os botões do Card de acordo com o modo
+            if (modoJogo === 'seletiva' && foiCampeao) {
+                document.getElementById('btn-bda10').style.display = 'flex';
+                document.getElementById('btn-jogar-novamente').style.display = 'none';
+            } else {
+                document.getElementById('btn-bda10').style.display = 'none';
+                document.getElementById('btn-jogar-novamente').style.display = 'flex';
+            }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
