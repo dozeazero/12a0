@@ -2193,10 +2193,19 @@
             if (isCampeao) {
                 if (roundsPerdidos === 0) {
                     statusSubtitle.innerText = `🏆 PERFEITO! VOCÊ FEZ O ${maxRounds} - 0! 🏆`;
-                    msg.innerText = "Seu trio dominou a BDA sem perder nenhum round! Campanha impecável!";
+                    if (modoJogo === 'seletiva') {
+                        msg.innerText = "Seu trio dominou a Seletiva sem perder nenhum round e se classificou para a BDA 10! Campanha impecável!";
+                    } else {
+                        msg.innerText = "Seu trio dominou a BDA sem perder nenhum round! Campanha impecável!";
+                    }
                 } else {
-                    statusSubtitle.innerText = "🏆 CAMPEÃO DA BDA DA DÉCADA! 🏆";
-                    msg.innerText = `Seu trio levantou o troféu com um placar de ${roundsGanhos}-${roundsPerdidos}!`;
+                    if (modoJogo === 'seletiva') {
+                        statusSubtitle.innerText = "🏆 CAMPEÃO DA SELETIVA! 🏆";
+                        msg.innerText = `Seu trio venceu a Seletiva com um placar de ${roundsGanhos}-${roundsPerdidos} e está classificado para a BDA 10!`;
+                    } else {
+                        statusSubtitle.innerText = "🏆 CAMPEÃO DA BDA DA DÉCADA! 🏆";
+                        msg.innerText = `Seu trio levantou o troféu com um placar de ${roundsGanhos}-${roundsPerdidos}!`;
+                    }
                 }
             } else {
                 statusSubtitle.innerText = "❌ ELIMINADO ❌";
