@@ -371,7 +371,6 @@
             flex-direction: column;
         }
 
-        /* Telas escondidas inicialmente por padrão, mas serão geridas no JS */
         #mode-selection-screen, #bda10-submenu-screen, #trio-selection-screen, #draft-screen, #sim-screen, #card-screen {
             display: none;
             flex-direction: column;
@@ -426,7 +425,7 @@
             color: #ffffff;
             line-height: 1;
             margin: 5px 0;
-            transition: opacity 0.1s;
+            transition: opacity 0.1s; /* Transição para o efeito de sorteio */
         }
 
         .card-bda {
@@ -1367,6 +1366,13 @@
             document.getElementById('card-screen').style.display = 'none';
         }
 
+        function irParaTelaInicial() {
+            resetarDados();
+            esconderTodasTelas();
+            document.getElementById('home-screen-view').style.display = 'flex';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         const database = [
             // BDA 1
             { id: 1, bda: "BDA 1 ANOS", mcs: [{ name: "César", state: "#ES", ovr: 96, blocked: false }, { name: "Dudu", state: "#ES", ovr: 92, blocked: false }, { name: "Araps", state: "#SP", ovr: 89, blocked: false }] },
@@ -1910,6 +1916,13 @@
             } else {
                 iniciarJogo(modoJogo);
             }
+        }
+
+        function irParaTelaInicial() {
+            resetarDados();
+            esconderTodasTelas();
+            document.getElementById('home-screen-view').style.display = 'flex';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function renderizarListaTriosBda10() {
@@ -2605,6 +2618,8 @@
         function mostrarCardFinal() {
             esconderTodasTelas();
             document.getElementById('card-screen').style.display = 'flex';
+
+            let maxRounds = modoJogo === 'seletiva' ? 9 : 12;
 
             const titleEl = document.getElementById('c-status-title');
             if (foiCampeao) {
