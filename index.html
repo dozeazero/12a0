@@ -1467,7 +1467,7 @@
             // BDA 10
             { id: 63, bda: "BDA 10 ANOS", mcs: [{ name: "Sid", state: "#DF", ovr: 87, blocked: false }, { name: "Gomes", state: "#DF", ovr: 88, blocked: false }, { name: "Tito", state: "#DF", ovr: 88, blocked: false }] },
             { id: 65, bda: "BDA 10 ANOS", mcs: [{ name: "Zap", state: "#SP", ovr: 89, blocked: false }, { name: "Menor", state: "#AM", ovr: 87, blocked: false }, { name: "Ajota", state: "#SP", ovr: 86, blocked: false }] },
-            { id: 81, bda: "BDA 10 ANOS", mcs: [{ name: "Devilzinha", state: "#RJ", ovr: 89, blocked: false }, { name: "Naia", state: "#RN", ovr: 90, blocked: false }, { name: "Sofia", state: "#SC", ovr: 86, blocked: false }] },
+            { id: 81, bda: "BDA 10 ANOS", mcs: [{ name: "Devilzinha", state: "#RJ", ovr: 88, blocked: false }, { name: "Naia", state: "#RN", ovr: 90, blocked: false }, { name: "Sofia", state: "#SC", ovr: 86, blocked: false }] },
             { id: 82, bda: "BDA 10 ANOS", mcs: [{ name: "Dudu", state: "#ES", ovr: 88, blocked: false }, { name: "Thiago", state: "#SP", ovr: 84, blocked: false }, { name: "JayA Luuck", state: "#BA", ovr: 85, blocked: false }] },
             { id: 83, bda: "BDA 10 ANOS", mcs: [{ name: "Grafiteh", state: "#SP", ovr: 88, blocked: false }, { name: "Vitu", state: "#PE", ovr: 88, blocked: false }, { name: "MT", state: "#RJ", ovr: 89, blocked: false }] },
             { id: 88, bda: "BDA 10 ANOS", mcs: [{ name: "Torvi", state: "#RJ", ovr: 85, blocked: false }, { name: "Jhony", state: "#RJ", ovr: 84, blocked: false }, { name: "Malagueta", state: "#RJ", ovr: 87, blocked: false }] },
@@ -1479,7 +1479,8 @@
             { id: 97, bda: "BDA 10 ANOS", mcs: [{ name: "Araps", state: "#SP", ovr: 85, blocked: false }, { name: "Ravena", state: "#SP", ovr: 85, blocked: false }, { name: "WL BXD", state: "#RJ", ovr: 86, blocked: false }] },
             { id: 98, bda: "BDA 10 ANOS", mcs: [{ name: "Brennuz", state: "#SP", ovr: 90, blocked: false }, { name: "Bask", state: "#SP", ovr: 88, blocked: false }, { name: "Xamuel", state: "#RS", ovr: 87, blocked: false }] },
             { id: 99, bda: "BDA 10 ANOS", mcs: [{ name: "César", state: "#ES", ovr: 90, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 92, blocked: false }, { name: "Barreto", state: "#SP", ovr: 92, blocked: false }] },
-            { id: 100, bda: "BDA 10 ANOS", mcs: [{ name: "Prado", state: "#SP", ovr: 90, blocked: false }, { name: "Magrão", state: "#SP", ovr: 87, blocked: false }, { name: "Salvador", state: "#SP", ovr: 85, blocked: false }] }
+            { id: 100, bda: "BDA 10 ANOS", mcs: [{ name: "Prado", state: "#SP", ovr: 92, blocked: false }, { name: "Magrão", state: "#SP", ovr: 87, blocked: false }, { name: "Salvador", state: "#SP", ovr: 85, blocked: false }] },
+            { id: 101, bda: "BDA 10 ANOS", mcs: [{ name: "Tavin", state: "#SP", ovr: 88, blocked: false }, { name: "Tubarão", state: "#SP", ovr: 88, blocked: false }, { name: "Kant", state: "#SP", ovr: 86, blocked: false }] }
         ];
 
         const idolosGold = [
@@ -1680,7 +1681,7 @@
 
         // IDs dos trios permitidos no Modo Seletiva e BDA 10
         const seletivaIds = [84, 85, 86, 87, 93, 94, 95, 96];
-        const bda10Ids = [63, 65, 81, 82, 83, 88, 89, 90, 91, 92, 96, 97, 98, 99, 100];
+        const bda10Ids = [63, 65, 81, 82, 83, 88, 89, 90, 91, 92, 96, 97, 98, 99, 100, 101];
 
         let isSorteando = false;
         let modoJogo = 'normal'; // 'normal', 'livre', 'mvp', 'seletiva', 'bda10'
@@ -2053,16 +2054,19 @@
             let bloqueadosCount = 0;
 
             trioAtual.mcs.forEach(mc => {
-                const item = document.createElement('div');
                 const nomeNorm = normalizarNome(mc.name);
                 const jaEscalado = mcsEscaladosNomes.includes(nomeNorm);
                 const isBlocked = mc.blocked || jaEscalado;
                 
                 if (isBlocked) bloqueadosCount++;
 
+                const item = document.createElement('div');
                 item.className = `mc-item ${isBlocked ? 'blocked' : ''}`;
-                const reasonText = jaEscalado ? " (JÁ ESCALADO)" : " (BLOQUEADO)";
-                if (isBlocked) item.setAttribute('data-reason', reasonText);
+                
+                if (isBlocked) {
+                    const reasonText = jaEscalado ? " (JÁ ESCALADO)" : " (BLOQUEADO)";
+                    item.setAttribute('data-reason', reasonText);
+                }
                 
                 const displayOvr = (modoJogo === 'mvp') ? '??' : mc.ovr;
 
@@ -2119,9 +2123,11 @@
             const mcRemovido = meuTrio[index];
             if (!mcRemovido) return;
 
+            // Remove o MC do array e resgata o nome para liberar do bloqueio
             meuTrio.splice(index, 1);
             
-            const indexNome = mcsEscaladosNomes.indexOf(normalizarNome(mcRemovido.name));
+            const nomeNorm = normalizarNome(mcRemovido.name);
+            const indexNome = mcsEscaladosNomes.indexOf(nomeNorm);
             if (indexNome > -1) {
                 mcsEscaladosNomes.splice(indexNome, 1);
             }
@@ -2130,6 +2136,7 @@
             
             document.getElementById('btn-continuar').style.display = 'none';
             document.getElementById('box-lista').style.display = 'block';
+            
             if (modoJogo === 'livre') {
                 document.getElementById('search-wrapper').style.display = 'block';
                 renderizarListaModoLivre(document.getElementById('search-mc-input').value);
@@ -2139,7 +2146,7 @@
         function selecionarMC(mc, bdaOrigem) {
             const nomeNorm = normalizarNome(mc.name);
             
-            // Verificação extra de segurança para impedir duplo clique rápido de quebrar o array
+            // Verificação extra de segurança para impedir duplo clique rápido de quebrar a lógica
             if (meuTrio.length < 3 && !mcsEscaladosNomes.includes(nomeNorm) && !mc.blocked) {
                 let mcObjeto = { ...mc, bda: bdaOrigem };
                 meuTrio.push(mcObjeto);
@@ -2149,7 +2156,7 @@
                 
                 if (meuTrio.length < 3) {
                     if (modoJogo === 'livre') {
-                        // Limpar a lista se não estiver pesquisando, ou só re-renderizar pra bloquear o que acabou de ser clicado
+                        // Re-renderiza a lista bloqueando o MC selecionado
                         renderizarListaModoLivre(document.getElementById('search-mc-input').value);
                     } else {
                         sortearTrio();
