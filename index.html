@@ -56,6 +56,31 @@
             filter: drop-shadow(0px 4px 10px rgba(241, 105, 36, 0.4));
         }
 
+        /* BOTÃO DE CRÉDITOS */
+        .btn-creditos {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(13, 26, 21, 0.8);
+            border: 1px solid #1d3b2f;
+            color: #72a28a;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 100;
+        }
+
+        .btn-creditos:hover {
+            background: #1d3b2f;
+            color: #ffffff;
+            border-color: #f16924;
+        }
+
         /* TELA INITIAL */
         .subtitle {
             font-size: 0.85rem;
@@ -214,7 +239,7 @@
             border-color: #72a28a;
         }
 
-        /* POP-UP / MODAL DE NOVIDADES */
+        /* POP-UP / MODAL */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -346,7 +371,7 @@
             flex-direction: column;
         }
 
-        #mode-selection-screen, #draft-screen, #sim-screen, #card-screen {
+        #mode-selection-screen, #bda10-submenu-screen, #trio-selection-screen, #draft-screen, #sim-screen, #card-screen {
             display: none;
             flex-direction: column;
             gap: 15px;
@@ -400,7 +425,7 @@
             color: #ffffff;
             line-height: 1;
             margin: 5px 0;
-            transition: opacity 0.1s; /* Transição para o efeito de sorteio */
+            transition: opacity 0.1s;
         }
 
         .card-bda {
@@ -545,6 +570,38 @@
             margin-left: 5px;
         }
 
+        /* CARD DE SELEÇÃO DE TRIOS PRONTOS */
+        .trio-select-card {
+            background: #0d1a15;
+            border: 1px solid #1d3b2f;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .trio-select-card:hover {
+            background: rgba(147, 241, 190, 0.08);
+            border-color: #72a28a;
+        }
+
+        .trio-select-names {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+
+        .trio-select-ovr {
+            font-size: 0.8rem;
+            color: #93f1be;
+            font-weight: bold;
+            margin-top: 4px;
+        }
+
         /* OCTÓGONO / RINGUE DE LUTA */
         .ring-wrapper {
             position: relative;
@@ -615,6 +672,34 @@
             margin-top: 4px;
             white-space: nowrap;
             border: 1px solid #1d3b2f;
+        }
+        
+        .btn-remove-mc {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: transparent;
+            border: none;
+            width: 26px;
+            height: 26px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            transition: transform 0.2s;
+            padding: 0;
+        }
+
+        .btn-remove-mc img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+        }
+
+        .btn-remove-mc:hover {
+            transform: scale(1.15);
         }
 
         /* SIMULAÇÃO DA BATALHA */
@@ -931,45 +1016,34 @@
 </head>
 <body>
 
+    <button class="btn-creditos" onclick="abrirCreditos()">CRÉDITOS</button>
+
+    <!-- POP-UP DE NOVIDADES / PATCH NOTES -->
     <div class="modal-overlay" id="update-modal">
         <div class="modal-card">
             <button class="modal-close-x" onclick="fecharModal()">✕</button>
-            <div class="modal-header-title">ATUALIZAÇÃO ESTÉTICA</div>
-            <div class="modal-date">17 DE AGOSTO DE 2026</div>
+            <div class="modal-header-title">ATUALIZAÇÃO BDA 10</div>
+            <div class="modal-date">24 DE AGOSTO DE 2026</div>
 
             <div class="modal-body-scroll">
                 <div class="update-item">
                     <span class="update-item-arrow">></span>
                     <div class="update-item-text">
-                        <strong>Modo Seletiva:</strong> Agora você pode jogar a seletiva da BDA 10, fazendo o seu trio com os MCs que disputaram, e tentando conquistar o título e levar seu trio a grandiosa BDA 10!
+                        <strong>MODO BDA 10:</strong> Agora você pode jogar a BDA 10, seja fazendo seu trio dos sonhos, ou escolhendo um trio real!
                     </div>
                 </div>
 
                 <div class="update-item">
                     <span class="update-item-arrow">></span>
                     <div class="update-item-text">
-                        <strong>PATCH:</strong> Agora, você pode fazer seu trio campeão da seletiva disputar a BDA 10 Anos.
+                        <strong>Trios:</strong> Adicionamos os últimos trios da BDA 10, agora temos todos os 16.
                     </div>
                 </div>
 
                 <div class="update-item">
                     <span class="update-item-arrow">></span>
                     <div class="update-item-text">
-                        <strong>Trios:</strong> Novos trios foram colocados ao jogo. Todos eles, são do circuito da BDA 10 Anos, sejam os trios da seletiva (cujo overall é baseado no desempenho dos MCs na seletiva), ou os confirmados. (Sim fãs, agora vocês podem simular o trio do Jotapê! 🙌)
-                    </div>
-                </div>
-
-                <div class="update-item">
-                    <span class="update-item-arrow">></span>
-                    <div class="update-item-text">
-                        <strong>Estética:</strong> O jogo agora está com mais decorações. Na batalha, você consegue ver o beat que está tocando, os jurados que estão avaliando a batalha, etc.
-                    </div>
-                </div>
-
-                <div class="update-item">
-                    <span class="update-item-arrow">></span>
-                    <div class="update-item-text">
-                        Mais informações em jogo.
+                        <strong>Modo Livre:</strong> Agora você consegue remover o MC do seu trio no modo livre, deixando mais fácil a seleção de MCs.
                     </div>
                 </div>
             </div>
@@ -978,12 +1052,69 @@
         </div>
     </div>
 
+    <!-- POP-UP DE CRÉDITOS -->
+    <div class="modal-overlay" id="creditos-modal" style="display: none;">
+        <div class="modal-card">
+            <button class="modal-close-x" onclick="fecharCreditos()">✕</button>
+            <div class="modal-header-title" style="font-size: 2rem; margin-bottom: 15px;">CRÉDITOS</div>
+            
+            <div class="modal-body-scroll" style="color: #a0b3a8; font-size: 0.85rem;">
+                <div style="margin-bottom: 15px; font-weight: 700; color: #ffffff;">Agradecimentos a:</div>
+                
+                <div style="margin-bottom: 15px;">
+                    <span style="color: #f16924;">–> Nosso <strong style="font-size: 1.1rem; color: #93f1be;">CRIADOR</strong>:</span><br>
+                    • Heitor Cury (@heitorccury)
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <span style="color: #f16924;">–> Nossos desenvolvedores:</span><br>
+                    • Kauê Rodrigues (@rxdrigues__)<br>
+                    • Artwoo "Fubá" (@artwoo77)
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <span style="color: #f16924;">–> Aos criadores:</span><br>
+                    • Alva - Ceis confia? (@alvaceisconfia | @AlvaCeisconfia)<br>
+                    • Reacts do Alanzin (@ualanzz | @reactsdoalanzin)<br>
+                    • Kantoshi (@oficial_kant | @KANTOSHI2.0)<br>
+                    <span style="font-size: 0.75rem; color: #72a28a; display: block; margin-top: 2px;">Por jogarem nosso jogo e darem uma atenção</span>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <span style="color: #f16924;">–> Também agradecimento a:</span><br>
+                    - Suporteline (@osuporteline)<br>
+                    - Ceos (@ceosastral)<br>
+                    - Tito (@titonoleto_)<br>
+                    - Centro das Batalhas (@centrodasbatalhas)<br>
+                    <span style="font-size: 0.75rem; color: #72a28a; display: block; margin-top: 2px;">Por reconhecerem o jogo</span>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <span style="color: #f16924;">–> Agradecimento especial a:</span><br>
+                    • Toric (@toric_absolute)
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <span style="color: #f16924;">–> E muito obrigado:</span><br>
+                    • Batalha da Aldeia (@batalhadaaldeia)<br>
+                    <span style="font-size: 0.75rem; color: #72a28a; display: block; margin-top: 2px;">Por esse trabalho incrível que vocês fazem, que nos inspirou.</span>
+                </div>
+
+                <div style="text-align: center; margin-top: 10px;">
+                    <h1 class="logo-title" style="font-size: 4rem;">12<span style="margin: 0 -3px;">-</span>0</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <main class="app-container">
         
+        <!-- LOGO DA BDA NO TOPO DA PÁGINA -->
         <header class="top-logo-header">
             <img src="images-removebg-preview.png" alt="BDA Logo" class="top-logo-img">
         </header>
 
+        <!-- 1. TELA INICIAL -->
         <section id="home-screen-view">
             <header class="subtitle">
                 BDA DA DÉCADA &nbsp;•&nbsp; 2017 — 2026
@@ -1006,6 +1137,7 @@
                 JOGAR AGORA <span>→</span>
             </button>
 
+            <!-- REDES SOCIAIS -->
             <div class="social-container">
                 <div class="social-title">Nos siga em nossas redes:</div>
                 <div class="social-links">
@@ -1021,14 +1153,15 @@
             </div>
         </section>
 
+        <!-- TELA DE SELEÇÃO DE MODOS -->
         <section id="mode-selection-screen">
             <h1 class="mode-title">MODOS</h1>
             
             <button class="btn-primary" onclick="iniciarJogo('normal')">
                 MODO NORMAL <span>▶️</span>
             </button>
-            <button class="btn-primary" style="background: linear-gradient(135deg, #1d3b2f 0%, #0d1a15 100%); border: 2px solid #72a28a; margin-top: 10px;" onclick="iniciarJogo('seletiva')">
-                MODO SELETIVA <span>🎯</span>
+            <button class="btn-primary" style="background: linear-gradient(135deg, #b8860b 0%, #d4af37 100%); margin-top: 10px;" onclick="mostrarSubmenuBda10()">
+                MODO BDA 10 🍁
             </button>
             <button class="btn-secondary" style="margin-top: 10px;" onclick="iniciarJogo('livre')">
                 MODO LIVRE <span>🔓</span>
@@ -1042,6 +1175,42 @@
             </button>
         </section>
 
+        <!-- SUBMENU BDA 10 -->
+        <section id="bda10-submenu-screen">
+            <h1 class="mode-title" style="font-size: 3rem;">ESCOLHA O FORMATO</h1>
+            <p class="description" style="text-align: center;">Jogue a histórica edição de 10 Anos da Batalha da Aldeia.</p>
+
+            <button class="btn-primary" onclick="iniciarJogo('bda10_12_0')">
+                FORMATO 12-0 <span>🎲</span>
+            </button>
+            <button class="btn-secondary" style="margin-top: 10px; color: #93f1be; border-color: #93f1be;" onclick="iniciarJogo('bda10_simulacao')">
+                FORMATO SIMULAÇÃO <span>⚔️</span>
+            </button>
+
+            <button class="btn-secondary" style="margin-top: 15px; border-color: #1d3b2f; color: #72a28a; justify-content: center;" onclick="mostrarTelaModos()">
+                VOLTAR
+            </button>
+        </section>
+
+        <!-- SELEÇÃO DE TRIO PARA O MODO SIMULAÇÃO -->
+        <section id="trio-selection-screen">
+            <div class="top-status">
+                <div class="subtitle" style="margin:0;">ESCOLHA SEU TRIO (BDA 10)</div>
+            </div>
+            
+            <div class="mc-list-container" style="max-height: 400px;">
+                <div class="mc-list-header-sticky">
+                    <div class="mc-list-title">TRIOS DISPONÍVEIS</div>
+                </div>
+                <div id="bda10-trios-list" style="padding: 10px;"></div>
+            </div>
+
+            <button class="btn-secondary" style="margin-top: 10px; border-color: #1d3b2f; color: #72a28a; justify-content: center;" onclick="mostrarSubmenuBda10()">
+                VOLTAR
+            </button>
+        </section>
+
+        <!-- 2. TELA DO GAME/DRAFT -->
         <section id="draft-screen">
             
             <div class="top-status">
@@ -1049,6 +1218,7 @@
                 <div class="counter-box" id="slot-counter">0/3</div>
             </div>
 
+            <!-- CARD DO SORTEIO (MODO NORMAL/MVP/SELETIVA) -->
             <div class="card-drawn" id="box-sorteio">
                 <div class="card-label" id="card-label-sorteio">SAIU</div>
                 <div class="card-title" id="trio-title">...</div>
@@ -1056,6 +1226,7 @@
                 <button class="btn-resort" id="btn-resort" onclick="resortear()">↻ OUTRO TRIO (<span id="resort-count">3</span> RESTANTES)</button>
             </div>
 
+            <!-- LISTA DE SELEÇÃO E BARRA DE PESQUISA -->
             <div class="mc-list-container" id="box-lista">
                 <div class="mc-list-header-sticky">
                     <div class="mc-list-title" id="mc-list-header-title">ESCOLHA UM MC</div>
@@ -1066,6 +1237,7 @@
                 <div id="mc-list"></div>
             </div>
 
+            <!-- RINGUE / OCTÓGONO -->
             <div class="ring-wrapper">
                 <div class="ring-container">
                     <svg class="ring-svg" viewBox="0 0 200 200">
@@ -1076,17 +1248,23 @@
                     </svg>
 
                     <div class="slot slot-1">
-                        <div class="badge-state badge-empty" id="badge-0">?</div>
+                        <div style="position: relative;" id="wrapper-0">
+                            <div class="badge-state badge-empty" id="badge-0">?</div>
+                        </div>
                         <div class="mc-slot-name" id="name-0">MC 1</div>
                     </div>
 
                     <div class="slot slot-2">
-                        <div class="badge-state badge-empty" id="badge-1">?</div>
+                        <div style="position: relative;" id="wrapper-1">
+                            <div class="badge-state badge-empty" id="badge-1">?</div>
+                        </div>
                         <div class="mc-slot-name" id="name-1">MC 2</div>
                     </div>
 
                     <div class="slot slot-3">
-                        <div class="badge-state badge-empty" id="badge-2">?</div>
+                        <div style="position: relative;" id="wrapper-2">
+                            <div class="badge-state badge-empty" id="badge-2">?</div>
+                        </div>
                         <div class="mc-slot-name" id="name-2">MC 3</div>
                     </div>
                 </div>
@@ -1098,6 +1276,7 @@
 
         </section>
 
+        <!-- 3. TELA DE SIMULAÇÃO -->
         <section id="sim-screen">
             <div class="top-status">
                 <div class="subtitle" style="margin:0;">PLACAR ACUMULADO</div>
@@ -1120,6 +1299,7 @@
             </div>
         </section>
 
+        <!-- 4. TELA DO CARD DE ESTATÍSTICAS -->
         <section id="card-screen">
             <div class="summary-card-container">
                 <button class="card-close-x" onclick="fecharCardFinal()">✕</button>
@@ -1168,9 +1348,17 @@
     <div class="credits-watermark">by: @heitorccury</div>
 
     <script>
+        function abrirCreditos() {
+            document.getElementById('creditos-modal').style.display = 'flex';
+        }
+
+        function fecharCreditos() {
+            document.getElementById('creditos-modal').style.display = 'none';
+        }
+
         const database = [
             // BDA 1
-            { id: 1, bda: "BDA 1 ANOS", mcs: [{ name: "César", state: "#ES", ovr: 95, blocked: false }, { name: "Dudu", state: "#ES", ovr: 92, blocked: false }, { name: "Araps", state: "#SP", ovr: 89, blocked: false }] },
+            { id: 1, bda: "BDA 1 ANOS", mcs: [{ name: "César", state: "#ES", ovr: 96, blocked: false }, { name: "Dudu", state: "#ES", ovr: 92, blocked: false }, { name: "Araps", state: "#SP", ovr: 89, blocked: false }] },
             { id: 2, bda: "BDA 1 ANOS", mcs: [{ name: "Thiago", state: "#SP", ovr: 89, blocked: false }, { name: "Chris", state: "#MG", ovr: 87, blocked: false }, { name: "Leozin", state: "#SP", ovr: 85, blocked: false }] },
             { id: 3, bda: "BDA 1 ANOS", mcs: [{ name: "Kant", state: "#SP", ovr: 85, blocked: false }, { name: "Krawk", state: "#SP", ovr: 87, blocked: true }, { name: "Nicolas Walter", state: "#RS", ovr: 84, blocked: true }] },
             { id: 40, bda: "BDA 1 ANOS", mcs: [{ name: "Koell", state: "#SP", ovr: 85, blocked: false }, { name: "Kauan", state: "#SP", ovr: 82, blocked: false }, { name: "Vinicin", state: "#MG", ovr: 83, blocked: false }] },
@@ -1251,7 +1439,7 @@
             { id: 77, bda: "BDA 8 ANOS", mcs: [{ name: "Yoga", state: "#BA", ovr: 83, blocked: false }, { name: "Japa", state: "#BA", ovr: 82, blocked: false }, { name: "JayA Luuck", state: "#BA", ovr: 79, blocked: false }] },
 
             // SELETIVA BDA 10
-            { id: 84, bda: "SELETIVA BDA 10", mcs: [{ name: "Sereia", state: "#RJ", ovr: 77, blocked: false }, { name: "Rico Mesquita", state: "#RJ", ovr: 78, blocked: false }, { name: "RD.X", state: "#RJ", ovr: 81, blocked: false }] },
+            { id: 84, bda: "SELETIVA BDA 10", mcs: [{ name: "Sereia", state: "#RJ", ovr: 77, blocked: false }, { name: "Rico Mesquita", state: "#RJ", ovr: 81, blocked: false }, { name: "RD.X", state: "#RJ", ovr: 81, blocked: false }] },
             { id: 85, bda: "SELETIVA BDA 10", mcs: [{ name: "Rank", state: "#PB", ovr: 81, blocked: false }, { name: "Frizzy", state: "#RN", ovr: 80, blocked: false }, { name: "Hellbala", state: "#SE", ovr: 78, blocked: false }] },
             { id: 86, bda: "SELETIVA BDA 10", mcs: [{ name: "Maria", state: "#SP", ovr: 80, blocked: false }, { name: "Jeffe", state: "#DF", ovr: 79, blocked: false }, { name: "R.E", state: "#BA", ovr: 81, blocked: false }] },
             { id: 87, bda: "SELETIVA BDA 10", mcs: [{ name: "Fortes", state: "#SP", ovr: 83, blocked: false }, { name: "Combo", state: "#SP", ovr: 81, blocked: false }, { name: "BTC", state: "#RS", ovr: 78, blocked: false }] },
@@ -1280,50 +1468,64 @@
             { id: 63, bda: "BDA 10 ANOS", mcs: [{ name: "Sid", state: "#DF", ovr: 87, blocked: false }, { name: "Gomes", state: "#DF", ovr: 88, blocked: false }, { name: "Tito", state: "#DF", ovr: 88, blocked: false }] },
             { id: 65, bda: "BDA 10 ANOS", mcs: [{ name: "Zap", state: "#SP", ovr: 89, blocked: false }, { name: "Menor", state: "#AM", ovr: 87, blocked: false }, { name: "Ajota", state: "#SP", ovr: 86, blocked: false }] },
             { id: 81, bda: "BDA 10 ANOS", mcs: [{ name: "Devilzinha", state: "#RJ", ovr: 89, blocked: false }, { name: "Naia", state: "#RN", ovr: 90, blocked: false }, { name: "Sofia", state: "#SC", ovr: 86, blocked: false }] },
-            { id: 82, bda: "BDA 10 ANOS", mcs: [{ name: "Dudu", state: "#ES", ovr: 87, blocked: false }, { name: "Thiago", state: "#SP", ovr: 84, blocked: false }, { name: "JayA Luuck", state: "#BA", ovr: 85, blocked: false }] },
+            { id: 82, bda: "BDA 10 ANOS", mcs: [{ name: "Dudu", state: "#ES", ovr: 88, blocked: false }, { name: "Thiago", state: "#SP", ovr: 84, blocked: false }, { name: "JayA Luuck", state: "#BA", ovr: 85, blocked: false }] },
             { id: 83, bda: "BDA 10 ANOS", mcs: [{ name: "Grafiteh", state: "#SP", ovr: 88, blocked: false }, { name: "Vitu", state: "#PE", ovr: 88, blocked: false }, { name: "MT", state: "#RJ", ovr: 89, blocked: false }] },
             { id: 88, bda: "BDA 10 ANOS", mcs: [{ name: "Torvi", state: "#RJ", ovr: 85, blocked: false }, { name: "Jhony", state: "#RJ", ovr: 84, blocked: false }, { name: "Malagueta", state: "#RJ", ovr: 87, blocked: false }] },
             { id: 89, bda: "BDA 10 ANOS", mcs: [{ name: "Valle", state: "#PR", ovr: 86, blocked: false }, { name: "WM", state: "#SP", ovr: 85, blocked: false }, { name: "Acuca", state: "#PE", ovr: 87, blocked: false }] },
             { id: 90, bda: "BDA 10 ANOS", mcs: [{ name: "Neo", state: "#RJ", ovr: 91, blocked: false }, { name: "Levinsk", state: "#SP", ovr: 93, blocked: false }, { name: "Japa", state: "#BA", ovr: 91, blocked: false }] },
             { id: 91, bda: "BDA 10 ANOS", mcs: [{ name: "Winnit", state: "#SP", ovr: 87, blocked: false }, { name: "Kaemy", state: "#GO", ovr: 85, blocked: false }, { name: "Vinicius ZN", state: "#PE", ovr: 86, blocked: false }] },
             { id: 92, bda: "BDA 10 ANOS", mcs: [{ name: "Jotapê", state: "#SP", ovr: 92, blocked: false }, { name: "Apollo", state: "#SP", ovr: 90, blocked: false }, { name: "Negrote", state: "#SP", ovr: 91, blocked: false }] },
-            { id: 96, bda: "BDA 10 ANOS", mcs: [{ name: "Baueb", state: "#SP", ovr: 86, blocked: false }, { name: "Mano Ayron", state: "#SP", ovr: 87, blocked: false }, { name: "Luh do Click", state: "#SP", ovr: 86, blocked: false }] }
+            { id: 96, bda: "BDA 10 ANOS", mcs: [{ name: "Baueb", state: "#SP", ovr: 86, blocked: false }, { name: "Mano Ayron", state: "#SP", ovr: 87, blocked: false }, { name: "Luh do Click", state: "#SP", ovr: 86, blocked: false }] },
+            { id: 97, bda: "BDA 10 ANOS", mcs: [{ name: "Araps", state: "#SP", ovr: 85, blocked: false }, { name: "Ravena", state: "#SP", ovr: 85, blocked: false }, { name: "WL BXD", state: "#RJ", ovr: 86, blocked: false }] },
+            { id: 98, bda: "BDA 10 ANOS", mcs: [{ name: "Brennuz", state: "#SP", ovr: 90, blocked: false }, { name: "Bask", state: "#SP", ovr: 88, blocked: false }, { name: "Xamuel", state: "#RS", ovr: 87, blocked: false }] },
+            { id: 99, bda: "BDA 10 ANOS", mcs: [{ name: "César", state: "#ES", ovr: 90, blocked: false }, { name: "Big Mike", state: "#SP", ovr: 92, blocked: false }, { name: "Barreto", state: "#SP", ovr: 92, blocked: false }] },
+            { id: 100, bda: "BDA 10 ANOS", mcs: [{ name: "Prado", state: "#SP", ovr: 90, blocked: false }, { name: "Magrão", state: "#SP", ovr: 87, blocked: false }, { name: "Salvador", state: "#SP", ovr: 85, blocked: false }] }
         ];
 
         const idolosGold = [
-            { name: "César", ovr: 95, bda: "BDA 1 ANOS" },
+            { name: "César", ovr: 96, bda: "BDA 1 ANOS" },
             { name: "Dudu", ovr: 92, bda: "BDA 1 ANOS" },
             { name: "Araps", ovr: 89, bda: "BDA 1 ANOS" },
             { name: "Thiago", ovr: 89, bda: "BDA 1 ANOS" },
+            { name: "Koell", ovr: 85, bda: "BDA 1 ANOS" },
             { name: "César", ovr: 93, bda: "BDA 2 ANOS" },
             { name: "Dudu", ovr: 92, bda: "BDA 2 ANOS" },
             { name: "Noventa", ovr: 91, bda: "BDA 2 ANOS" },
             { name: "Choice", ovr: 92, bda: "BDA 2 ANOS" },
+            { name: "Orochi", ovr: 86, bda: "BDA 2 ANOS" },
+            { name: "Bob 13", ovr: 81, bda: "BDA 2 ANOS" },
+            { name: "Alva", ovr: 80, bda: "BDA 2 ANOS" },
             { name: "Noventa", ovr: 95, bda: "BDA 3 ANOS" },
             { name: "Kant", ovr: 93, bda: "BDA 3 ANOS" },
             { name: "Salvador", ovr: 90, bda: "BDA 3 ANOS" },
             { name: "BMO", ovr: 89, bda: "BDA 3 ANOS" },
             { name: "JayA Luuck", ovr: 90, bda: "BDA 3 ANOS" },
             { name: "Guerra", ovr: 91, bda: "BDA 4 ANOS" },
+            { name: "Sid", ovr: 87, bda: "BDA 4 ANOS" },
             { name: "Jotapê", ovr: 92, bda: "BDA 5 ANOS" },
             { name: "Big Mike", ovr: 93, bda: "BDA 5 ANOS" },
             { name: "Apollo", ovr: 89, bda: "BDA 5 ANOS" },
             { name: "Neo", ovr: 96, bda: "BDA 6 ANOS" },
             { name: "Prado", ovr: 92, bda: "BDA 6 ANOS" },
             { name: "Kant", ovr: 90, bda: "BDA 6 ANOS" },
-            { name: "Jotapê", ovr: 95, bda: "BDA 6 ANOS" },
+            { name: "Jhony", ovr: 87, bda: "BDA 6 ANOS" },
             { name: "Jotapê", ovr: 97, bda: "BDA 7 ANOS" },
             { name: "Neo", ovr: 94, bda: "BDA 7 ANOS" },
             { name: "Big Mike", ovr: 94, bda: "BDA 7 ANOS" },
             { name: "Xamuel", ovr: 89, bda: "BDA 7 ANOS" },
+            { name: "Noventa", ovr: 89, bda: "BDA 7 ANOS" },
+            { name: "Apollo", ovr: 89, bda: "BDA 7 ANOS" },
             { name: "Apollo", ovr: 98, bda: "BDA 8 ANOS" },
             { name: "Neo", ovr: 92, bda: "BDA 8 ANOS" },
             { name: "Tavin", ovr: 95, bda: "BDA 8 ANOS" },
             { name: "Jotapê", ovr: 96, bda: "BDA 8 ANOS" },
             { name: "WM", ovr: 89, bda: "BDA 8 ANOS" },
+            { name: "Big Mike", ovr: 89, bda: "BDA 8 ANOS" },
+            { name: "Martzin", ovr: 87, bda: "BDA 8 ANOS" },
             { name: "Bask", ovr: 95, bda: "BDA 9 ANOS" },
             { name: "Japa", ovr: 95, bda: "BDA 9 ANOS" },
-            { name: "Big Mike", ovr: 96, bda: "BDA 9 ANOS" }
+            { name: "Big Mike", ovr: 96, bda: "BDA 9 ANOS" },
+            { name: "Vitu", ovr: 87, bda: "BDA 9 ANOS" }
         ];
 
         // Lista de Roteiros dos Intervalos
@@ -1478,7 +1680,7 @@
 
         // IDs dos trios permitidos no Modo Seletiva e BDA 10
         const seletivaIds = [84, 85, 86, 87, 93, 94, 95, 96];
-        const bda10Ids = [63, 65, 81, 82, 83, 88, 89, 90, 91, 92];
+        const bda10Ids = [63, 65, 81, 82, 83, 88, 89, 90, 91, 92, 96, 97, 98, 99, 100];
 
         let isSorteando = false;
         let modoJogo = 'normal'; // 'normal', 'livre', 'mvp', 'seletiva', 'bda10'
@@ -1540,6 +1742,13 @@
             document.getElementById('mode-selection-screen').style.display = 'flex';
         }
 
+        function mostrarSubmenuBda10() {
+            document.getElementById('home-screen-view').style.display = 'none';
+            document.getElementById('mode-selection-screen').style.display = 'none';
+            document.getElementById('trio-selection-screen').style.display = 'none';
+            document.getElementById('bda10-submenu-screen').style.display = 'flex';
+        }
+
         function voltarTelaInicial() {
             document.getElementById('mode-selection-screen').style.display = 'none';
             document.getElementById('home-screen-view').style.display = 'flex';
@@ -1550,7 +1759,7 @@
                 fasesAtuais = ["Primeira Fase", "Semifinal", "Final"];
                 databaseEmbaralhado = shuffle(database.filter(t => seletivaIds.includes(t.id)));
                 document.getElementById('ring-logo-text').innerText = '9 - 0';
-            } else if (modoJogo === 'bda10') {
+            } else if (modoJogo === 'bda10_12_0' || modoJogo === 'bda10_simulacao' || modoJogo === 'bda10_from_seletiva') {
                 fasesAtuais = ["Primeira Fase", "Segunda Fase", "Semifinal", "Final"];
                 databaseEmbaralhado = shuffle(database.filter(t => bda10Ids.includes(t.id)));
                 document.getElementById('ring-logo-text').innerText = '12 - 0';
@@ -1563,7 +1772,7 @@
             isSorteando = false;
             
             // Só reseta o trio se não estiver engatando BDA 10 a partir da Seletiva
-            if (modoJogo !== 'bda10') {
+            if (modoJogo !== 'bda10_from_seletiva') {
                 trioAtual = null;
                 reSorteiosRestantes = 3;
                 meuTrio = [];
@@ -1602,14 +1811,14 @@
             
             document.getElementById('card-label-sorteio').innerText = "SAIU";
 
-            if (modoJogo !== 'bda10') {
+            if (modoJogo !== 'bda10_from_seletiva') {
                 atualizarRingue();
             }
         }
 
         function iniciarJogo(modo) {
-            // Se tentar jogar novamente após perder a BDA 10, volta pra Seletiva
-            if (modo === 'bda10' && !foiCampeao) {
+            // Se tentar jogar novamente após perder a BDA 10 (vinda da seletiva), volta pra Seletiva
+            if (modo === 'bda10_from_seletiva' && !foiCampeao) {
                 modoJogo = 'seletiva';
             } else {
                 modoJogo = modo;
@@ -1619,11 +1828,19 @@
 
             document.getElementById('home-screen-view').style.display = 'none';
             document.getElementById('mode-selection-screen').style.display = 'none';
+            document.getElementById('bda10-submenu-screen').style.display = 'none';
+            document.getElementById('trio-selection-screen').style.display = 'none';
             document.getElementById('card-screen').style.display = 'none';
             document.getElementById('sim-screen').style.display = 'none';
             
-            if (modoJogo === 'bda10') {
+            if (modoJogo === 'bda10_from_seletiva') {
                 irParaSimulacao();
+                return;
+            }
+
+            if (modoJogo === 'bda10_simulacao') {
+                document.getElementById('trio-selection-screen').style.display = 'flex';
+                renderizarListaTriosBda10();
                 return;
             }
             
@@ -1650,6 +1867,13 @@
                 document.getElementById('search-wrapper').style.display = 'none';
                 document.getElementById('mc-list-header-title').innerText = "ESCOLHA UM MC";
                 sortearTrio();
+            } else if (modoJogo === 'bda10_12_0') {
+                document.getElementById('draft-mode-title').innerText = "BDA 10 ANOS - TRIO MONTADO";
+                document.getElementById('box-sorteio').style.display = 'block';
+                document.getElementById('box-lista').style.display = 'block';
+                document.getElementById('search-wrapper').style.display = 'none';
+                document.getElementById('mc-list-header-title').innerText = "ESCOLHA UM MC";
+                sortearTrio();
             } else {
                 document.getElementById('draft-mode-title').innerText = "TRIO MONTADO";
                 document.getElementById('box-sorteio').style.display = 'block';
@@ -1663,15 +1887,50 @@
         }
         
         function jogarBda10() {
-            iniciarJogo('bda10');
+            iniciarJogo('bda10_from_seletiva');
         }
 
         function jogarNovamente() {
-            iniciarJogo(modoJogo);
+            if (modoJogo === 'bda10_from_seletiva') {
+                iniciarJogo('seletiva');
+            } else {
+                iniciarJogo(modoJogo);
+            }
         }
 
         function irParaTelaInicial() {
             window.location.reload();
+        }
+
+        function renderizarListaTriosBda10() {
+            const listEl = document.getElementById('bda10-trios-list');
+            listEl.innerHTML = '';
+            
+            const bda10Trios = database.filter(t => bda10Ids.includes(t.id));
+            bda10Trios.forEach(trio => {
+                const card = document.createElement('div');
+                card.className = 'trio-select-card';
+                
+                const nomes = trio.mcs.map(m => m.name).join(' | ');
+                const avgOvr = Math.round(trio.mcs.reduce((s, m) => s + m.ovr, 0) / 3);
+                
+                card.innerHTML = `
+                    <div class="trio-select-names">${nomes}</div>
+                    <div class="trio-select-ovr">OVERALL DO TRIO: ${avgOvr}</div>
+                `;
+                card.onclick = () => selecionarTrioPronto(trio);
+                listEl.appendChild(card);
+            });
+        }
+
+        function selecionarTrioPronto(trio) {
+            meuTrio = trio.mcs.map((m) => ({ ...m, bda: trio.bda }));
+            mcsEscaladosNomes = meuTrio.map(m => normalizarNome(m.name));
+            
+            triosEnfrentadosIds.push(trio.id);
+            
+            document.getElementById('trio-selection-screen').style.display = 'none';
+            irParaSimulacao();
         }
 
         function renderizarListaModoLivre(termo = '') {
@@ -1699,12 +1958,18 @@
             todosMcs.sort((a, b) => a.name.localeCompare(b.name) || a.bda.localeCompare(b.bda));
 
             todosMcs.forEach(mc => {
-                const item = document.createElement('div');
-                const jaEscalado = mcsEscaladosNomes.includes(normalizarNome(mc.name));
+                const nomeNorm = normalizarNome(mc.name);
+                const jaEscalado = mcsEscaladosNomes.includes(nomeNorm);
                 
-                item.className = `mc-item ${jaEscalado ? 'blocked' : ''}`;
-                if (jaEscalado) {
-                    item.setAttribute('data-reason', ' (JÁ ESCALADO)');
+                // NO MODO LIVRE, respeita também se o MC está bloqueado originalmente no DB
+                const isBlocked = mc.blocked || jaEscalado;
+                
+                const item = document.createElement('div');
+                item.className = `mc-item ${isBlocked ? 'blocked' : ''}`;
+                
+                if (isBlocked) {
+                    const reasonText = jaEscalado ? " (JÁ ESCALADO)" : " (BLOQUEADO)";
+                    item.setAttribute('data-reason', reasonText);
                 }
                 
                 item.innerHTML = `
@@ -1715,7 +1980,7 @@
                     <div class="mc-overall">${mc.ovr}</div>
                 `;
 
-                if (!jaEscalado) {
+                if (!isBlocked) {
                     item.onclick = () => selecionarMC(mc, mc.bda);
                 }
 
@@ -1742,7 +2007,13 @@
             const intervalTime = 70;
 
             const anim = setInterval(() => {
-                let dbParaAnim = modoJogo === 'seletiva' ? database.filter(t => seletivaIds.includes(t.id)) : database;
+                let dbParaAnim = database;
+                if (modoJogo === 'seletiva') {
+                    dbParaAnim = database.filter(t => seletivaIds.includes(t.id));
+                } else if (modoJogo.startsWith('bda10')) {
+                    dbParaAnim = database.filter(t => bda10Ids.includes(t.id));
+                }
+                
                 const randomVisualTrio = dbParaAnim[Math.floor(Math.random() * dbParaAnim.length)];
                 
                 const nomes = randomVisualTrio.mcs.map(mc => mc.name).join(', ');
@@ -1764,6 +2035,8 @@
             if (databaseEmbaralhado.length === 0) {
                 if (modoJogo === 'seletiva') {
                     databaseEmbaralhado = shuffle(database.filter(t => seletivaIds.includes(t.id)));
+                } else if (modoJogo.startsWith('bda10')) {
+                    databaseEmbaralhado = shuffle(database.filter(t => bda10Ids.includes(t.id)));
                 } else {
                     databaseEmbaralhado = shuffle(database);
                 }
@@ -1781,14 +2054,15 @@
 
             trioAtual.mcs.forEach(mc => {
                 const item = document.createElement('div');
-                const jaEscalado = mcsEscaladosNomes.includes(normalizarNome(mc.name));
+                const nomeNorm = normalizarNome(mc.name);
+                const jaEscalado = mcsEscaladosNomes.includes(nomeNorm);
                 const isBlocked = mc.blocked || jaEscalado;
                 
                 if (isBlocked) bloqueadosCount++;
 
                 item.className = `mc-item ${isBlocked ? 'blocked' : ''}`;
                 const reasonText = jaEscalado ? " (JÁ ESCALADO)" : " (BLOQUEADO)";
-                item.setAttribute('data-reason', reasonText);
+                if (isBlocked) item.setAttribute('data-reason', reasonText);
                 
                 const displayOvr = (modoJogo === 'mvp') ? '??' : mc.ovr;
 
@@ -1841,17 +2115,42 @@
             }
         }
 
+        function removerMC(index) {
+            const mcRemovido = meuTrio[index];
+            if (!mcRemovido) return;
+
+            meuTrio.splice(index, 1);
+            
+            const indexNome = mcsEscaladosNomes.indexOf(normalizarNome(mcRemovido.name));
+            if (indexNome > -1) {
+                mcsEscaladosNomes.splice(indexNome, 1);
+            }
+
+            atualizarRingue();
+            
+            document.getElementById('btn-continuar').style.display = 'none';
+            document.getElementById('box-lista').style.display = 'block';
+            if (modoJogo === 'livre') {
+                document.getElementById('search-wrapper').style.display = 'block';
+                renderizarListaModoLivre(document.getElementById('search-mc-input').value);
+            }
+        }
+
         function selecionarMC(mc, bdaOrigem) {
-            if (meuTrio.length < 3) {
+            const nomeNorm = normalizarNome(mc.name);
+            
+            // Verificação extra de segurança para impedir duplo clique rápido de quebrar o array
+            if (meuTrio.length < 3 && !mcsEscaladosNomes.includes(nomeNorm) && !mc.blocked) {
                 let mcObjeto = { ...mc, bda: bdaOrigem };
                 meuTrio.push(mcObjeto);
-                mcsEscaladosNomes.push(normalizarNome(mc.name));
+                mcsEscaladosNomes.push(nomeNorm);
+                
                 atualizarRingue();
                 
                 if (meuTrio.length < 3) {
                     if (modoJogo === 'livre') {
-                        document.getElementById('search-mc-input').value = '';
-                        renderizarListaModoLivre();
+                        // Limpar a lista se não estiver pesquisando, ou só re-renderizar pra bloquear o que acabou de ser clicado
+                        renderizarListaModoLivre(document.getElementById('search-mc-input').value);
                     } else {
                         sortearTrio();
                     }
@@ -1869,11 +2168,23 @@
             for (let i = 0; i < 3; i++) {
                 const badge = document.getElementById(`badge-${i}`);
                 const name = document.getElementById(`name-${i}`);
+                const wrapper = document.getElementById(`wrapper-${i}`);
+
+                const existingBtn = wrapper.querySelector('.btn-remove-mc');
+                if (existingBtn) existingBtn.remove();
 
                 if (meuTrio[i]) {
                     badge.innerText = meuTrio[i].state.replace('#', '');
                     badge.classList.remove('badge-empty');
                     name.innerText = meuTrio[i].name;
+
+                    if (modoJogo === 'livre') {
+                        const removeBtn = document.createElement('button');
+                        removeBtn.className = 'btn-remove-mc';
+                        removeBtn.innerHTML = '<img src="https://cdn-icons-png.flaticon.com/512/9972/9972749.png" alt="X">';
+                        removeBtn.onclick = () => removerMC(i);
+                        wrapper.appendChild(removeBtn);
+                    }
                 } else {
                     badge.innerText = '?';
                     badge.classList.add('badge-empty');
@@ -1899,7 +2210,7 @@
             let baseDb = database;
             if (modoJogo === 'seletiva') {
                 baseDb = database.filter(t => seletivaIds.includes(t.id));
-            } else if (modoJogo === 'bda10') {
+            } else if (modoJogo.startsWith('bda10')) {
                 baseDb = database.filter(t => bda10Ids.includes(t.id));
             }
             
@@ -2249,7 +2560,7 @@
                     statusSubtitle.innerText = `🏆 PERFEITO! VOCÊ FEZ O ${maxRounds} - 0! 🏆`;
                     if (modoJogo === 'seletiva') {
                         msg.innerText = "Seu trio dominou a Seletiva sem perder nenhum round e se classificou para a BDA 10! Campanha impecável!";
-                    } else if (modoJogo === 'bda10') {
+                    } else if (modoJogo.startsWith('bda10')) {
                         msg.innerText = "Seu trio dominou a BDA 10 Anos sem perder nenhum round! Campanha impecável e histórica!";
                     } else {
                         msg.innerText = "Seu trio dominou a BDA sem perder nenhum round! Campanha impecável!";
@@ -2258,7 +2569,7 @@
                     if (modoJogo === 'seletiva') {
                         statusSubtitle.innerText = "🏆 CAMPEÃO DA SELETIVA! 🏆";
                         msg.innerText = `Seu trio venceu a Seletiva com um placar de ${roundsGanhos}-${roundsPerdidos} e está classificado para a BDA 10!`;
-                    } else if (modoJogo === 'bda10') {
+                    } else if (modoJogo.startsWith('bda10')) {
                         statusSubtitle.innerText = "🏆 CAMPEÃO DA BDA 10 ANOS! 🏆";
                         msg.innerText = `Seu trio levantou o troféu máximo com um placar de ${roundsGanhos}-${roundsPerdidos}!`;
                     } else {
