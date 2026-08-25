@@ -371,6 +371,7 @@
             flex-direction: column;
         }
 
+        /* Telas escondidas inicialmente por padrão, mas serão geridas no JS */
         #mode-selection-screen, #bda10-submenu-screen, #trio-selection-screen, #draft-screen, #sim-screen, #card-screen {
             display: none;
             flex-direction: column;
@@ -1356,6 +1357,16 @@
             document.getElementById('creditos-modal').style.display = 'none';
         }
 
+        function esconderTodasTelas() {
+            document.getElementById('home-screen-view').style.display = 'none';
+            document.getElementById('mode-selection-screen').style.display = 'none';
+            document.getElementById('bda10-submenu-screen').style.display = 'none';
+            document.getElementById('trio-selection-screen').style.display = 'none';
+            document.getElementById('draft-screen').style.display = 'none';
+            document.getElementById('sim-screen').style.display = 'none';
+            document.getElementById('card-screen').style.display = 'none';
+        }
+
         const database = [
             // BDA 1
             { id: 1, bda: "BDA 1 ANOS", mcs: [{ name: "César", state: "#ES", ovr: 96, blocked: false }, { name: "Dudu", state: "#ES", ovr: 92, blocked: false }, { name: "Araps", state: "#SP", ovr: 89, blocked: false }] },
@@ -1684,7 +1695,7 @@
         const bda10Ids = [63, 65, 81, 82, 83, 88, 89, 90, 91, 92, 96, 97, 98, 99, 100, 101];
 
         let isSorteando = false;
-        let modoJogo = 'normal'; // 'normal', 'livre', 'mvp', 'seletiva', 'bda10'
+        let modoJogo = 'normal'; // 'normal', 'livre', 'mvp', 'seletiva', 'bda10_12_0', 'bda10_simulacao', 'bda10_from_seletiva'
         let databaseEmbaralhado = [];
         let trioAtual = null;
         let reSorteiosRestantes = 3;
@@ -1717,7 +1728,7 @@
         }
 
         function fecharCardFinal() {
-            document.getElementById('card-screen').style.display = 'none';
+            esconderTodasTelas();
             document.getElementById('sim-screen').style.display = 'flex';
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
@@ -1738,20 +1749,28 @@
             return a;
         }
 
-        function mostrarTelaModos() {
+        function esconderTodasTelas() {
             document.getElementById('home-screen-view').style.display = 'none';
+            document.getElementById('mode-selection-screen').style.display = 'none';
+            document.getElementById('bda10-submenu-screen').style.display = 'none';
+            document.getElementById('trio-selection-screen').style.display = 'none';
+            document.getElementById('draft-screen').style.display = 'none';
+            document.getElementById('sim-screen').style.display = 'none';
+            document.getElementById('card-screen').style.display = 'none';
+        }
+
+        function mostrarTelaModos() {
+            esconderTodasTelas();
             document.getElementById('mode-selection-screen').style.display = 'flex';
         }
 
         function mostrarSubmenuBda10() {
-            document.getElementById('home-screen-view').style.display = 'none';
-            document.getElementById('mode-selection-screen').style.display = 'none';
-            document.getElementById('trio-selection-screen').style.display = 'none';
+            esconderTodasTelas();
             document.getElementById('bda10-submenu-screen').style.display = 'flex';
         }
 
         function voltarTelaInicial() {
-            document.getElementById('mode-selection-screen').style.display = 'none';
+            esconderTodasTelas();
             document.getElementById('home-screen-view').style.display = 'flex';
         }
 
@@ -1826,13 +1845,7 @@
             }
             
             resetarDados();
-
-            document.getElementById('home-screen-view').style.display = 'none';
-            document.getElementById('mode-selection-screen').style.display = 'none';
-            document.getElementById('bda10-submenu-screen').style.display = 'none';
-            document.getElementById('trio-selection-screen').style.display = 'none';
-            document.getElementById('card-screen').style.display = 'none';
-            document.getElementById('sim-screen').style.display = 'none';
+            esconderTodasTelas();
             
             if (modoJogo === 'bda10_from_seletiva') {
                 irParaSimulacao();
@@ -1897,10 +1910,6 @@
             } else {
                 iniciarJogo(modoJogo);
             }
-        }
-
-        function irParaTelaInicial() {
-            window.location.reload();
         }
 
         function renderizarListaTriosBda10() {
@@ -2202,7 +2211,7 @@
 
         /* LÓGICA DE SIMULAÇÃO */
         function irParaSimulacao() {
-            document.getElementById('draft-screen').style.display = 'none';
+            esconderTodasTelas();
             document.getElementById('sim-screen').style.display = 'flex';
             
             // Sorteia 3 jurados únicos para a campanha
@@ -2594,10 +2603,8 @@
 
         /* MOSTRAR CARD DE ESTATÍSTICAS DA CAMPANHA */
         function mostrarCardFinal() {
-            document.getElementById('sim-screen').style.display = 'none';
+            esconderTodasTelas();
             document.getElementById('card-screen').style.display = 'flex';
-
-            let maxRounds = modoJogo === 'seletiva' ? 9 : 12;
 
             const titleEl = document.getElementById('c-status-title');
             if (foiCampeao) {
